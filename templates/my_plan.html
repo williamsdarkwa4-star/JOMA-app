@@ -1,34 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>My Device - Infinix</title>
-
-<link
+<!DOCTYPE html><html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My Device - JOMA</title><link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
->
-
-<style>
+><style>
 
 :root {
-    --bg: #000000;
-    --card: #0d0d0d;
-    --border: #1b1b1b;
-    --green: #3cdc3c;
-    --green-dark: #1e9f1e;
-    --white: #ffffff;
-    --muted: #777777;
-    --dark: #444444;
+    --primary-blue: #0b1a99;
+    --primary-blue-light: #eef1ff;
+    --bg-light: #f3f5fa;
+    --card-white: #ffffff;
+    --text-main: #1e266d;
+    --text-muted: #5e669e;
+    --border-color: #e0e4f5;
+    --green: #2ecc71;
+    --red: #e53935;
 
     --font:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         Roboto,
+        Helvetica,
         Arial,
         sans-serif;
 }
@@ -46,131 +39,70 @@ html,
 body {
     width: 100%;
     min-height: 100%;
-    background: #000000;
+    background: var(--bg-light);
 }
 
 body {
     display: flex;
     justify-content: center;
-    color: #ffffff;
+    color: var(--text-main);
 }
+
 
 /* =====================================================
-   APP
+   APP CONTAINER
 ===================================================== */
 
-.app-viewport {
-    position: relative;
+.app-container {
     width: 100%;
-    max-width: 412px;
-    height: 100vh;
-    overflow: hidden;
-    background: #000000;
+    max-width: 420px;
+    min-height: 100vh;
+
+    background: var(--bg-light);
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    padding-bottom: 72px;
 }
+
 
 /* =====================================================
    HEADER
 ===================================================== */
 
-.header {
+.app-header {
     position: relative;
+
     width: 100%;
-    height: 74px;
-    padding: 10px 18px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: var(--primary-blue);
 
-    background:
-        linear-gradient(
-            180deg,
-            #080808 0%,
-            #000000 100%
-        );
+    color: #ffffff;
 
-    border-bottom: 1px solid #1f1f1f;
-    z-index: 20;
+    padding: 16px 50px;
+
+    text-align: center;
+
+    font-size: 1.05rem;
+    font-weight: 700;
+
+    letter-spacing: .4px;
 
     box-shadow:
-        0 4px 18px rgba(0,0,0,.45);
+        0 3px 10px rgba(11, 26, 153, .18);
 }
 
-.header::after {
-    content: "";
+.header-back {
     position: absolute;
 
-    left: 18%;
-    right: 18%;
-    bottom: -1px;
-
-    height: 1px;
-
-    background: var(--green);
-    opacity: .35;
-
-    box-shadow:
-        0 0 8px rgba(60,220,60,.35);
-}
-
-/* BACK BUTTON */
-
-.back-btn {
-    position: absolute;
-
-    left: 16px;
+    left: 14px;
     top: 50%;
 
     transform: translateY(-50%);
 
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #ffffff;
-    text-decoration: none;
-
-    background:
-        linear-gradient(
-            145deg,
-            #151515,
-            #090909
-        );
-
-    border: 1px solid #292929;
-    border-radius: 12px;
-
-    box-shadow:
-        0 4px 12px rgba(0,0,0,.45);
-
-    transition: .2s ease;
-}
-
-.back-btn i {
-    font-size: 14px;
-}
-
-.back-btn:active {
-    background: #1b1b1b;
-
-    transform:
-        translateY(-50%)
-        scale(.93);
-}
-
-/* HEADER CENTER */
-
-.header-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-}
-
-.header-logo {
     width: 34px;
     height: 34px;
 
@@ -178,306 +110,358 @@ body {
     align-items: center;
     justify-content: center;
 
-    color: #000000;
-    background: var(--green);
-
-    border-radius: 10px;
-
-    font-size: 14px;
-
-    box-shadow:
-        0 0 8px rgba(60,220,60,.35);
-}
-
-.header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-}
-
-.header-brand {
     color: #ffffff;
 
-    font-size: 14px;
-    font-weight: 900;
-
-    letter-spacing: 1px;
-    line-height: 1;
-}
-
-.header-page {
-    margin-top: 4px;
-
-    color: #666666;
-
-    font-size: 8px;
-    font-weight: 500;
-
-    letter-spacing: .3px;
-}
-
-/* HEADER STATUS */
-
-.header-status {
-    position: absolute;
-
-    right: 17px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    display: flex;
-    align-items: center;
-
-    gap: 5px;
-
-    padding: 6px 8px;
-
-    color: var(--green);
-
-    background: #071207;
-
-    border: 1px solid #173817;
-    border-radius: 20px;
-
-    font-size: 7px;
-    font-weight: 800;
-}
-
-.header-status-dot {
-    width: 5px;
-    height: 5px;
-
-    background: var(--green);
+    text-decoration: none;
 
     border-radius: 50%;
 
-    box-shadow:
-        0 0 6px rgba(60,220,60,.8);
+    transition: .2s ease;
 }
+
+.header-back:active {
+    background: rgba(255,255,255,.15);
+    transform:
+        translateY(-50%)
+        scale(.94);
+}
+
+.header-brand {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+}
+
+.header-logo {
+    width: 29px;
+    height: 29px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--primary-blue);
+
+    background: #ffffff;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+.header-brand-name {
+    font-size: 15px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
 
 /* =====================================================
-   MAIN SCROLL
+   MAIN CONTENT
 ===================================================== */
 
-.main-scroll-container {
+.content {
     width: 100%;
-    height: calc(100% - 74px);
 
-    overflow-y: auto;
+    padding: 14px;
 
-    padding: 12px;
-    padding-bottom: 88px;
-
-    scrollbar-width: none;
+    flex: 1;
 }
 
-.main-scroll-container::-webkit-scrollbar {
-    display: none;
-}
 
 /* =====================================================
    PAGE TITLE
 ===================================================== */
 
 .page-title {
-    padding: 5px 2px 12px;
+    margin-bottom: 13px;
 }
 
 .page-title h2 {
-    color: #ffffff;
+    color: var(--text-main);
 
     font-size: 18px;
+
     font-weight: 800;
 }
 
 .page-title p {
     margin-top: 3px;
 
-    color: #555555;
+    color: var(--text-muted);
 
     font-size: 9px;
 }
 
+
 /* =====================================================
-   INFINIX TOP PHOTO
+   JOMA PRODUCT BANNER
 ===================================================== */
 
-.infinix-photo-card {
+.product-banner {
     position: relative;
 
     width: 100%;
-    height: 185px;
-
-    margin-bottom: 12px;
+    height: 175px;
 
     overflow: hidden;
 
-    background: #050505;
-
-    border: 1px solid #ffffff;
-
-    border-radius: 14px;
-
-    box-shadow:
-        0 0 6px rgba(255,255,255,.30),
-        0 0 18px rgba(255,255,255,.15),
-        inset 0 0 20px rgba(255,255,255,.04);
-}
-
-.infinix-photo {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-
-    background: #080808;
-}
-
-.photo-dark-overlay {
-    position: absolute;
-
-    inset: 0;
+    margin-bottom: 13px;
 
     background:
         linear-gradient(
-            to bottom,
-            rgba(0,0,0,.05),
-            rgba(0,0,0,.25) 45%,
-            rgba(0,0,0,.88)
+            135deg,
+            #ffffff 0%,
+            #edf0ff 55%,
+            #d7ddff 100%
         );
 
-    z-index: 2;
+    border: 1px solid var(--border-color);
 
-    pointer-events: none;
+    border-radius: 12px;
+
+    box-shadow:
+        0 3px 10px rgba(30, 38, 109, .07);
 }
 
-.infinix-photo-card::after {
+.banner-glow {
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    right: -45px;
+    top: -45px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(11,26,153,.16) 0%,
+            rgba(11,26,153,0) 70%
+        );
+}
+
+.banner-device {
+    position: absolute;
+
+    width: 95px;
+    height: 150px;
+
+    right: 48px;
+    top: 12px;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #394275,
+            #111936
+        );
+
+    border: 2px solid #6872a9;
+
+    transform: rotate(8deg);
+
+    box-shadow:
+        12px 12px 25px rgba(11,26,153,.20);
+}
+
+.banner-device::before {
     content: "";
 
     position: absolute;
 
-    left: 0;
-    bottom: 0;
+    left: 7px;
+    right: 7px;
+    top: 7px;
+    bottom: 7px;
 
-    width: 100%;
-    height: 2px;
+    border-radius: 12px;
 
-    background: #ffffff;
-
-    box-shadow:
-        0 0 8px #ffffff,
-        0 0 18px rgba(255,255,255,.65);
-
-    z-index: 4;
+    background:
+        linear-gradient(
+            145deg,
+            #eef1ff,
+            #ffffff
+        );
 }
 
-.photo-content {
+.banner-device::after {
+    content: "JOMA";
+
     position: absolute;
 
-    left: 14px;
-    right: 14px;
-    bottom: 13px;
+    left: 0;
+    right: 0;
+    bottom: 25px;
 
-    display: flex;
+    text-align: center;
 
-    align-items: flex-end;
-    justify-content: space-between;
+    color: var(--primary-blue);
 
-    gap: 10px;
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    transform: rotate(0deg);
+}
+
+.camera-box {
+    position: absolute;
+
+    top: 17px;
+    left: 15px;
+
+    width: 31px;
+    height: 38px;
+
+    background: #d9def2;
+
+    border: 1px solid #aab2d2;
+
+    border-radius: 8px;
 
     z-index: 3;
 }
 
-.photo-title {
-    color: #ffffff;
+.camera-box::before,
+.camera-box::after {
+    content: "";
 
-    font-size: 14px;
+    position: absolute;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #222a4a;
+
+    border: 2px solid #858eae;
+}
+
+.camera-box::before {
+    top: 6px;
+    left: 5px;
+}
+
+.camera-box::after {
+    bottom: 6px;
+    right: 5px;
+}
+
+.banner-content {
+    position: absolute;
+
+    left: 15px;
+    bottom: 16px;
+
+    z-index: 5;
+}
+
+.banner-brand {
+    color: var(--primary-blue);
+
+    font-size: 19px;
+
     font-weight: 900;
 
-    letter-spacing: .7px;
-
-    text-shadow:
-        0 0 8px rgba(255,255,255,.35);
+    letter-spacing: 1.3px;
 }
 
-.photo-subtitle {
-    margin-top: 3px;
+.banner-subtitle {
+    margin-top: 4px;
 
-    color: #bdbdbd;
+    color: var(--text-muted);
 
-    font-size: 8px;
+    font-size: 9px;
 }
 
-.photo-status {
-    flex-shrink: 0;
+.banner-status {
+    position: absolute;
 
-    padding: 6px 9px;
+    right: 13px;
+    bottom: 13px;
 
-    color: #000000;
+    padding: 6px 10px;
 
-    background: #ffffff;
+    color: #ffffff;
+
+    background: var(--green);
 
     border-radius: 20px;
 
-    font-size: 7px;
-    font-weight: 900;
+    font-size: 8px;
 
-    box-shadow:
-        0 0 8px rgba(255,255,255,.45),
-        0 0 16px rgba(255,255,255,.18);
+    font-weight: 800;
+
+    z-index: 5;
 }
+
 
 /* =====================================================
    METRICS
 ===================================================== */
 
-.dashboard-metrics-row {
+.metrics-row {
     display: grid;
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 8px;
+    gap: 9px;
 
-    margin-bottom: 13px;
+    margin-bottom: 15px;
 }
 
-.metric-panel {
-    min-height: 62px;
+.metric-card {
+    min-height: 65px;
 
-    padding: 9px 10px;
+    padding: 11px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 9px;
+
+    box-shadow:
+        0 2px 7px rgba(30,38,109,.04);
 
     display: flex;
 
     flex-direction: column;
 
     justify-content: space-between;
-
-    background: var(--green);
-
-    border-radius: 7px;
 }
 
 .metric-label {
-    color: #000000;
+    color: var(--text-muted);
 
-    font-size: 10px;
-    font-weight: 600;
+    font-size: 9px;
+
+    font-weight: 500;
 }
 
-.metric-counter-value {
-    color: #000000;
+.metric-value {
+    color: var(--primary-blue);
 
-    font-size: 16px;
+    font-size: 17px;
+
     font-weight: 800;
 }
+
 
 /* =====================================================
    SECTION HEADER
@@ -489,83 +473,100 @@ body {
     align-items: center;
     justify-content: space-between;
 
-    margin: 3px 2px 7px;
+    margin: 2px 2px 8px;
 }
 
 .section-title {
-    color: #ffffff;
+    color: var(--text-main);
 
     font-size: 13px;
+
     font-weight: 700;
 }
 
 .section-count {
-    color: #555555;
+    color: var(--text-muted);
 
     font-size: 9px;
 }
+
 
 /* =====================================================
    DEVICE CARD
 ===================================================== */
 
-.portfolio-ledger-card {
+.device-card {
     width: 100%;
 
-    margin-bottom: 8px;
+    padding: 11px;
 
-    padding: 9px;
+    margin-bottom: 9px;
 
-    background: var(--card);
+    background: #ffffff;
 
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
 
-    border-radius: 8px;
+    border-radius: 9px;
+
+    box-shadow:
+        0 2px 8px rgba(30,38,109,.04);
 
     transition: .2s ease;
 }
 
-.portfolio-ledger-card:active {
-    border-color: #2b2b2b;
+.device-card:active {
     transform: scale(.99);
 }
 
-.ledger-top-flex-row {
+
+/* =====================================================
+   CARD TOP
+===================================================== */
+
+.device-top {
     display: flex;
 
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 7px;
+    margin-bottom: 9px;
 }
 
-.vip-tier-indicator {
-    color: var(--green);
+.plan-name {
+    color: var(--primary-blue);
 
     font-size: 10px;
+
     font-weight: 800;
 }
 
-.asset-valuation-tag {
-    color: var(--green);
+.investment-value {
+    color: var(--text-main);
 
     font-size: 10px;
+
     font-weight: 800;
 }
 
-.ledger-inner-body {
+
+/* =====================================================
+   DEVICE BODY
+===================================================== */
+
+.device-body {
     display: flex;
 
     align-items: center;
 
-    gap: 9px;
+    gap: 10px;
 }
+
 
 /* PHONE THUMBNAIL */
 
-.hardware-thumbnail-wrapper {
-    width: 40px;
-    height: 48px;
+.device-thumbnail {
+    width: 48px;
+    height: 56px;
 
     flex-shrink: 0;
 
@@ -574,73 +575,79 @@ body {
     align-items: center;
     justify-content: center;
 
-    background: #111111;
+    background: var(--primary-blue-light);
 
-    border: 1px solid #202020;
+    border: 1px solid var(--border-color);
 
-    border-radius: 6px;
+    border-radius: 7px;
 }
 
-.infinix-device {
+.phone {
     position: relative;
 
-    width: 20px;
-    height: 35px;
+    width: 23px;
+    height: 40px;
 
     background:
         linear-gradient(
             145deg,
-            #38383c,
-            #151517
+            #59638e,
+            #182044
         );
 
-    border: 1px solid #444444;
+    border: 1px solid #7881a6;
 
-    border-radius: 4px;
+    border-radius: 5px;
 
     box-shadow:
-        0 2px 6px rgba(0,0,0,.7);
+        0 2px 6px rgba(11,26,153,.18);
 }
 
-.infinix-device::before {
+.phone::before {
     content: "";
 
     position: absolute;
 
-    top: 2px;
+    top: 3px;
     left: 50%;
 
-    width: 6px;
+    width: 7px;
     height: 2px;
 
     transform: translateX(-50%);
 
-    background: #050505;
+    background: #ffffff;
 
-    border-radius: 4px;
+    border-radius: 3px;
+
+    opacity: .8;
 }
 
-.infinix-device::after {
-    content: "";
+.phone::after {
+    content: "J";
 
     position: absolute;
 
-    left: 3px;
-    right: 3px;
-    bottom: 4px;
+    left: 0;
+    right: 0;
 
-    height: 1px;
+    bottom: 8px;
 
-    background: var(--green);
+    text-align: center;
 
-    opacity: .55;
+    color: #ffffff;
+
+    font-size: 8px;
+
+    font-weight: 900;
 }
+
 
 /* =====================================================
    DEVICE DETAILS
 ===================================================== */
 
-.ledger-specs-column {
+.device-details {
     flex: 1;
 
     min-width: 0;
@@ -649,68 +656,71 @@ body {
 
     grid-template-columns: 1fr 1fr;
 
-    column-gap: 7px;
-    row-gap: 2px;
+    column-gap: 8px;
+
+    row-gap: 3px;
 }
 
 .product-name {
     grid-column: 1 / -1;
 
-    color: #ffffff;
+    color: var(--text-main);
 
     font-size: 10px;
+
     font-weight: 700;
 
     margin-bottom: 1px;
 }
 
-.spec-line-item {
-    color: var(--muted);
+.spec {
+    color: var(--text-muted);
 
     font-size: 8px;
 
-    line-height: 1.3;
+    line-height: 1.4;
 
     white-space: nowrap;
 }
 
-.spec-highlight-value {
-    color: var(--green);
+.spec-value {
+    color: var(--primary-blue);
 
     margin-left: 2px;
 
     font-weight: 700;
 }
 
-.system-log-timestamp {
+.device-number {
     grid-column: 1 / -1;
 
-    color: var(--dark);
+    color: #9299bd;
 
     font-size: 7px;
 
     margin-top: 1px;
 }
 
+
 /* =====================================================
    COUNTDOWN
 ===================================================== */
 
-.income-status-row {
+.income-status {
     display: flex;
 
     align-items: center;
     justify-content: space-between;
 
-    margin-top: 7px;
+    margin-top: 9px;
 
-    padding-top: 6px;
+    padding-top: 7px;
 
-    border-top: 1px solid #181818;
+    border-top: 1px solid #f0f2fa;
 }
 
 .countdown-label {
-    color: #555555;
+    color: var(--text-muted);
 
     font-size: 7px;
 
@@ -720,50 +730,51 @@ body {
 }
 
 .countdown {
-    color: var(--green);
+    color: var(--primary-blue);
 
     font-size: 9px;
+
     font-weight: 800;
 
     font-variant-numeric: tabular-nums;
 }
 
 .countdown.ready {
-    text-shadow:
-        0 0 7px rgba(60,220,60,.5),
-        0 0 15px rgba(60,220,60,.2);
+    color: var(--green);
 }
+
 
 /* =====================================================
    CLAIM BUTTON
 ===================================================== */
 
 .claim-form {
-    margin-top: 5px;
+    margin-top: 7px;
 }
 
 .claim-button {
     width: 100%;
 
-    padding: 6px;
+    padding: 8px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    gap: 4px;
+    gap: 5px;
 
-    color: #000000;
+    color: #ffffff;
 
-    background: var(--green);
+    background: var(--primary-blue);
 
-    border: 1px solid var(--green);
+    border: 1px solid var(--primary-blue);
 
-    border-radius: 5px;
+    border-radius: 6px;
 
-    font-size: 8px;
-    font-weight: 800;
+    font-size: 9px;
+
+    font-weight: 700;
 
     cursor: pointer;
 
@@ -775,45 +786,49 @@ body {
 }
 
 .claim-button.disabled {
-    color: #555555;
+    color: #8d93b4;
 
-    background: #181818;
+    background: #eef0f8;
 
-    border-color: #292929;
+    border-color: #e0e3ef;
 
     cursor: not-allowed;
 }
 
+
 /* =====================================================
-   EMPTY
+   EMPTY STATE
 ===================================================== */
 
 .empty-card {
-    padding: 25px 12px;
+    padding: 28px 12px;
 
     text-align: center;
 
-    background: var(--card);
+    background: #ffffff;
 
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
 
-    border-radius: 7px;
+    border-radius: 9px;
+
+    box-shadow:
+        0 2px 8px rgba(30,38,109,.04);
 }
 
 .empty-icon {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
 
-    margin: 0 auto 8px;
+    margin: 0 auto 9px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    color: #555555;
+    color: var(--primary-blue);
 
-    background: #151515;
+    background: var(--primary-blue-light);
 
     border-radius: 50%;
 
@@ -821,34 +836,36 @@ body {
 }
 
 .empty-title {
-    color: #777777;
+    color: var(--text-main);
 
     font-size: 12px;
-    font-weight: 600;
+
+    font-weight: 700;
 }
 
 .empty-text {
-    margin-top: 3px;
+    margin-top: 4px;
 
-    color: #444444;
+    color: var(--text-muted);
 
     font-size: 8px;
 }
+
 
 /* =====================================================
    INFORMATION
 ===================================================== */
 
 .info-card {
-    margin-top: 9px;
+    margin-top: 10px;
 
-    padding: 9px;
+    padding: 11px;
 
-    background: #090909;
+    background: #ffffff;
 
-    border: 1px solid #141414;
+    border: 1px solid var(--border-color);
 
-    border-radius: 7px;
+    border-radius: 8px;
 }
 
 .info-title {
@@ -856,60 +873,67 @@ body {
 
     align-items: center;
 
-    gap: 5px;
+    gap: 6px;
 
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 
-    color: #777777;
+    color: var(--text-main);
 
     font-size: 9px;
-    font-weight: 600;
+
+    font-weight: 700;
 }
 
 .info-title i {
-    color: var(--green);
+    color: var(--primary-blue);
 }
 
 .info-card p {
-    color: #444444;
+    color: var(--text-muted);
 
     font-size: 8px;
 
-    line-height: 1.4;
+    line-height: 1.5;
 }
+
 
 /* =====================================================
    BOTTOM NAVIGATION
 ===================================================== */
 
-.global-bottom-navigation {
-    position: absolute;
+.bottom-nav {
+    position: fixed;
 
-    left: 0;
+    left: 50%;
     bottom: 0;
 
+    transform: translateX(-50%);
+
     width: 100%;
+    max-width: 420px;
+
+    height: 65px;
+
+    background: #ffffff;
+
+    border-top: 1px solid var(--border-color);
 
     display: grid;
 
     grid-template-columns: repeat(5, 1fr);
 
-    padding: 7px 0 4px;
+    align-items: center;
 
-    background:
-        linear-gradient(
-            to top,
-            #0f0f11,
-            #151517
-        );
+    z-index: 100;
 
-    border-top: 1px solid #1c1c1f;
-
-    z-index: 50;
+    box-shadow:
+        0 -2px 10px rgba(30,38,109,.05);
 }
 
-.nav-tab-node {
-    min-height: 35px;
+.nav-item {
+    position: relative;
+
+    height: 100%;
 
     display: flex;
 
@@ -918,36 +942,46 @@ body {
     align-items: center;
     justify-content: center;
 
-    gap: 2px;
+    gap: 4px;
 
-    color: #555555;
+    color: #8e94bb;
 
     text-decoration: none;
+
+    font-size: 8px;
 
     transition: .2s ease;
 }
 
-.nav-tab-node:active {
-    transform: scale(.92);
+.nav-item:active {
+    transform: scale(.93);
 }
 
-.nav-icon-glyph {
-    font-size: 15px;
-
-    line-height: 1;
+.nav-icon {
+    font-size: 16px;
 }
 
-.nav-text-label {
-    font-size: 7px;
-    font-weight: 500;
+.nav-item.active {
+    color: var(--primary-blue);
+
+    font-weight: 700;
 }
 
-.nav-tab-node.active-focus-state {
-    color: var(--green);
+.nav-item.active::after {
+    content: "";
 
-    text-shadow:
-        0 0 7px rgba(60,220,60,.35);
+    position: absolute;
+
+    bottom: 0;
+
+    width: 34px;
+    height: 3px;
+
+    background: var(--primary-blue);
+
+    border-radius: 3px 3px 0 0;
 }
+
 
 /* =====================================================
    LOADING
@@ -963,7 +997,7 @@ body {
     align-items: center;
     justify-content: center;
 
-    background: rgba(0,0,0,.78);
+    background: rgba(11,26,153,.18);
 
     backdrop-filter: blur(3px);
 
@@ -975,28 +1009,31 @@ body {
 }
 
 .loading-box {
-    width: 90px;
+    width: 95px;
 
-    padding: 14px;
+    padding: 15px;
 
     text-align: center;
 
-    background: #101010;
+    background: #ffffff;
 
-    border: 1px solid #222222;
+    border: 1px solid var(--border-color);
 
-    border-radius: 9px;
+    border-radius: 10px;
+
+    box-shadow:
+        0 8px 25px rgba(30,38,109,.15);
 }
 
 .loading-spinner {
-    width: 23px;
-    height: 23px;
+    width: 24px;
+    height: 24px;
 
     margin: 0 auto 7px;
 
-    border: 3px solid #333333;
+    border: 3px solid #e0e4f5;
 
-    border-top-color: var(--green);
+    border-top-color: var(--primary-blue);
 
     border-radius: 50%;
 
@@ -1004,1005 +1041,772 @@ body {
 }
 
 .loading-text {
-    color: #888888;
+    color: var(--text-muted);
 
     font-size: 8px;
 }
 
 @keyframes spin {
+
     to {
         transform: rotate(360deg);
     }
+
 }
 
+
 /* =====================================================
-   SMALL SCREEN
+   SMALL SCREENS
 ===================================================== */
 
 @media (max-width: 360px) {
 
-    .main-scroll-container {
+    .content {
         padding: 10px;
-        padding-bottom: 78px;
     }
 
-    .portfolio-ledger-card {
-        padding: 7px;
+    .product-banner {
+        height: 155px;
     }
 
-    .hardware-thumbnail-wrapper {
-        width: 35px;
-        height: 43px;
+    .banner-device {
+        right: 28px;
+        transform: rotate(8deg) scale(.9);
     }
 
-    .infinix-device {
-        width: 18px;
-        height: 32px;
+    .device-thumbnail {
+        width: 42px;
+        height: 51px;
     }
 
-    .spec-line-item {
+    .phone {
+        width: 21px;
+        height: 37px;
+    }
+
+    .spec {
         font-size: 7px;
     }
 
-    .infinix-photo-card {
-        height: 160px;
+    .bottom-nav {
+        height: 62px;
     }
 
-    .header {
-        height: 70px;
-    }
-
-    .header-status {
-        right: 10px;
-        padding: 5px 6px;
-    }
-
-    .header-page {
-        font-size: 7px;
-    }
 }
 
-</style>
-</head>
+</style></head><body><div class="app-container"><!-- =====================================================
+     HEADER
+===================================================== --><header class="app-header"><a
+    href="{{ url_for('dashboard') }}"
+    class="header-back"
+>
+    <i class="fa-solid fa-chevron-left"></i>
+</a>
 
-<body>
 
-<div class="app-viewport">
+<div class="header-brand">
 
-<!-- =====================================================
-     PREMIUM HEADER
-===================================================== -->
-
-<header class="header">
-
-    <a
-        href="{{ url_for('dashboard') }}"
-        class="back-btn"
-    >
-        <i class="fa-solid fa-chevron-left"></i>
-    </a>
-
-    <div class="header-center">
-
-        <div class="header-logo">
-            <i class="fa-solid fa-mobile-screen-button"></i>
-        </div>
-
-        <div class="header-content">
-
-            <div class="header-brand">
-                INFINIX
-            </div>
-
-            <div class="header-page">
-                MY DEVICE
-            </div>
-
-        </div>
-
+    <div class="header-logo">
+        J
     </div>
 
-    <div class="header-status">
+    <span class="header-brand-name">
+        JOMA
+    </span>
 
-        <span class="header-status-dot"></span>
+</div>
 
-        ACTIVE
+</header><!-- =====================================================
+     MAIN CONTENT
+===================================================== --><main class="content"><!-- PAGE TITLE --><section class="page-title"><h2>
+    My Device
+</h2>
 
-    </div>
+<p>
+    Your registered JOMA devices
+</p>
 
-</header>
+</section><!-- =====================================================
+     JOMA PRODUCT BANNER
+===================================================== --><section class="product-banner"><div class="banner-glow"></div>
 
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
+<div class="banner-device">
 
-<main class="main-scroll-container">
-
-
-<!-- PAGE TITLE -->
-
-<section class="page-title">
-
-    <h2>
-        My Device
-    </h2>
-
-    <p>
-        Your registered Infinix devices
-    </p>
-
-</section>
-
-
-<!-- =================================================
-     INFINIX PHOTO
-================================================== -->
-
-<section class="infinix-photo-card">
-
-    <svg
-        class="infinix-photo"
-        viewBox="0 0 800 420"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid slice"
-    >
-
-        <defs>
-
-            <linearGradient
-                id="phoneBackground"
-                x1="0"
-                y1="0"
-                x2="1"
-                y2="1"
-            >
-
-                <stop
-                    offset="0%"
-                    stop-color="#050505"
-                />
-
-                <stop
-                    offset="55%"
-                    stop-color="#151515"
-                />
-
-                <stop
-                    offset="100%"
-                    stop-color="#020202"
-                />
-
-            </linearGradient>
-
-
-            <linearGradient
-                id="phoneBody"
-                x1="0"
-                y1="0"
-                x2="1"
-                y2="1"
-            >
-
-                <stop
-                    offset="0%"
-                    stop-color="#555555"
-                />
-
-                <stop
-                    offset="35%"
-                    stop-color="#202020"
-                />
-
-                <stop
-                    offset="70%"
-                    stop-color="#080808"
-                />
-
-                <stop
-                    offset="100%"
-                    stop-color="#333333"
-                />
-
-            </linearGradient>
-
-
-            <linearGradient
-                id="screen"
-                x1="0"
-                y1="0"
-                x2="1"
-                y2="1"
-            >
-
-                <stop
-                    offset="0%"
-                    stop-color="#202020"
-                />
-
-                <stop
-                    offset="50%"
-                    stop-color="#050505"
-                />
-
-                <stop
-                    offset="100%"
-                    stop-color="#101010"
-                />
-
-            </linearGradient>
-
-
-            <radialGradient id="greenGlow">
-
-                <stop
-                    offset="0%"
-                    stop-color="#3cdc3c"
-                    stop-opacity=".45"
-                />
-
-                <stop
-                    offset="100%"
-                    stop-color="#3cdc3c"
-                    stop-opacity="0"
-                />
-
-            </radialGradient>
-
-
-            <filter
-                id="shadow"
-                x="-50%"
-                y="-50%"
-                width="200%"
-                height="200%"
-            >
-
-                <feGaussianBlur
-                    stdDeviation="12"
-                />
-
-            </filter>
-
-        </defs>
-
-
-        <rect
-            width="800"
-            height="420"
-            fill="url(#phoneBackground)"
-        />
-
-
-        <ellipse
-            cx="590"
-            cy="220"
-            rx="250"
-            ry="180"
-            fill="url(#greenGlow)"
-        />
-
-
-        <ellipse
-            cx="400"
-            cy="390"
-            rx="180"
-            ry="22"
-            fill="#000000"
-            opacity=".8"
-            filter="url(#shadow)"
-        />
-
-
-        <g
-            transform="translate(300 25) rotate(-8 100 180)"
-        >
-
-            <rect
-                x="0"
-                y="0"
-                width="200"
-                height="370"
-                rx="30"
-                fill="url(#phoneBody)"
-                stroke="#666666"
-                stroke-width="2"
-            />
-
-
-            <rect
-                x="9"
-                y="9"
-                width="182"
-                height="352"
-                rx="24"
-                fill="url(#screen)"
-            />
-
-
-            <path
-                d="M18 25 L120 15 L190 90 L190 150 Z"
-                fill="#ffffff"
-                opacity=".035"
-            />
-
-
-            <rect
-                x="24"
-                y="30"
-                width="58"
-                height="86"
-                rx="15"
-                fill="#080808"
-                stroke="#555555"
-                stroke-width="2"
-            />
-
-
-            <circle
-                cx="43"
-                cy="50"
-                r="12"
-                fill="#111111"
-                stroke="#777777"
-                stroke-width="3"
-            />
-
-            <circle
-                cx="43"
-                cy="50"
-                r="6"
-                fill="#020202"
-            />
-
-
-            <circle
-                cx="68"
-                cy="72"
-                r="12"
-                fill="#111111"
-                stroke="#777777"
-                stroke-width="3"
-            />
-
-            <circle
-                cx="68"
-                cy="72"
-                r="6"
-                fill="#020202"
-            />
-
-
-            <circle
-                cx="42"
-                cy="92"
-                r="6"
-                fill="#dddddd"
-            />
-
-
-            <text
-                x="100"
-                y="320"
-                text-anchor="middle"
-                fill="#ffffff"
-                opacity=".85"
-                font-size="20"
-                font-family="Arial, sans-serif"
-                font-weight="700"
-            >
-                INFINIX
-            </text>
-
-
-            <rect
-                x="74"
-                y="340"
-                width="52"
-                height="3"
-                rx="2"
-                fill="#3cdc3c"
-            />
-
-        </g>
-
-
-        <path
-            d="M35 350 H220"
-            stroke="#3cdc3c"
-            stroke-width="2"
-            opacity=".45"
-        />
-
-
-        <path
-            d="M580 70 H765"
-            stroke="#3cdc3c"
-            stroke-width="2"
-            opacity=".25"
-        />
-
-    </svg>
-
-
-    <div class="photo-dark-overlay"></div>
-
-
-    <div class="photo-content">
-
-        <div>
-
-            <div class="photo-title">
-                INFINIX
-            </div>
-
-            <div class="photo-subtitle">
-                Smart device technology
-            </div>
-
-        </div>
-
-
-        <span class="photo-status">
-            ACTIVE
-        </span>
-
-    </div>
-
-</section>
-
-
-<!-- =================================================
-     METRICS
-================================================== -->
-
-<section class="dashboard-metrics-row">
-
-    <div class="metric-panel">
-
-        <span class="metric-label">
-            My Device
-        </span>
-
-        <span class="metric-counter-value">
-            {{ user_plans|length if user_plans else 0 }}
-        </span>
-
-    </div>
-
-
-    <div class="metric-panel">
-
-        <span class="metric-label">
-            My Income
-        </span>
-
-        <span class="metric-counter-value">
-            GHS 0
-        </span>
-
-    </div>
-
-</section>
-
-
-<!-- =================================================
-     DEVICE SECTION
-================================================== -->
-
-<div class="section-header">
-
-    <h2 class="section-title">
-        My Device
-    </h2>
-
-
-    {% if user_plans %}
-
-        <span class="section-count">
-
-            {{ user_plans|length }}
-
-            device{% if user_plans|length != 1 %}s{% endif %}
-
-        </span>
-
-    {% endif %}
+    <div class="camera-box"></div>
 
 </div>
 
 
-<!-- =================================================
-     DEVICE LIST
-================================================== -->
+<div class="banner-content">
+
+    <div class="banner-brand">
+        JOMA
+    </div>
+
+    <div class="banner-subtitle">
+        Smart device technology
+    </div>
+
+</div>
+
+
+<span class="banner-status">
+    ACTIVE
+</span>
+
+</section><!-- =====================================================
+     METRICS
+===================================================== --><section class="metrics-row"><div class="metric-card">
+
+    <span class="metric-label">
+        My Device
+    </span>
+
+    <span class="metric-value">
+
+        {{ user_plans|length if user_plans else 0 }}
+
+    </span>
+
+</div>
+
+
+<div class="metric-card">
+
+    <span class="metric-label">
+        My Income
+    </span>
+
+    <span class="metric-value">
+        GHS 0
+    </span>
+
+</div>
+
+</section><!-- =====================================================
+     DEVICE SECTION
+===================================================== --><div class="section-header"><h2 class="section-title">
+    My Device
+</h2>
+
 
 {% if user_plans %}
 
-    {% for user_plan in user_plans %}
+    <span class="section-count">
 
-        <section class="portfolio-ledger-card">
+        {{ user_plans|length }}
 
+        device{% if user_plans|length != 1 %}s{% endif %}
 
-            <div class="ledger-top-flex-row">
+    </span>
 
-                <span class="vip-tier-indicator">
+{% endif %}
 
-                    {{ user_plan.plan_name }}
+</div><!-- =====================================================
+     DEVICE LIST
+===================================================== -->{% if user_plans %}
 
-                </span>
+{% for user_plan in user_plans %}
 
 
-                <span class="asset-valuation-tag">
+    <section class="device-card">
 
-                    GHS
-                    {{
-                        "%.2f"|format(
-                            user_plan.investment_amount|float
-                        )
-                    }}
 
-                </span>
+        <!-- TOP -->
 
-            </div>
+        <div class="device-top">
 
+            <span class="plan-name">
 
-            <div class="ledger-inner-body">
+                {{ user_plan.plan_name }}
 
+            </span>
 
-                <div class="hardware-thumbnail-wrapper">
 
-                    <div class="infinix-device"></div>
+            <span class="investment-value">
 
-                </div>
+                GHS
+                {{
+                    "%.2f"|format(
+                        user_plan.investment_amount|float
+                    )
+                }}
 
-
-                <div class="ledger-specs-column">
-
-
-                    <div class="product-name">
-                        Infinix Device
-                    </div>
-
-
-                    <p class="spec-line-item">
-
-                        Daily:
-
-                        <span class="spec-highlight-value">
-
-                            GHS
-                            {{
-                                "%.2f"|format(
-                                    user_plan.daily_income|float
-                                )
-                            }}
-
-                        </span>
-
-                    </p>
-
-
-                    <p class="spec-line-item">
-
-                        Total:
-
-                        <span class="spec-highlight-value">
-
-                            GHS
-                            {{
-                                "%.2f"|format(
-                                    user_plan.daily_income|float
-                                    *
-                                    user_plan.duration|int
-                                )
-                            }}
-
-                        </span>
-
-                    </p>
-
-
-                    <p class="spec-line-item">
-
-                        Valid:
-
-                        <span class="spec-highlight-value">
-
-                            {{ user_plan.duration }}d
-
-                        </span>
-
-                    </p>
-
-
-                    <p class="system-log-timestamp">
-
-                        Device #{{ loop.index }}
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- COUNTDOWN -->
-
-            <div class="income-status-row">
-
-                <span class="countdown-label">
-                    Next income
-                </span>
-
-
-                <span
-                    id="countdown-{{ user_plan.id }}"
-                    class="countdown {% if user_plan.can_claim %}ready{% endif %}"
-                >
-
-                    {% if user_plan.can_claim %}
-
-                        00:00:00
-
-                    {% else %}
-
-                        --:--:--
-
-                    {% endif %}
-
-                </span>
-
-            </div>
-
-
-            <!-- CLAIM -->
-
-            <form
-                method="POST"
-                action="{{ url_for('my_plan') }}"
-                class="claim-form"
-            >
-
-                <input
-                    type="hidden"
-                    name="user_plan_id"
-                    value="{{ user_plan.id }}"
-                >
-
-
-                <button
-                    type="submit"
-                    id="claimButton-{{ user_plan.id }}"
-                    class="claim-button {% if not user_plan.can_claim %}disabled{% endif %}"
-                    {% if not user_plan.can_claim %}disabled{% endif %}
-                >
-
-                    {% if user_plan.can_claim %}
-
-                        <i class="fa-solid fa-coins"></i>
-
-                        Claim Income
-
-                    {% else %}
-
-                        <i class="fa-solid fa-clock"></i>
-
-                        Income Not Ready
-
-                    {% endif %}
-
-                </button>
-
-            </form>
-
-
-        </section>
-
-
-        <!-- COUNTDOWN SCRIPT -->
-
-        <script>
-
-        (function () {
-
-            const countdownEl =
-                document.getElementById(
-                    "countdown-{{ user_plan.id }}"
-                );
-
-            const claimButton =
-                document.getElementById(
-                    "claimButton-{{ user_plan.id }}"
-                );
-
-            const canClaim =
-                {{ 'true' if user_plan.can_claim else 'false' }};
-
-
-            {% if user_plan.next_income_at %}
-
-            const nextIncome =
-                new Date(
-                    "{{ user_plan.next_income_at.isoformat() }}"
-                ).getTime();
-
-            {% else %}
-
-            const nextIncome = null;
-
-            {% endif %}
-
-
-            function pad(value) {
-
-                return String(value)
-                    .padStart(2, "0");
-
-            }
-
-
-            function formatTime(milliseconds) {
-
-                if (milliseconds <= 0) {
-                    return "00:00:00";
-                }
-
-                const totalSeconds =
-                    Math.floor(
-                        milliseconds / 1000
-                    );
-
-                const hours =
-                    Math.floor(
-                        totalSeconds / 3600
-                    );
-
-                const minutes =
-                    Math.floor(
-                        (totalSeconds % 3600) / 60
-                    );
-
-                const seconds =
-                    totalSeconds % 60;
-
-                return (
-                    pad(hours) +
-                    ":" +
-                    pad(minutes) +
-                    ":" +
-                    pad(seconds)
-                );
-
-            }
-
-
-            function setReady() {
-
-                if (!countdownEl) {
-                    return;
-                }
-
-                countdownEl.textContent =
-                    "00:00:00";
-
-                countdownEl.classList.add(
-                    "ready"
-                );
-
-
-                if (claimButton) {
-
-                    claimButton.disabled =
-                        false;
-
-                    claimButton.classList.remove(
-                        "disabled"
-                    );
-
-                    claimButton.innerHTML =
-                        '<i class="fa-solid fa-coins"></i> Claim Income';
-
-                }
-
-            }
-
-
-            function setWaiting(milliseconds) {
-
-                if (!countdownEl) {
-                    return;
-                }
-
-                countdownEl.textContent =
-                    formatTime(
-                        milliseconds
-                    );
-
-                countdownEl.classList.remove(
-                    "ready"
-                );
-
-
-                if (claimButton) {
-
-                    claimButton.disabled =
-                        true;
-
-                    claimButton.classList.add(
-                        "disabled"
-                    );
-
-                    claimButton.innerHTML =
-                        '<i class="fa-solid fa-clock"></i> Income Not Ready';
-
-                }
-
-            }
-
-
-            function updateCountdown() {
-
-                if (canClaim) {
-
-                    setReady();
-
-                    return;
-
-                }
-
-
-                if (
-                    nextIncome === null ||
-                    isNaN(nextIncome)
-                ) {
-
-                    if (countdownEl) {
-
-                        countdownEl.textContent =
-                            "--:--:--";
-
-                    }
-
-                    return;
-
-                }
-
-
-                const remaining =
-                    nextIncome - Date.now();
-
-
-                if (remaining <= 0) {
-
-                    setReady();
-
-                } else {
-
-                    setWaiting(
-                        remaining
-                    );
-
-                }
-
-            }
-
-
-            updateCountdown();
-
-
-            setInterval(
-                updateCountdown,
-                1000
-            );
-
-        })();
-
-        </script>
-
-
-    {% endfor %}
-
-
-{% else %}
-
-
-    <section class="empty-card">
-
-        <div class="empty-icon">
-
-            <i class="fa-solid fa-mobile-screen"></i>
+            </span>
 
         </div>
 
 
-        <h2 class="empty-title">
-            No Device
-        </h2>
+        <!-- DEVICE BODY -->
+
+        <div class="device-body">
 
 
-        <p class="empty-text">
-            You currently have no registered device.
-        </p>
+            <!-- PHONE -->
+
+            <div class="device-thumbnail">
+
+                <div class="phone"></div>
+
+            </div>
+
+
+            <!-- DETAILS -->
+
+            <div class="device-details">
+
+
+                <div class="product-name">
+
+                    JOMA Device
+
+                </div>
+
+
+                <p class="spec">
+
+                    Daily:
+
+                    <span class="spec-value">
+
+                        GHS
+                        {{
+                            "%.2f"|format(
+                                user_plan.daily_income|float
+                            )
+                        }}
+
+                    </span>
+
+                </p>
+
+
+                <p class="spec">
+
+                    Total:
+
+                    <span class="spec-value">
+
+                        GHS
+                        {{
+                            "%.2f"|format(
+                                user_plan.daily_income|float
+                                *
+                                user_plan.duration|int
+                            )
+                        }}
+
+                    </span>
+
+                </p>
+
+
+                <p class="spec">
+
+                    Valid:
+
+                    <span class="spec-value">
+
+                        {{ user_plan.duration }}d
+
+                    </span>
+
+                </p>
+
+
+                <p class="device-number">
+
+                    Device #{{ loop.index }}
+
+                </p>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             COUNTDOWN
+        ================================================= -->
+
+        <div class="income-status">
+
+
+            <span class="countdown-label">
+
+                Next income
+
+            </span>
+
+
+            <span
+                id="countdown-{{ user_plan.id }}"
+                class="countdown {% if user_plan.can_claim %}ready{% endif %}"
+            >
+
+                {% if user_plan.can_claim %}
+
+                    00:00:00
+
+                {% else %}
+
+                    --:--:--
+
+                {% endif %}
+
+            </span>
+
+
+        </div>
+
+
+        <!-- =================================================
+             CLAIM
+        ================================================= -->
+
+        <form
+            method="POST"
+            action="{{ url_for('my_plan') }}"
+            class="claim-form"
+        >
+
+            <input
+                type="hidden"
+                name="user_plan_id"
+                value="{{ user_plan.id }}"
+            >
+
+
+            <button
+                type="submit"
+                id="claimButton-{{ user_plan.id }}"
+                class="claim-button {% if not user_plan.can_claim %}disabled{% endif %}"
+                {% if not user_plan.can_claim %}disabled{% endif %}
+            >
+
+
+                {% if user_plan.can_claim %}
+
+                    <i class="fa-solid fa-coins"></i>
+
+                    Claim Income
+
+                {% else %}
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    Income Not Ready
+
+                {% endif %}
+
+
+            </button>
+
+        </form>
+
 
     </section>
 
 
-{% endif %}
+    <!-- =================================================
+         COUNTDOWN SCRIPT
+    ================================================= -->
 
+    <script>
+
+    (function () {
+
+
+        const countdownEl =
+            document.getElementById(
+                "countdown-{{ user_plan.id }}"
+            );
+
+
+        const claimButton =
+            document.getElementById(
+                "claimButton-{{ user_plan.id }}"
+            );
+
+
+        const canClaim =
+            {{ 'true' if user_plan.can_claim else 'false' }};
+
+
+        {% if user_plan.next_income_at %}
+
+        const nextIncome =
+            new Date(
+                "{{ user_plan.next_income_at.isoformat() }}"
+            ).getTime();
+
+        {% else %}
+
+        const nextIncome = null;
+
+        {% endif %}
+
+
+        function pad(value) {
+
+            return String(value)
+                .padStart(2, "0");
+
+        }
+
+
+        function formatTime(milliseconds) {
+
+            if (milliseconds <= 0) {
+
+                return "00:00:00";
+
+            }
+
+
+            const totalSeconds =
+                Math.floor(
+                    milliseconds / 1000
+                );
+
+
+            const hours =
+                Math.floor(
+                    totalSeconds / 3600
+                );
+
+
+            const minutes =
+                Math.floor(
+                    (totalSeconds % 3600) / 60
+                );
+
+
+            const seconds =
+                totalSeconds % 60;
+
+
+            return (
+                pad(hours) +
+                ":" +
+                pad(minutes) +
+                ":" +
+                pad(seconds)
+            );
+
+        }
+
+
+        function setReady() {
+
+
+            if (!countdownEl) {
+
+                return;
+
+            }
+
+
+            countdownEl.textContent =
+                "00:00:00";
+
+
+            countdownEl.classList.add(
+                "ready"
+            );
+
+
+            if (claimButton) {
+
+
+                claimButton.disabled =
+                    false;
+
+
+                claimButton.classList.remove(
+                    "disabled"
+                );
+
+
+                claimButton.innerHTML =
+                    '<i class="fa-solid fa-coins"></i> Claim Income';
+
+            }
+
+        }
+
+
+        function setWaiting(milliseconds) {
+
+
+            if (!countdownEl) {
+
+                return;
+
+            }
+
+
+            countdownEl.textContent =
+                formatTime(
+                    milliseconds
+                );
+
+
+            countdownEl.classList.remove(
+                "ready"
+            );
+
+
+            if (claimButton) {
+
+
+                claimButton.disabled =
+                    true;
+
+
+                claimButton.classList.add(
+                    "disabled"
+                );
+
+
+                claimButton.innerHTML =
+                    '<i class="fa-solid fa-clock"></i> Income Not Ready';
+
+            }
+
+        }
+
+
+        function updateCountdown() {
+
+
+            if (canClaim) {
+
+                setReady();
+
+                return;
+
+            }
+
+
+            if (
+                nextIncome === null ||
+                isNaN(nextIncome)
+            ) {
+
+
+                if (countdownEl) {
+
+                    countdownEl.textContent =
+                        "--:--:--";
+
+                }
+
+
+                return;
+
+            }
+
+
+            const remaining =
+                nextIncome - Date.now();
+
+
+            if (remaining <= 0) {
+
+                setReady();
+
+            } else {
+
+                setWaiting(
+                    remaining
+                );
+
+            }
+
+        }
+
+
+        updateCountdown();
+
+
+        setInterval(
+            updateCountdown,
+            1000
+        );
+
+
+    })();
+
+    </script>
+
+
+{% endfor %}
+
+{% else %}
 
 <!-- =================================================
-     INFORMATION
-================================================== -->
+     EMPTY STATE
+================================================= -->
 
-<section class="info-card">
+<section class="empty-card">
 
-    <div class="info-title">
 
-        <i class="fa-solid fa-circle-info"></i>
+    <div class="empty-icon">
 
-        <span>
-            Device Information
-        </span>
+        <i class="fa-solid fa-mobile-screen"></i>
 
     </div>
 
 
-    <p>
-        Your registered Infinix device
-        and its associated plan details
-        are displayed above.
+    <h2 class="empty-title">
+
+        No Device
+
+    </h2>
+
+
+    <p class="empty-text">
+
+        You currently have no registered JOMA device.
+
     </p>
+
 
 </section>
 
-
-</main>
-
+{% endif %}
 
 <!-- =====================================================
-     LOADING
-===================================================== -->
+     INFORMATION
+===================================================== --><section class="info-card"><div class="info-title">
 
-<div
+    <i class="fa-solid fa-circle-info"></i>
+
+    <span>
+        Device Information
+    </span>
+
+</div>
+
+
+<p>
+
+    Your registered JOMA device
+    and its associated plan details
+    are displayed above.
+
+</p>
+
+</section></main><!-- =====================================================
+     LOADING OVERLAY
+===================================================== --><div
     id="loadingOverlay"
     class="loading-overlay"
->
+><div class="loading-box">
 
-    <div class="loading-box">
+    <div class="loading-spinner"></div>
 
-        <div class="loading-spinner"></div>
-
-        <div class="loading-text">
-            Loading...
-        </div>
-
+    <div class="loading-text">
+        Loading...
     </div>
 
 </div>
 
+</div><!-- =====================================================
+     BOTTOM NAVIGATION
+===================================================== --><nav class="bottom-nav"><a
+    href="{{ url_for('dashboard') }}"
+    class="nav-item"
+>
 
-</div>
+    <i class="fa-solid fa-house nav-icon"></i>
+
+    <span>
+        Home
+    </span>
+
+</a>
 
 
-<!-- =====================================================
+<a
+    href="{{ url_for('my_plan') }}"
+    class="nav-item active"
+>
+
+    <i class="fa-solid fa-chart-line nav-icon"></i>
+
+    <span>
+        Income
+    </span>
+
+</a>
+
+
+<a
+    href="#"
+    class="nav-item"
+>
+
+    <i class="fa-solid fa-users nav-icon"></i>
+
+    <span>
+        Team
+    </span>
+
+</a>
+
+
+<a
+    href="#"
+    class="nav-item"
+>
+
+    <i class="fa-solid fa-share-nodes nav-icon"></i>
+
+    <span>
+        Share
+    </span>
+
+</a>
+
+
+<a
+    href="#"
+    class="nav-item"
+>
+
+    <i class="fa-solid fa-user nav-icon"></i>
+
+    <span>
+        My
+    </span>
+
+</a>
+
+</nav></div><!-- =====================================================
      GLOBAL LOADING SCRIPT
-===================================================== -->
-
-<script>
+===================================================== --><script>
 
 document.addEventListener(
     "click",
     function (event) {
 
+
         const link =
             event.target.closest("a");
+
 
         const button =
             event.target.closest("button");
 
 
         if (!link && !button) {
+
             return;
+
         }
 
 
@@ -2010,7 +1814,9 @@ document.addEventListener(
             button &&
             button.disabled
         ) {
+
             return;
+
         }
 
 
@@ -2036,6 +1842,7 @@ document.addEventListener(
     "submit",
     function () {
 
+
         const overlay =
             document.getElementById(
                 "loadingOverlay"
@@ -2053,7 +1860,5 @@ document.addEventListener(
     }
 );
 
-</script>
-
-</body>
+</script></body>
 </html>

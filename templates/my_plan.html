@@ -1,1878 +1,1490 @@
-<!DOCTYPE html><html lang="en">
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My Device - JOMA</title><link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-><style>
+<!DOCTYPE html>
+<html lang="en">
 
-:root {
-    --primary-blue: #0b1a99;
-    --bg-light: #f3f5fa;
-    --text-main: #1e266d;
-    --text-muted: #5e669e;
-    --border-color: #e0e4f5;
-    --success: #2ecc71;
-    --danger: #e53935;
-}
+<head>
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
+    <title>Income Dashboard</title>
 
-    -webkit-tap-highlight-color: transparent;
-}
+    <style>
 
-html,
-body {
-    width: 100%;
-    min-height: 100%;
-}
+        :root {
+            --primary-blue: #0b1a99;
+            --primary-blue-dark: #071477;
 
-body {
-    background-color: var(--bg-light);
+            --bg-light: #f3f5fa;
+            --card-white: #ffffff;
 
-    display: flex;
+            --text-main: #1e266d;
+            --text-muted: #5e669e;
 
-    justify-content: center;
+            --border-color: #e0e4f5;
+            --soft-blue: #f5f7ff;
 
-    align-items: flex-start;
+            --success: #2ecc71;
+            --danger: #e53935;
 
-    color: var(--text-main);
-}
+            --shadow:
+                0 2px 8px rgba(0, 0, 0, 0.04);
 
+            --font:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+        }
 
-/* =====================================================
-   MOBILE APP CONTAINER
-===================================================== */
 
-.app-container {
-    width: 100%;
-    max-width: 420px;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
 
-    min-height: 100vh;
+            font-family: var(--font);
 
-    background-color: var(--bg-light);
+            -webkit-tap-highlight-color: transparent;
+        }
 
-    display: flex;
 
-    flex-direction: column;
+        body {
+            min-height: 100vh;
 
-    position: relative;
+            background-color: var(--bg-light);
 
-    padding-bottom: 70px;
-}
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
 
+            color: var(--text-main);
+        }
 
-/* =====================================================
-   HEADER
-===================================================== */
 
-.app-header {
-    position: relative;
+        /* =====================================================
+           APP CONTAINER
+        ===================================================== */
 
-    background-color: var(--primary-blue);
+        .app-container {
 
-    color: #ffffff;
+            width: 100%;
+            max-width: 420px;
 
-    text-align: center;
+            min-height: 100vh;
 
-    padding: 16px 45px;
+            background-color: var(--bg-light);
 
-    font-size: 1.15rem;
+            display: flex;
+            flex-direction: column;
 
-    font-weight: 600;
+            position: relative;
 
-    letter-spacing: .5px;
-}
+            padding-bottom: 72px;
+        }
 
-.header-title {
-    display: flex;
 
-    align-items: center;
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
-    justify-content: center;
+        .app-header {
 
-    gap: 8px;
-}
+            width: 100%;
 
-.header-logo {
-    width: 28px;
-    height: 28px;
+            background-color: var(--primary-blue);
 
-    display: flex;
+            color: #ffffff;
 
-    align-items: center;
+            text-align: center;
 
-    justify-content: center;
+            padding: 16px;
 
-    background: #ffffff;
+            font-size: 1.15rem;
 
-    color: var(--primary-blue);
+            font-weight: 600;
 
-    border-radius: 7px;
+            letter-spacing: 0.5px;
+        }
 
-    font-size: 13px;
 
-    font-weight: 900;
-}
+        /* =====================================================
+           CONTENT
+        ===================================================== */
 
-.header-back {
-    position: absolute;
+        .content {
 
-    left: 14px;
+            padding: 14px;
+        }
 
-    top: 50%;
 
-    transform: translateY(-50%);
+        /* =====================================================
+           TABS
+        ===================================================== */
 
-    width: 34px;
+        .tab-container {
 
-    height: 34px;
+            background-color: #ffffff;
 
-    display: flex;
+            display: flex;
 
-    align-items: center;
+            border-radius: 8px;
 
-    justify-content: center;
+            padding: 4px;
 
-    color: #ffffff;
+            box-shadow:
+                0 2px 6px rgba(0, 0, 0, 0.04);
 
-    text-decoration: none;
+            margin-bottom: 16px;
 
-    border-radius: 50%;
-}
+            border: 1px solid var(--border-color);
+        }
 
-.header-back:active {
-    background: rgba(255,255,255,.15);
-}
 
+        .tab {
 
-/* =====================================================
-   CONTENT
-===================================================== */
+            flex: 1;
 
-.content {
-    padding: 14px;
-}
+            text-align: center;
 
+            padding: 12px;
 
-/* =====================================================
-   PAGE TITLE
-===================================================== */
+            font-size: 0.95rem;
 
-.page-title {
-    margin-bottom: 14px;
-}
+            font-weight: 500;
 
-.page-title h2 {
-    color: var(--text-main);
+            color: var(--text-main);
 
-    font-size: 18px;
+            cursor: pointer;
 
-    font-weight: 800;
-}
+            border-radius: 6px;
 
-.page-title p {
-    margin-top: 3px;
+            transition: all 0.2s ease;
 
-    color: var(--text-muted);
+            text-decoration: none;
+        }
 
-    font-size: 9px;
-}
 
+        .tab.active {
 
-/* =====================================================
-   JOMA PRODUCT GRAPHIC
-===================================================== */
+            background-color: var(--primary-blue);
 
-.product-graphic-large {
-    position: relative;
+            color: #ffffff;
+        }
 
-    width: 100%;
 
-    height: 185px;
+        /* =====================================================
+           INVESTMENT CARD
+        ===================================================== */
 
-    margin-bottom: 14px;
+        .investment-card {
 
-    overflow: hidden;
+            background-color: var(--card-white);
 
-    background:
-        linear-gradient(
-            180deg,
-            #ffffff 0%,
-            #d4daf2 100%
-        );
+            border-radius: 10px;
 
-    border: 1px solid var(--border-color);
+            padding: 16px;
 
-    border-radius: 10px;
+            box-shadow: var(--shadow);
 
-    box-shadow:
-        0 2px 8px rgba(0, 0, 0, .04);
+            display: flex;
 
-    display: flex;
+            flex-direction: column;
 
-    align-items: center;
+            gap: 12px;
 
-    justify-content: center;
-}
+            margin-bottom: 12px;
+        }
 
-.graphic-glow {
-    position: absolute;
 
-    width: 220px;
-    height: 220px;
+        /* =====================================================
+           CARD SPLIT
+        ===================================================== */
 
-    right: -70px;
-    top: -80px;
+        .card-main-split {
 
-    border-radius: 50%;
+            display: flex;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(11,26,153,.15) 0%,
-            rgba(11,26,153,0) 70%
-        );
-}
+            gap: 16px;
+        }
 
-.graphic-phone {
-    position: relative;
 
-    width: 92px;
-    height: 145px;
+        .info-rows {
 
-    background:
-        linear-gradient(
-            145deg,
-            #505a86,
-            #141b3b
-        );
+            flex: 1.2;
 
-    border: 2px solid #737ca3;
+            display: flex;
 
-    border-radius: 17px;
+            flex-direction: column;
 
-    transform: rotate(7deg);
+            justify-content: space-between;
+        }
 
-    box-shadow:
-        10px 12px 25px rgba(11,26,153,.18);
-}
 
-.graphic-screen {
-    position: absolute;
+        .info-row {
 
-    left: 6px;
-    right: 6px;
+            display: flex;
 
-    top: 7px;
-    bottom: 7px;
+            justify-content: space-between;
 
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #eef1ff
-        );
+            align-items: center;
 
-    border-radius: 12px;
-}
+            padding: 10px 8px;
 
-.graphic-camera {
-    position: absolute;
+            border-bottom: 1px solid #f1f3fa;
 
-    left: 12px;
-    top: 15px;
+            gap: 8px;
+        }
 
-    width: 29px;
-    height: 35px;
 
-    background: #d6dbef;
+        .info-row:last-child {
 
-    border: 1px solid #9ca6c7;
+            border-bottom: none;
+        }
 
-    border-radius: 7px;
 
-    z-index: 2;
-}
+        .label {
 
-.graphic-camera::before,
-.graphic-camera::after {
-    content: "";
+            color: var(--text-muted);
 
-    position: absolute;
+            font-size: 0.88rem;
+        }
 
-    width: 8px;
-    height: 8px;
 
-    border-radius: 50%;
+        .value {
 
-    background: #252c4b;
+            color: var(--text-main);
 
-    border: 1px solid #707997;
-}
+            font-weight: 700;
 
-.graphic-camera::before {
-    left: 5px;
-    top: 5px;
-}
+            font-size: 0.92rem;
 
-.graphic-camera::after {
-    right: 5px;
-    bottom: 5px;
-}
+            text-align: right;
+        }
 
-.graphic-brand {
-    position: absolute;
 
-    left: 0;
-    right: 0;
+        /* =====================================================
+           PRODUCT GRAPHIC
+        ===================================================== */
 
-    bottom: 25px;
+        .product-graphic {
 
-    text-align: center;
+            flex: 1;
 
-    color: var(--primary-blue);
+            position: relative;
 
-    font-size: 10px;
+            border-radius: 8px;
 
-    font-weight: 900;
+            overflow: hidden;
 
-    letter-spacing: 1px;
+            aspect-ratio: 1 / 1;
 
-    z-index: 2;
-}
+            background:
+                linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #d4daf2 100%
+                );
 
-.graphic-content {
-    position: absolute;
+            display: flex;
 
-    left: 15px;
-    bottom: 14px;
+            flex-direction: column;
 
-    z-index: 5;
-}
+            justify-content: space-between;
 
-.graphic-title {
-    color: var(--primary-blue);
+            align-items: center;
 
-    font-size: 18px;
+            border: 1px solid var(--border-color);
+        }
 
-    font-weight: 900;
 
-    letter-spacing: 1px;
-}
+        .status-ribbon-stop {
 
-.graphic-subtitle {
-    margin-top: 3px;
+            width: 100%;
 
-    color: var(--text-muted);
+            background-color: var(--danger);
 
-    font-size: 8px;
-}
+            color: #ffffff;
 
-.graphic-status {
-    position: absolute;
+            text-align: center;
 
-    right: 13px;
-    bottom: 13px;
+            font-size: 0.75rem;
 
-    padding: 6px 9px;
+            padding: 2px 0;
 
-    background: var(--success);
+            font-weight: 500;
+        }
 
-    color: #ffffff;
 
-    border-radius: 20px;
+        .status-ribbon-free {
 
-    font-size: 7px;
+            width: 100%;
 
-    font-weight: 800;
+            background-color: var(--success);
 
-    z-index: 5;
-}
+            color: #ffffff;
 
+            text-align: center;
 
-/* =====================================================
-   METRICS
-===================================================== */
+            font-size: 0.75rem;
 
-.dashboard-metrics-row {
-    display: grid;
+            padding: 2px 0;
 
-    grid-template-columns: 1fr 1fr;
+            font-weight: 500;
+        }
 
-    gap: 8px;
 
-    margin-bottom: 15px;
-}
+        .brand-logo-placeholder {
 
-.metric-panel {
-    min-height: 62px;
+            font-size: 1.15rem;
 
-    padding: 9px 10px;
+            font-weight: 900;
 
-    background: #ffffff;
+            color: #002f6c;
 
-    border: 1px solid var(--border-color);
+            letter-spacing: 1px;
 
-    border-radius: 8px;
+            margin: 4px 0;
 
-    box-shadow:
-        0 2px 6px rgba(0,0,0,.04);
+            text-align: center;
 
-    display: flex;
+            word-break: break-word;
+        }
 
-    flex-direction: column;
 
-    justify-content: space-between;
-}
+        .vip-badge {
 
-.metric-label {
-    color: var(--text-muted);
+            width: 100%;
 
-    font-size: 10px;
+            background:
+                linear-gradient(
+                    180deg,
+                    #2b2b2b 0%,
+                    #111111 100%
+                );
 
-    font-weight: 500;
-}
+            color: #ffffff;
 
-.metric-counter-value {
-    color: var(--text-main);
+            text-align: center;
 
-    font-size: 16px;
+            font-size: 0.9rem;
 
-    font-weight: 800;
-}
+            font-weight: 600;
 
+            padding: 6px 0;
+        }
 
-/* =====================================================
-   SECTION HEADER
-===================================================== */
 
-.section-header {
-    display: flex;
+        /* =====================================================
+           COUNTDOWN
+        ===================================================== */
 
-    align-items: center;
+        .countdown-bar {
 
-    justify-content: space-between;
+            background-color: var(--soft-blue);
 
-    margin: 3px 2px 7px;
-}
+            border-radius: 6px;
 
-.section-title {
-    color: var(--text-main);
+            display: flex;
 
-    font-size: 13px;
+            justify-content: space-between;
 
-    font-weight: 700;
-}
+            align-items: center;
 
-.section-count {
-    color: var(--text-muted);
+            padding: 10px 14px;
 
-    font-size: 9px;
-}
+            margin-top: 4px;
 
+            gap: 10px;
+        }
 
-/* =====================================================
-   DEVICE CARD
-===================================================== */
 
-.portfolio-ledger-card {
-    width: 100%;
+        .countdown-label {
 
-    margin-bottom: 8px;
+            color: var(--text-muted);
 
-    padding: 10px;
+            font-size: 0.85rem;
+        }
 
-    background: #ffffff;
 
-    border: 1px solid var(--border-color);
+        .countdown-timer {
 
-    border-radius: 8px;
+            color: var(--text-main);
 
-    box-shadow:
-        0 2px 8px rgba(0,0,0,.03);
+            font-weight: 700;
 
-    transition: .2s ease;
-}
+            font-size: 0.9rem;
 
-.portfolio-ledger-card:active {
-    transform: scale(.99);
-}
+            letter-spacing: 0.5px;
 
+            font-variant-numeric: tabular-nums;
+        }
 
-/* =====================================================
-   DEVICE CARD TOP
-===================================================== */
 
-.ledger-top-flex-row {
-    display: flex;
+        .countdown-timer.ready {
 
-    align-items: center;
+            color: var(--success);
+        }
 
-    justify-content: space-between;
 
-    margin-bottom: 7px;
-}
+        /* =====================================================
+           CLAIM BUTTON
+        ===================================================== */
 
-.vip-tier-indicator {
-    color: var(--primary-blue);
+        .claim-form {
 
-    font-size: 10px;
+            width: 100%;
 
-    font-weight: 800;
-}
+            margin-top: 2px;
+        }
 
-.asset-valuation-tag {
-    color: var(--text-main);
 
-    font-size: 10px;
+        .claim-button {
 
-    font-weight: 800;
-}
+            width: 100%;
 
+            border: none;
 
-/* =====================================================
-   DEVICE BODY
-===================================================== */
+            background-color: var(--primary-blue);
 
-.ledger-inner-body {
-    display: flex;
+            color: #ffffff;
 
-    align-items: center;
+            padding: 10px;
 
-    gap: 9px;
-}
+            border-radius: 7px;
 
+            font-size: 0.85rem;
 
-/* =====================================================
-   PHONE THUMBNAIL
-===================================================== */
+            font-weight: 600;
 
-.hardware-thumbnail-wrapper {
-    width: 42px;
-    height: 50px;
+            cursor: pointer;
 
-    flex-shrink: 0;
+            transition: 0.2s ease;
+        }
 
-    display: flex;
 
-    align-items: center;
+        .claim-button:active {
 
-    justify-content: center;
+            transform: scale(0.98);
+        }
 
-    background: #f0f2ff;
 
-    border: 1px solid var(--border-color);
+        .claim-button.disabled {
 
-    border-radius: 6px;
-}
+            background-color: #dfe3f3;
 
-.joma-device {
-    position: relative;
+            color: #7d84a6;
 
-    width: 21px;
-    height: 36px;
+            cursor: not-allowed;
+        }
 
-    background:
-        linear-gradient(
-            145deg,
-            #525c88,
-            #18203f
-        );
 
-    border: 1px solid #71799e;
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
 
-    border-radius: 4px;
+        .empty-card {
 
-    box-shadow:
-        0 2px 5px rgba(11,26,153,.15);
-}
+            background-color: #ffffff;
 
-.joma-device::before {
-    content: "";
+            border: 1px solid var(--border-color);
 
-    position: absolute;
+            border-radius: 10px;
 
-    top: 3px;
+            padding: 35px 20px;
 
-    left: 50%;
+            text-align: center;
 
-    transform: translateX(-50%);
+            box-shadow: var(--shadow);
+        }
 
-    width: 7px;
-    height: 2px;
 
-    background: #ffffff;
+        .empty-icon {
 
-    border-radius: 4px;
-}
+            width: 48px;
+            height: 48px;
 
-.joma-device::after {
-    content: "J";
+            margin: 0 auto 10px;
 
-    position: absolute;
+            display: flex;
 
-    left: 0;
-    right: 0;
+            align-items: center;
+            justify-content: center;
 
-    bottom: 7px;
+            border-radius: 50%;
 
-    text-align: center;
+            background-color: var(--soft-blue);
 
-    color: #ffffff;
+            color: var(--text-muted);
 
-    font-size: 7px;
+            font-size: 20px;
+        }
 
-    font-weight: 900;
-}
 
+        .empty-title {
 
-/* =====================================================
-   DEVICE DETAILS
-===================================================== */
+            color: var(--text-main);
 
-.ledger-specs-column {
-    flex: 1;
+            font-size: 1rem;
 
-    min-width: 0;
+            font-weight: 700;
+        }
 
-    display: grid;
 
-    grid-template-columns: 1fr 1fr;
+        .empty-text {
 
-    column-gap: 7px;
+            margin-top: 5px;
 
-    row-gap: 2px;
-}
+            color: var(--text-muted);
 
-.product-name {
-    grid-column: 1 / -1;
+            font-size: 0.82rem;
+        }
 
-    color: var(--text-main);
 
-    font-size: 10px;
+        /* =====================================================
+           INFORMATION CARD
+        ===================================================== */
 
-    font-weight: 700;
+        .info-card {
 
-    margin-bottom: 1px;
-}
+            background-color: #ffffff;
 
-.spec-line-item {
-    color: var(--text-muted);
+            border: 1px solid var(--border-color);
 
-    font-size: 8px;
+            border-radius: 8px;
 
-    line-height: 1.3;
+            padding: 12px;
 
-    white-space: nowrap;
-}
+            margin-top: 12px;
 
-.spec-highlight-value {
-    color: var(--primary-blue);
+            box-shadow: var(--shadow);
+        }
 
-    margin-left: 2px;
 
-    font-weight: 700;
-}
+        .info-title {
 
-.system-log-timestamp {
-    grid-column: 1 / -1;
+            color: var(--text-main);
 
-    color: #9299bd;
+            font-size: 0.88rem;
 
-    font-size: 7px;
+            font-weight: 700;
 
-    margin-top: 1px;
-}
+            margin-bottom: 5px;
+        }
 
 
-/* =====================================================
-   COUNTDOWN
-===================================================== */
+        .info-text {
 
-.income-status-row {
-    display: flex;
+            color: var(--text-muted);
 
-    align-items: center;
+            font-size: 0.78rem;
 
-    justify-content: space-between;
+            line-height: 1.45;
+        }
 
-    margin-top: 7px;
 
-    padding-top: 6px;
+        /* =====================================================
+           BOTTOM NAVIGATION
+        ===================================================== */
 
-    border-top: 1px solid #f1f3fa;
-}
+        .bottom-nav {
 
-.countdown-label {
-    color: var(--text-muted);
+            position: fixed;
 
-    font-size: 7px;
+            bottom: 0;
 
-    text-transform: uppercase;
+            left: 50%;
 
-    letter-spacing: .4px;
-}
+            transform: translateX(-50%);
 
-.countdown {
-    color: var(--text-main);
+            width: 100%;
 
-    font-size: 9px;
+            max-width: 420px;
 
-    font-weight: 800;
+            background-color: #ffffff;
 
-    font-variant-numeric: tabular-nums;
-}
+            border-top: 1px solid var(--border-color);
 
-.countdown.ready {
-    color: var(--success);
-}
+            display: flex;
 
+            justify-content: space-around;
 
-/* =====================================================
-   CLAIM BUTTON
-===================================================== */
+            align-items: center;
 
-.claim-form {
-    margin-top: 5px;
-}
+            padding: 8px 0;
 
-.claim-button {
-    width: 100%;
+            z-index: 100;
+        }
 
-    padding: 7px;
 
-    display: flex;
+        .nav-item {
 
-    align-items: center;
+            display: flex;
 
-    justify-content: center;
+            flex-direction: column;
 
-    gap: 4px;
+            align-items: center;
 
-    color: #ffffff;
+            justify-content: center;
 
-    background: var(--primary-blue);
+            color: #8e94bb;
 
-    border: 1px solid var(--primary-blue);
+            font-size: 0.78rem;
 
-    border-radius: 5px;
+            text-decoration: none;
 
-    font-size: 8px;
+            gap: 4px;
 
-    font-weight: 800;
+            position: relative;
 
-    cursor: pointer;
+            flex: 1;
 
-    transition: .2s ease;
-}
+            min-height: 40px;
+        }
 
-.claim-button:active {
-    transform: scale(.98);
-}
 
-.claim-button.disabled {
-    color: #8d93b4;
+        .nav-item.active {
 
-    background: #eef0f8;
+            color: var(--primary-blue);
 
-    border-color: #e0e4f5;
+            font-weight: 600;
+        }
 
-    cursor: not-allowed;
-}
 
+        .nav-icon {
 
-/* =====================================================
-   EMPTY STATE
-===================================================== */
+            width: 22px;
 
-.empty-card {
-    padding: 25px 12px;
+            height: 22px;
 
-    text-align: center;
+            fill: currentColor;
+        }
 
-    background: #ffffff;
 
-    border: 1px solid var(--border-color);
+        .nav-item.active::after {
 
-    border-radius: 8px;
+            content: '';
 
-    box-shadow:
-        0 2px 8px rgba(0,0,0,.03);
-}
+            position: absolute;
 
-.empty-icon {
-    width: 40px;
-    height: 40px;
+            bottom: -8px;
 
-    margin: 0 auto 8px;
+            width: 40px;
 
-    display: flex;
+            height: 3px;
 
-    align-items: center;
+            background-color: var(--primary-blue);
 
-    justify-content: center;
+            border-radius:
+                2px 2px 0 0;
+        }
 
-    color: var(--primary-blue);
 
-    background: #eef1ff;
+        /* =====================================================
+           BADGE
+        ===================================================== */
 
-    border-radius: 50%;
+        .badge {
 
-    font-size: 15px;
-}
+            position: absolute;
 
-.empty-title {
-    color: var(--text-main);
+            top: -4px;
 
-    font-size: 12px;
+            right: 22%;
 
-    font-weight: 600;
-}
+            background-color: var(--danger);
 
-.empty-text {
-    margin-top: 3px;
+            color: #ffffff;
 
-    color: var(--text-muted);
+            font-size: 0.68rem;
 
-    font-size: 8px;
-}
+            font-weight: bold;
 
+            border-radius: 10px;
 
-/* =====================================================
-   INFORMATION CARD
-===================================================== */
+            min-width: 16px;
 
-.info-card {
-    margin-top: 9px;
+            height: 16px;
 
-    padding: 9px;
+            display: flex;
 
-    background: #ffffff;
+            align-items: center;
 
-    border: 1px solid var(--border-color);
+            justify-content: center;
 
-    border-radius: 7px;
-}
+            padding: 0 4px;
+        }
 
-.info-title {
-    display: flex;
 
-    align-items: center;
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
 
-    gap: 5px;
+        @media (max-width: 360px) {
 
-    margin-bottom: 4px;
+            .content {
 
-    color: var(--text-main);
+                padding: 10px;
+            }
 
-    font-size: 9px;
 
-    font-weight: 600;
-}
+            .investment-card {
 
-.info-title i {
-    color: var(--primary-blue);
-}
+                padding: 12px;
+            }
 
-.info-card p {
-    color: var(--text-muted);
 
-    font-size: 8px;
+            .card-main-split {
 
-    line-height: 1.4;
-}
+                gap: 10px;
+            }
 
 
-/* =====================================================
-   BOTTOM NAVIGATION
-===================================================== */
+            .info-row {
 
-.bottom-nav {
-    position: fixed;
+                padding: 8px 5px;
+            }
 
-    bottom: 0;
 
-    left: 50%;
+            .label {
 
-    transform: translateX(-50%);
+                font-size: 0.78rem;
+            }
 
-    width: 100%;
 
-    max-width: 420px;
+            .value {
 
-    height: 65px;
+                font-size: 0.8rem;
+            }
 
-    background: #ffffff;
 
-    border-top: 1px solid var(--border-color);
+            .brand-logo-placeholder {
 
-    display: flex;
+                font-size: 0.95rem;
+            }
 
-    justify-content: space-around;
 
-    align-items: center;
+            .vip-badge {
 
-    z-index: 100;
+                font-size: 0.78rem;
+            }
 
-    box-shadow:
-        0 -2px 8px rgba(0,0,0,.03);
-}
+        }
 
-.nav-item {
-    position: relative;
+    </style>
 
-    display: flex;
+</head>
 
-    flex-direction: column;
 
-    align-items: center;
+<body>
 
-    justify-content: center;
 
-    color: #8e94bb;
+<div class="app-container">
 
-    font-size: .78rem;
 
-    text-decoration: none;
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
 
-    gap: 4px;
+    <header class="app-header">
 
-    flex: 1;
+        Income
 
-    height: 100%;
-}
+    </header>
 
-.nav-item.active {
-    color: var(--primary-blue);
 
-    font-weight: 600;
-}
+    <!-- =====================================================
+         MAIN CONTENT
+    ===================================================== -->
 
-.nav-icon {
-    font-size: 16px;
-}
+    <main class="content">
 
-.nav-item.active::after {
-    content: "";
 
-    position: absolute;
+        <!-- =================================================
+             TABS
+        ================================================== -->
 
-    bottom: 0;
+        <div class="tab-container">
 
-    width: 40px;
+            <a
+                href="{{ url_for('my_plan') }}"
+                class="tab active"
+            >
+                Day income
+            </a>
 
-    height: 3px;
 
-    background: var(--primary-blue);
-
-    border-radius:
-        3px 3px 0 0;
-}
-
-
-/* =====================================================
-   LOADING
-===================================================== */
-
-.loading-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: rgba(11,26,153,.15);
-
-    backdrop-filter: blur(3px);
-
-    z-index: 9999;
-}
-
-.loading-overlay.active {
-    display: flex;
-}
-
-.loading-box {
-    width: 90px;
-
-    padding: 14px;
-
-    text-align: center;
-
-    background: #ffffff;
-
-    border: 1px solid var(--border-color);
-
-    border-radius: 9px;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.12);
-}
-
-.loading-spinner {
-    width: 23px;
-    height: 23px;
-
-    margin: 0 auto 7px;
-
-    border: 3px solid #e0e4f5;
-
-    border-top-color: var(--primary-blue);
-
-    border-radius: 50%;
-
-    animation: spin .8s linear infinite;
-}
-
-.loading-text {
-    color: var(--text-muted);
-
-    font-size: 8px;
-}
-
-@keyframes spin {
-
-    to {
-        transform: rotate(360deg);
-    }
-
-}
-
-
-/* =====================================================
-   SMALL SCREEN
-===================================================== */
-
-@media (max-width: 360px) {
-
-    .content {
-        padding: 10px;
-    }
-
-    .product-graphic-large {
-        height: 160px;
-    }
-
-    .graphic-phone {
-        transform:
-            rotate(7deg)
-            scale(.9);
-    }
-
-    .hardware-thumbnail-wrapper {
-        width: 36px;
-        height: 44px;
-    }
-
-    .joma-device {
-        width: 19px;
-        height: 33px;
-    }
-
-}
-
-</style></head><body><div class="app-container"><!-- =====================================================
-     HEADER
-===================================================== --><header class="app-header"><a
-    href="{{ url_for('dashboard') }}"
-    class="header-back"
->
-    <i class="fa-solid fa-chevron-left"></i>
-</a>
-
-
-<div class="header-title">
-
-    <div class="header-logo">
-        J
-    </div>
-
-    <span>
-        JOMA
-    </span>
-
-</div>
-
-</header><!-- =====================================================
-     CONTENT
-===================================================== --><main class="content"><!-- PAGE TITLE --><section class="page-title"><h2>
-    My Device
-</h2>
-
-<p>
-    Your registered JOMA devices
-</p>
-
-</section><!-- =====================================================
-     JOMA PRODUCT GRAPHIC
-===================================================== --><section class="product-graphic-large"><div class="graphic-glow"></div>
-
-
-<div class="graphic-phone">
-
-    <div class="graphic-screen"></div>
-
-    <div class="graphic-camera"></div>
-
-    <div class="graphic-brand">
-        JOMA
-    </div>
-
-</div>
-
-
-<div class="graphic-content">
-
-    <div class="graphic-title">
-        JOMA
-    </div>
-
-    <div class="graphic-subtitle">
-        Smart device technology
-    </div>
-
-</div>
-
-
-<span class="graphic-status">
-    ACTIVE
-</span>
-
-</section><!-- =====================================================
-     METRICS
-===================================================== --><section class="dashboard-metrics-row"><div class="metric-panel">
-
-    <span class="metric-label">
-        My Device
-    </span>
-
-    <span class="metric-counter-value">
-
-        {{ user_plans|length if user_plans else 0 }}
-
-    </span>
-
-</div>
-
-
-<div class="metric-panel">
-
-    <span class="metric-label">
-        My Income
-    </span>
-
-    <span class="metric-counter-value">
-
-        GHS
-        {{
-            "%.2f"|format(
-                user_plans
-                |map(attribute='daily_income')
-                |map('float')
-                |sum
-                if user_plans else 0
-            )
-        }}
-
-    </span>
-
-</div>
-
-</section><!-- =====================================================
-     DEVICE SECTION
-===================================================== --><div class="section-header"><h2 class="section-title">
-    My Device
-</h2>
-
-
-{% if user_plans %}
-
-    <span class="section-count">
-
-        {{ user_plans|length }}
-
-        device{% if user_plans|length != 1 %}s{% endif %}
-
-    </span>
-
-{% endif %}
-
-</div><!-- =====================================================
-     DEVICE LIST
-===================================================== -->{% if user_plans %}
-
-{% for user_plan in user_plans %}
-
-
-    <section class="portfolio-ledger-card">
-
-
-        <!-- CARD HEADER -->
-
-        <div class="ledger-top-flex-row">
-
-
-            <span class="vip-tier-indicator">
-
-                {{ user_plan.plan_name }}
-
-            </span>
-
-
-            <span class="asset-valuation-tag">
-
-                GHS
-                {{
-                    "%.2f"|format(
-                        user_plan.investment_amount|float
-                    )
-                }}
-
-            </span>
-
+            <a
+                href="{{ url_for('dashboard') }}"
+                class="tab"
+            >
+                Reward Products
+            </a>
 
         </div>
 
 
-        <!-- DEVICE BODY -->
+        <!-- =================================================
+             USER PLANS
+        ================================================== -->
 
-        <div class="ledger-inner-body">
-
-
-            <!-- DEVICE IMAGE -->
-
-            <div class="hardware-thumbnail-wrapper">
-
-                <div class="joma-device"></div>
-
-            </div>
+        {% if user_plans %}
 
 
-            <!-- DEVICE INFORMATION -->
-
-            <div class="ledger-specs-column">
+            {% for user_plan in user_plans %}
 
 
-                <div class="product-name">
+                <div class="investment-card">
 
-                    JOMA Device
+
+                    <div class="card-main-split">
+
+
+                        <!-- =====================================
+                             PLAN INFORMATION
+                        ====================================== -->
+
+                        <div class="info-rows">
+
+
+                            <div class="info-row">
+
+                                <span class="label">
+                                    Price
+                                </span>
+
+                                <span class="value">
+
+                                    GHS
+                                    {{
+                                        "%.2f"|format(
+                                            user_plan.investment_amount|float
+                                        )
+                                    }}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="info-row">
+
+                                <span class="label">
+                                    Daily profit
+                                </span>
+
+                                <span class="value">
+
+                                    GHS
+                                    {{
+                                        "%.2f"|format(
+                                            user_plan.daily_income|float
+                                        )
+                                    }}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="info-row">
+
+                                <span class="label">
+                                    Days
+                                </span>
+
+                                <span class="value">
+
+                                    {{ user_plan.duration }}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="info-row">
+
+                                <span class="label">
+                                    Total profit
+                                </span>
+
+                                <span class="value">
+
+                                    GHS
+                                    {{
+                                        "%.2f"|format(
+                                            (
+                                                user_plan.daily_income|float
+                                            )
+                                            *
+                                            (
+                                                user_plan.duration|int
+                                            )
+                                        )
+                                    }}
+
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- =====================================
+                             PRODUCT GRAPHIC
+                        ====================================== -->
+
+                        <div class="product-graphic">
+
+
+                            <div class="status-ribbon-stop">
+
+                                Stop
+
+                            </div>
+
+
+                            <div class="status-ribbon-free">
+
+                                Free
+
+                            </div>
+
+
+                            <div class="brand-logo-placeholder">
+
+                                JOMA
+
+                            </div>
+
+
+                            <div class="vip-badge">
+
+                                {{ user_plan.plan_name }}
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- =====================================
+                         COUNTDOWN
+                    ====================================== -->
+
+                    <div class="countdown-bar">
+
+
+                        <span class="countdown-label">
+
+                            Settlement countdown
+
+                        </span>
+
+
+                        <span
+                            id="countdown-{{ user_plan.id }}"
+                            class="countdown-timer
+                            {% if user_plan.can_claim %}
+                                ready
+                            {% endif %}"
+                        >
+
+                            {% if user_plan.can_claim %}
+
+                                00:00:00
+
+                            {% else %}
+
+                                --:--:--
+
+                            {% endif %}
+
+                        </span>
+
+
+                    </div>
+
+
+                    <!-- =====================================
+                         CLAIM
+                    ====================================== -->
+
+                    <form
+                        method="POST"
+                        action="{{ url_for('my_plan') }}"
+                        class="claim-form"
+                    >
+
+                        <input
+                            type="hidden"
+                            name="user_plan_id"
+                            value="{{ user_plan.id }}"
+                        >
+
+
+                        <button
+                            type="submit"
+                            id="claimButton-{{ user_plan.id }}"
+                            class="claim-button
+                            {% if not user_plan.can_claim %}
+                                disabled
+                            {% endif %}"
+                            {% if not user_plan.can_claim %}
+                                disabled
+                            {% endif %}
+                        >
+
+                            {% if user_plan.can_claim %}
+
+                                Claim Income
+
+                            {% else %}
+
+                                Income Not Ready
+
+                            {% endif %}
+
+                        </button>
+
+                    </form>
+
 
                 </div>
 
 
-                <p class="spec-line-item">
+                <!-- =================================================
+                     COUNTDOWN SCRIPT
+                ================================================== -->
 
-                    Daily:
+                <script>
 
-                    <span class="spec-highlight-value">
+                (function () {
 
-                        GHS
-                        {{
-                            "%.2f"|format(
-                                user_plan.daily_income|float
-                            )
-                        }}
+                    const countdownElement =
+                        document.getElementById(
+                            "countdown-{{ user_plan.id }}"
+                        );
 
-                    </span>
 
-                </p>
+                    const claimButton =
+                        document.getElementById(
+                            "claimButton-{{ user_plan.id }}"
+                        );
 
 
-                <p class="spec-line-item">
+                    const canClaim =
+                        {{ 'true' if user_plan.can_claim else 'false' }};
 
-                    Total:
 
-                    <span class="spec-highlight-value">
+                    {% if user_plan.next_income_at %}
 
-                        GHS
-                        {{
-                            "%.2f"|format(
-                                user_plan.daily_income|float
-                                *
-                                user_plan.duration|int
-                            )
-                        }}
+                    const nextIncome =
+                        new Date(
+                            "{{ user_plan.next_income_at.isoformat() }}"
+                        ).getTime();
 
-                    </span>
+                    {% else %}
 
-                </p>
+                    const nextIncome = null;
 
+                    {% endif %}
 
-                <p class="spec-line-item">
 
-                    Valid:
+                    function pad(value) {
 
-                    <span class="spec-highlight-value">
+                        return String(value)
+                            .padStart(2, "0");
 
-                        {{ user_plan.duration }}d
+                    }
 
-                    </span>
 
-                </p>
+                    function formatTime(milliseconds) {
 
+                        if (milliseconds <= 0) {
 
-                <p class="system-log-timestamp">
+                            return "00:00:00";
 
-                    Device #{{ loop.index }}
+                        }
 
-                </p>
 
+                        const totalSeconds =
+                            Math.floor(
+                                milliseconds / 1000
+                            );
 
-            </div>
 
+                        const hours =
+                            Math.floor(
+                                totalSeconds / 3600
+                            );
 
-        </div>
 
+                        const minutes =
+                            Math.floor(
+                                (totalSeconds % 3600) / 60
+                            );
 
-        <!-- =================================================
-             COUNTDOWN
-        ================================================= -->
 
-        <div class="income-status-row">
+                        const seconds =
+                            totalSeconds % 60;
 
 
-            <span class="countdown-label">
-                Next income
-            </span>
+                        return (
+                            pad(hours) +
+                            ":" +
+                            pad(minutes) +
+                            ":" +
+                            pad(seconds)
+                        );
 
+                    }
 
-            <span
-                id="countdown-{{ user_plan.id }}"
-                class="countdown {% if user_plan.can_claim %}ready{% endif %}"
-            >
 
-                {% if user_plan.can_claim %}
+                    function setReady() {
 
-                    00:00:00
+                        if (!countdownElement) {
 
-                {% else %}
+                            return;
 
-                    --:--:--
+                        }
 
-                {% endif %}
 
-            </span>
+                        countdownElement.textContent =
+                            "00:00:00";
 
 
-        </div>
+                        countdownElement.classList.add(
+                            "ready"
+                        );
 
 
-        <!-- =================================================
-             CLAIM FORM
-        ================================================= -->
+                        if (claimButton) {
 
-        <form
-            method="POST"
-            action="{{ url_for('my_plan') }}"
-            class="claim-form"
-        >
+                            claimButton.disabled =
+                                false;
 
 
-            <input
-                type="hidden"
-                name="user_plan_id"
-                value="{{ user_plan.id }}"
-            >
+                            claimButton.classList.remove(
+                                "disabled"
+                            );
 
 
-            <button
-                type="submit"
-                id="claimButton-{{ user_plan.id }}"
-                class="claim-button {% if not user_plan.can_claim %}disabled{% endif %}"
-                {% if not user_plan.can_claim %}disabled{% endif %}
-            >
+                            claimButton.textContent =
+                                "Claim Income";
 
+                        }
 
-                {% if user_plan.can_claim %}
+                    }
 
-                    <i class="fa-solid fa-coins"></i>
 
-                    Claim Income
+                    function setWaiting(milliseconds) {
 
-                {% else %}
+                        if (!countdownElement) {
 
-                    <i class="fa-solid fa-clock"></i>
+                            return;
 
-                    Income Not Ready
+                        }
 
-                {% endif %}
 
+                        countdownElement.textContent =
+                            formatTime(
+                                milliseconds
+                            );
 
-            </button>
 
+                        countdownElement.classList.remove(
+                            "ready"
+                        );
 
-        </form>
 
+                        if (claimButton) {
 
-    </section>
+                            claimButton.disabled =
+                                true;
 
 
-    <!-- =================================================
-         COUNTDOWN
-    ================================================= -->
+                            claimButton.classList.add(
+                                "disabled"
+                            );
 
-    <script>
 
-    (function () {
+                            claimButton.textContent =
+                                "Income Not Ready";
 
+                        }
 
-        const countdownEl =
-            document.getElementById(
-                "countdown-{{ user_plan.id }}"
-            );
+                    }
 
 
-        const claimButton =
-            document.getElementById(
-                "claimButton-{{ user_plan.id }}"
-            );
+                    function updateCountdown() {
 
+                        if (canClaim) {
 
-        const canClaim =
-            {{ 'true' if user_plan.can_claim else 'false' }};
+                            setReady();
 
+                            return;
 
-        {% if user_plan.next_income_at %}
+                        }
 
-        const nextIncome =
-            new Date(
-                "{{ user_plan.next_income_at.isoformat() }}"
-            ).getTime();
+
+                        if (
+                            nextIncome === null ||
+                            Number.isNaN(nextIncome)
+                        ) {
+
+                            if (countdownElement) {
+
+                                countdownElement.textContent =
+                                    "--:--:--";
+
+                            }
+
+                            return;
+
+                        }
+
+
+                        const remaining =
+                            nextIncome -
+                            Date.now();
+
+
+                        if (remaining <= 0) {
+
+                            setReady();
+
+                        } else {
+
+                            setWaiting(
+                                remaining
+                            );
+
+                        }
+
+                    }
+
+
+                    updateCountdown();
+
+
+                    setInterval(
+                        updateCountdown,
+                        1000
+                    );
+
+
+                })();
+
+                </script>
+
+
+            {% endfor %}
+
 
         {% else %}
 
-        const nextIncome = null;
+
+            <!-- =================================================
+                 EMPTY STATE
+            ================================================== -->
+
+            <section class="empty-card">
+
+
+                <div class="empty-icon">
+
+                    <span>+</span>
+
+                </div>
+
+
+                <h2 class="empty-title">
+
+                    No Income
+
+                </h2>
+
+
+                <p class="empty-text">
+
+                    You currently have no active income plans.
+
+                </p>
+
+
+            </section>
+
 
         {% endif %}
 
 
-        function pad(value) {
+        <!-- =================================================
+             INFORMATION
+        ================================================== -->
 
-            return String(value)
-                .padStart(2, "0");
+        <section class="info-card">
 
-        }
 
+            <div class="info-title">
 
-        function formatTime(milliseconds) {
+                Income Information
 
+            </div>
 
-            if (milliseconds <= 0) {
 
-                return "00:00:00";
+            <p class="info-text">
 
-            }
+                Your active JOMA plans, daily income,
+                plan duration and total income are
+                displayed above.
 
+            </p>
 
-            const totalSeconds =
-                Math.floor(
-                    milliseconds / 1000
-                );
 
+        </section>
 
-            const hours =
-                Math.floor(
-                    totalSeconds / 3600
-                );
 
+    </main>
 
-            const minutes =
-                Math.floor(
-                    (totalSeconds % 3600) / 60
-                );
 
+    <!-- =====================================================
+         BOTTOM NAVIGATION
+    ===================================================== -->
 
-            const seconds =
-                totalSeconds % 60;
+    <nav class="bottom-nav">
 
 
-            return (
-                pad(hours) +
-                ":" +
-                pad(minutes) +
-                ":" +
-                pad(seconds)
-            );
+        <a
+            href="{{ url_for('dashboard') }}"
+            class="nav-item"
+        >
 
-        }
+            <svg
+                class="nav-icon"
+                viewBox="0 0 24 24"
+            >
 
+                <path
+                    d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+                />
 
-        function setReady() {
+            </svg>
 
+            <span>
+                Home
+            </span>
 
-            if (!countdownEl) {
+        </a>
 
-                return;
 
-            }
+        <a
+            href="{{ url_for('my_plan') }}"
+            class="nav-item active"
+        >
 
+            <svg
+                class="nav-icon"
+                viewBox="0 0 24 24"
+            >
 
-            countdownEl.textContent =
-                "00:00:00";
+                <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+                />
 
+            </svg>
 
-            countdownEl.classList.add(
-                "ready"
-            );
+            <span>
+                Income
+            </span>
 
+        </a>
 
-            if (claimButton) {
 
+        <a
+            href="{{ url_for('team') }}"
+            class="nav-item"
+        >
 
-                claimButton.disabled =
-                    false;
+            <svg
+                class="nav-icon"
+                viewBox="0 0 24 24"
+            >
 
+                <path
+                    d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zM8 11c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+                />
 
-                claimButton.classList.remove(
-                    "disabled"
-                );
+            </svg>
 
+            <span>
+                Team
+            </span>
 
-                claimButton.innerHTML =
-                    '<i class="fa-solid fa-coins"></i> Claim Income';
+        </a>
 
-            }
 
-        }
+        <a
+            href="{{ url_for('share') }}"
+            class="nav-item"
+        >
 
+            <svg
+                class="nav-icon"
+                viewBox="0 0 24 24"
+            >
 
-        function setWaiting(milliseconds) {
+                <path
+                    d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+                />
 
+            </svg>
 
-            if (!countdownEl) {
+            <span>
+                Share
+            </span>
 
-                return;
+        </a>
 
-            }
 
+        <a
+            href="{{ url_for('profile') }}"
+            class="nav-item"
+        >
 
-            countdownEl.textContent =
-                formatTime(
-                    milliseconds
-                );
+            <svg
+                class="nav-icon"
+                viewBox="0 0 24 24"
+            >
 
+                <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                />
 
-            countdownEl.classList.remove(
-                "ready"
-            );
+            </svg>
 
+            <span>
+                My
+            </span>
 
-            if (claimButton) {
+        </a>
 
 
-                claimButton.disabled =
-                    true;
+    </nav>
 
-
-                claimButton.classList.add(
-                    "disabled"
-                );
-
-
-                claimButton.innerHTML =
-                    '<i class="fa-solid fa-clock"></i> Income Not Ready';
-
-            }
-
-        }
-
-
-        function updateCountdown() {
-
-
-            if (canClaim) {
-
-                setReady();
-
-                return;
-
-            }
-
-
-            if (
-                nextIncome === null ||
-                isNaN(nextIncome)
-            ) {
-
-
-                if (countdownEl) {
-
-                    countdownEl.textContent =
-                        "--:--:--";
-
-                }
-
-
-                return;
-
-            }
-
-
-            const remaining =
-                nextIncome - Date.now();
-
-
-            if (remaining <= 0) {
-
-                setReady();
-
-            } else {
-
-                setWaiting(
-                    remaining
-                );
-
-            }
-
-        }
-
-
-        updateCountdown();
-
-
-        setInterval(
-            updateCountdown,
-            1000
-        );
-
-
-    })();
-
-    </script>
-
-
-{% endfor %}
-
-{% else %}
-
-<!-- =================================================
-     EMPTY STATE
-================================================= -->
-
-<section class="empty-card">
-
-
-    <div class="empty-icon">
-
-        <i class="fa-solid fa-mobile-screen"></i>
-
-    </div>
-
-
-    <h2 class="empty-title">
-
-        No Device
-
-    </h2>
-
-
-    <p class="empty-text">
-
-        You currently have no registered JOMA device.
-
-    </p>
-
-
-</section>
-
-{% endif %}
-
-<!-- =====================================================
-     INFORMATION
-===================================================== --><section class="info-card"><div class="info-title">
-
-    <i class="fa-solid fa-circle-info"></i>
-
-    <span>
-        Device Information
-    </span>
 
 </div>
 
 
-<p>
+</body>
 
-    Your registered JOMA device
-    and its associated plan details
-    are displayed above.
-
-</p>
-
-</section></main><!-- =====================================================
-     LOADING OVERLAY
-===================================================== --><div
-    id="loadingOverlay"
-    class="loading-overlay"
-><div class="loading-box">
-
-    <div class="loading-spinner"></div>
-
-    <div class="loading-text">
-        Loading...
-    </div>
-
-</div>
-
-</div><!-- =====================================================
-     BOTTOM NAVIGATION
-===================================================== --><nav class="bottom-nav"><a
-    href="{{ url_for('dashboard') }}"
-    class="nav-item"
->
-
-    <i class="fa-solid fa-house nav-icon"></i>
-
-    <span>
-        Home
-    </span>
-
-</a>
-
-
-<a
-    href="{{ url_for('my_plan') }}"
-    class="nav-item active"
->
-
-    <i class="fa-solid fa-chart-line nav-icon"></i>
-
-    <span>
-        Income
-    </span>
-
-</a>
-
-
-<a
-    href="#"
-    class="nav-item"
->
-
-    <i class="fa-solid fa-users nav-icon"></i>
-
-    <span>
-        Team
-    </span>
-
-</a>
-
-
-<a
-    href="#"
-    class="nav-item"
->
-
-    <i class="fa-solid fa-share-nodes nav-icon"></i>
-
-    <span>
-        Share
-    </span>
-
-</a>
-
-
-<a
-    href="#"
-    class="nav-item"
->
-
-    <i class="fa-solid fa-user nav-icon"></i>
-
-    <span>
-        My
-    </span>
-
-</a>
-
-</nav></div><!-- =====================================================
-     GLOBAL LOADING SCRIPT
-===================================================== --><script>
-
-document.addEventListener(
-    "click",
-    function (event) {
-
-
-        const link =
-            event.target.closest("a");
-
-
-        const button =
-            event.target.closest("button");
-
-
-        if (!link && !button) {
-
-            return;
-
-        }
-
-
-        if (
-            button &&
-            button.disabled
-        ) {
-
-            return;
-
-        }
-
-
-        const overlay =
-            document.getElementById(
-                "loadingOverlay"
-            );
-
-
-        if (overlay) {
-
-            overlay.classList.add(
-                "active"
-            );
-
-        }
-
-    }
-);
-
-
-document.addEventListener(
-    "submit",
-    function () {
-
-
-        const overlay =
-            document.getElementById(
-                "loadingOverlay"
-            );
-
-
-        if (overlay) {
-
-            overlay.classList.add(
-                "active"
-            );
-
-        }
-
-    }
-);
-
-</script></body>
 </html>

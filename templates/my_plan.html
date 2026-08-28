@@ -1,44 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Income Dashboard</title>
-
+    <title>JOMA - Income</title>
 
     <style>
 
         :root {
-
             --primary-blue: #0b1a99;
-
             --bg-light: #f3f5fa;
-
             --text-main: #1e266d;
-
             --text-muted: #5e669e;
-
             --border-color: #e0e4f5;
+            --white: #ffffff;
+            --danger: #e53935;
+            --success: #2ecc71;
 
-        }
-
-
-        * {
-
-            box-sizing: border-box;
-
-            margin: 0;
-
-            padding: 0;
-
-            font-family:
+            --font:
                 -apple-system,
                 BlinkMacSystemFont,
                 "Segoe UI",
@@ -46,97 +26,91 @@
                 Helvetica,
                 Arial,
                 sans-serif;
-
-            -webkit-tap-highlight-color:
-                transparent;
-
         }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font);
+        }
 
         body {
-
-            background-color:
-                var(--bg-light);
-
+            background-color: var(--bg-light);
             display: flex;
-
             justify-content: center;
-
             align-items: flex-start;
-
             min-height: 100vh;
-
+            color: var(--text-main);
         }
 
-
-        /* =====================================================
-           MOBILE APP CONTAINER
-        ===================================================== */
+        /* ===============================
+           APP CONTAINER
+        =============================== */
 
         .app-container {
-
             width: 100%;
-
             max-width: 420px;
-
             min-height: 100vh;
 
-            background-color:
-                var(--bg-light);
+            background-color: var(--bg-light);
 
             display: flex;
-
             flex-direction: column;
 
             position: relative;
 
-            padding-bottom: 70px;
-
+            padding-bottom: 75px;
         }
 
-
-        /* =====================================================
+        /* ===============================
            HEADER
-        ===================================================== */
+        =============================== */
 
         .app-header {
-
-            background-color:
-                var(--primary-blue);
-
-            color: #ffffff;
+            background-color: var(--primary-blue);
+            color: var(--white);
 
             text-align: center;
 
             padding: 16px;
 
             font-size: 1.15rem;
-
             font-weight: 600;
 
             letter-spacing: .5px;
 
+            position: relative;
         }
 
+        .brand-name {
+            font-size: 13px;
+            font-weight: 800;
+            opacity: .8;
+            display: block;
+            margin-bottom: 3px;
+            letter-spacing: 1px;
+        }
 
-        /* =====================================================
+        .page-name {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* ===============================
            CONTENT
-        ===================================================== */
+        =============================== */
 
         .content {
-
             padding: 14px;
-
         }
 
-
-        /* =====================================================
+        /* ===============================
            TABS
-        ===================================================== */
+        =============================== */
 
         .tab-container {
-
-            background-color: #ffffff;
+            background-color: var(--white);
 
             display: flex;
 
@@ -145,66 +119,50 @@
             padding: 4px;
 
             box-shadow:
-                0 2px 6px
-                rgba(0, 0, 0, .04);
+                0 2px 6px rgba(0, 0, 0, .04);
 
             margin-bottom: 16px;
 
-            border:
-                1px solid
-                var(--border-color);
-
+            border: 1px solid var(--border-color);
         }
 
-
         .tab {
-
             flex: 1;
 
             text-align: center;
 
-            padding: 12px 6px;
+            padding: 12px;
 
             font-size: .95rem;
-
             font-weight: 500;
 
             color: var(--text-main);
 
-            border-radius: 6px;
-
-            text-decoration: none;
-
             cursor: pointer;
 
-        }
+            border-radius: 6px;
 
+            transition: all .2s ease;
+        }
 
         .tab.active {
-
-            background-color:
-                var(--primary-blue);
-
-            color: #ffffff;
-
+            background-color: var(--primary-blue);
+            color: var(--white);
         }
 
-
-        /* =====================================================
-           INVESTMENT CARD
-        ===================================================== */
+        /* ===============================
+           INCOME CARD
+        =============================== */
 
         .investment-card {
-
-            background-color: #ffffff;
+            background-color: var(--white);
 
             border-radius: 10px;
 
             padding: 16px;
 
             box-shadow:
-                0 2px 8px
-                rgba(0, 0, 0, .03);
+                0 2px 8px rgba(0, 0, 0, .03);
 
             display: flex;
 
@@ -213,25 +171,19 @@
             gap: 12px;
 
             margin-bottom: 14px;
-
         }
 
-
-        /* =====================================================
-           CARD SPLIT
-        ===================================================== */
-
         .card-main-split {
-
             display: flex;
 
             gap: 16px;
-
         }
 
+        /* ===============================
+           INFORMATION
+        =============================== */
 
         .info-rows {
-
             flex: 1.2;
 
             display: flex;
@@ -239,12 +191,9 @@
             flex-direction: column;
 
             justify-content: space-between;
-
         }
 
-
         .info-row {
-
             display: flex;
 
             justify-content: space-between;
@@ -253,49 +202,32 @@
 
             padding: 10px 8px;
 
-            border-bottom:
-                1px solid #f1f3fa;
-
-            gap: 8px;
-
+            border-bottom: 1px solid #f1f3fa;
         }
-
 
         .info-row:last-child {
-
             border-bottom: none;
-
         }
 
-
         .label {
-
             color: var(--text-muted);
 
             font-size: .88rem;
-
         }
 
-
         .value {
-
             color: var(--text-main);
 
             font-weight: 700;
 
             font-size: .92rem;
-
-            text-align: right;
-
         }
 
-
-        /* =====================================================
-           JOMA PRODUCT GRAPHIC
-        ===================================================== */
+        /* ===============================
+           PRODUCT GRAPHIC
+        =============================== */
 
         .product-graphic {
-
             flex: 1;
 
             position: relative;
@@ -321,56 +253,43 @@
 
             align-items: center;
 
-            border:
-                1px solid
-                var(--border-color);
-
+            border: 1px solid var(--border-color);
         }
-
 
         .status-ribbon-stop {
-
             width: 100%;
 
-            background-color:
-                #e53935;
+            background-color: var(--danger);
 
-            color: #ffffff;
+            color: var(--white);
 
             text-align: center;
 
             font-size: .75rem;
 
-            padding: 2px 0;
+            padding: 3px 0;
 
             font-weight: 500;
-
         }
-
 
         .status-ribbon-free {
-
             width: 100%;
 
-            background-color:
-                #2ecc71;
+            background-color: var(--success);
 
-            color: #ffffff;
+            color: var(--white);
 
             text-align: center;
 
             font-size: .75rem;
 
-            padding: 2px 0;
+            padding: 3px 0;
 
             font-weight: 500;
-
         }
 
-
         .brand-logo-placeholder {
-
-            font-size: 1.35rem;
+            font-size: 1.25rem;
 
             font-weight: 900;
 
@@ -380,13 +299,11 @@
 
             margin: 4px 0;
 
-            text-align: center;
-
+            text-shadow:
+                1px 1px 2px rgba(0,0,0,.1);
         }
 
-
         .vip-badge {
-
             width: 100%;
 
             background:
@@ -396,7 +313,7 @@
                     #111111 100%
                 );
 
-            color: #ffffff;
+            color: var(--white);
 
             text-align: center;
 
@@ -405,18 +322,14 @@
             font-weight: 600;
 
             padding: 6px 0;
-
         }
 
-
-        /* =====================================================
+        /* ===============================
            COUNTDOWN
-        ===================================================== */
+        =============================== */
 
         .countdown-bar {
-
-            background-color:
-                #f5f7ff;
+            background-color: #f5f7ff;
 
             border-radius: 6px;
 
@@ -429,21 +342,15 @@
             padding: 10px 14px;
 
             margin-top: 4px;
-
         }
 
-
         .countdown-label {
-
             color: var(--text-muted);
 
             font-size: .85rem;
-
         }
 
-
         .countdown-timer {
-
             color: var(--text-main);
 
             font-weight: 700;
@@ -452,236 +359,82 @@
 
             letter-spacing: .5px;
 
-            font-variant-numeric:
-                tabular-nums;
-
+            font-variant-numeric: tabular-nums;
         }
-
 
         .countdown-timer.ready {
-
-            color: #2ecc71;
-
+            color: var(--success);
         }
 
-
-        /* =====================================================
-           CLAIM BUTTON
-        ===================================================== */
-
-        .claim-form {
-
-            width: 100%;
-
-            margin-top: 2px;
-
-        }
-
-
-        .claim-button {
-
-            width: 100%;
-
-            border: none;
-
-            padding: 10px;
-
-            border-radius: 7px;
-
-            background-color:
-                var(--primary-blue);
-
-            color: #ffffff;
-
-            font-size: .85rem;
-
-            font-weight: 600;
-
-            cursor: pointer;
-
-            transition: .2s ease;
-
-        }
-
-
-        .claim-button:active {
-
-            transform: scale(.98);
-
-        }
-
-
-        .claim-button.disabled {
-
-            background-color:
-                #dfe3f3;
-
-            color: #7d84a6;
-
-            cursor: not-allowed;
-
-        }
-
-
-        /* =====================================================
+        /* ===============================
            EMPTY STATE
-        ===================================================== */
+        =============================== */
 
         .empty-card {
+            background: var(--white);
 
-            background-color: #ffffff;
-
-            border:
-                1px solid
-                var(--border-color);
+            border: 1px solid var(--border-color);
 
             border-radius: 10px;
 
-            padding: 35px 20px;
+            padding: 30px 15px;
 
             text-align: center;
 
-            box-shadow:
-                0 2px 8px
-                rgba(0, 0, 0, .03);
-
+            color: var(--text-muted);
         }
-
 
         .empty-icon {
+            font-size: 30px;
 
-            width: 48px;
+            margin-bottom: 10px;
 
-            height: 48px;
-
-            margin: 0 auto 10px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 50%;
-
-            background-color:
-                #f5f7ff;
-
-            color: var(--text-muted);
-
-            font-size: 22px;
-
+            color: var(--primary-blue);
         }
 
-
-        .empty-title {
-
-            color: var(--text-main);
-
-            font-size: 1rem;
-
-            font-weight: 700;
-
-        }
-
-
-        .empty-text {
-
-            margin-top: 5px;
-
-            color: var(--text-muted);
-
-            font-size: .82rem;
-
-        }
-
-
-        /* =====================================================
-           INFORMATION CARD
-        ===================================================== */
-
-        .info-card {
-
-            background-color: #ffffff;
-
-            border:
-                1px solid
-                var(--border-color);
-
-            border-radius: 8px;
-
-            padding: 12px;
-
-            margin-top: 12px;
-
-        }
-
-
-        .info-title {
-
-            color: var(--text-main);
-
-            font-size: .88rem;
-
-            font-weight: 700;
+        .empty-card h3 {
+            font-size: 15px;
 
             margin-bottom: 5px;
-
         }
 
-
-        .info-text {
-
-            color: var(--text-muted);
-
-            font-size: .78rem;
-
-            line-height: 1.45;
-
+        .empty-card p {
+            font-size: 12px;
         }
 
-
-        /* =====================================================
+        /* ===============================
            BOTTOM NAVIGATION
-        ===================================================== */
+        =============================== */
 
         .bottom-nav {
-
             position: fixed;
 
             bottom: 0;
 
             left: 50%;
 
-            transform:
-                translateX(-50%);
+            transform: translateX(-50%);
 
             width: 100%;
 
             max-width: 420px;
 
-            background-color: #ffffff;
+            background-color: var(--white);
 
-            border-top:
-                1px solid
-                var(--border-color);
+            border-top: 1px solid var(--border-color);
 
             display: flex;
 
-            justify-content:
-                space-around;
+            justify-content: space-around;
 
             align-items: center;
 
             padding: 8px 0;
 
             z-index: 100;
-
         }
 
-
         .nav-item {
-
             display: flex;
 
             flex-direction: column;
@@ -701,34 +454,23 @@
             position: relative;
 
             flex: 1;
-
         }
-
 
         .nav-item.active {
-
-            color:
-                var(--primary-blue);
+            color: var(--primary-blue);
 
             font-weight: 600;
-
         }
 
-
         .nav-icon {
-
             width: 22px;
-
             height: 22px;
 
             fill: currentColor;
-
         }
 
-
         .nav-item.active::after {
-
-            content: '';
+            content: "";
 
             position: absolute;
 
@@ -738,609 +480,435 @@
 
             height: 3px;
 
-            background-color:
-                var(--primary-blue);
+            background-color: var(--primary-blue);
 
-            border-radius:
-                2px 2px 0 0;
-
+            border-radius: 2px 2px 0 0;
         }
 
+        /* ===============================
+           BADGE
+        =============================== */
 
-        /* =====================================================
+        .badge {
+            position: absolute;
+
+            top: -4px;
+
+            right: 22%;
+
+            background-color: var(--danger);
+
+            color: var(--white);
+
+            font-size: .68rem;
+
+            font-weight: bold;
+
+            border-radius: 10px;
+
+            min-width: 16px;
+
+            height: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 0 4px;
+        }
+
+        /* ===============================
            MOBILE
-        ===================================================== */
+        =============================== */
 
         @media (max-width: 360px) {
 
             .content {
-
                 padding: 10px;
-
             }
-
-
-            .investment-card {
-
-                padding: 12px;
-
-            }
-
 
             .card-main-split {
-
                 gap: 10px;
-
             }
-
 
             .info-row {
-
                 padding: 8px 5px;
-
             }
-
 
             .label {
-
                 font-size: .78rem;
-
             }
-
 
             .value {
-
-                font-size: .8rem;
-
+                font-size: .82rem;
             }
 
-
-            .brand-logo-placeholder {
-
-                font-size: 1rem;
-
+            .product-graphic {
+                min-width: 115px;
             }
-
-
-            .vip-badge {
-
-                font-size: .78rem;
-
-            }
-
         }
 
     </style>
-
 </head>
-
 
 <body>
 
-
 <div class="app-container">
 
-
-    <!-- =====================================================
+    <!-- ===============================
          HEADER
-    ===================================================== -->
+    =============================== -->
 
     <header class="app-header">
 
-        Income
+        <span class="brand-name">
+            JOMA
+        </span>
+
+        <span class="page-name">
+            Income
+        </span>
 
     </header>
 
 
-    <!-- =====================================================
-         CONTENT
-    ===================================================== -->
+    <div class="content">
 
-    <main class="content">
-
-
-        <!-- =================================================
+        <!-- ===============================
              TABS
-        ================================================== -->
+        =============================== -->
 
         <div class="tab-container">
 
             <div class="tab active">
-
                 Day income
-
             </div>
 
-
             <div class="tab">
-
                 Reward Products
-
             </div>
 
         </div>
 
 
-        <!-- =================================================
-             DYNAMIC PLANS
-        ================================================== -->
+        <!-- ===============================
+             USER PLANS
+        =============================== -->
 
         {% if user_plans %}
 
-
             {% for user_plan in user_plans %}
 
+            <div class="investment-card">
 
-                <section class="investment-card">
+                <div class="card-main-split">
 
+                    <!-- PLAN INFORMATION -->
 
-                    <div class="card-main-split">
+                    <div class="info-rows">
 
+                        <div class="info-row">
 
-                        <!-- =================================
-                             PLAN INFORMATION
-                        ================================== -->
+                            <span class="label">
+                                Price
+                            </span>
 
-                        <div class="info-rows">
+                            <span class="value">
 
+                                GHS
+                                {{
+                                    "%.2f"|format(
+                                        user_plan.investment_amount|float
+                                    )
+                                }}
 
-                            <div class="info-row">
+                            </span>
 
-                                <span class="label">
-
-                                    Price
-
-                                </span>
-
-
-                                <span class="value">
-
-                                    GHS
-                                    {{
-                                        "%.2f"|format(
-                                            user_plan.investment_amount|float
-                                        )
-                                    }}
-
-                                </span>
-
-                            </div>
+                        </div>
 
 
-                            <div class="info-row">
+                        <div class="info-row">
 
-                                <span class="label">
+                            <span class="label">
+                                Daily profit
+                            </span>
 
-                                    Daily profit
+                            <span class="value">
 
-                                </span>
+                                GHS
+                                {{
+                                    "%.2f"|format(
+                                        user_plan.daily_income|float
+                                    )
+                                }}
+
+                            </span>
+
+                        </div>
 
 
-                                <span class="value">
+                        <div class="info-row">
 
-                                    GHS
-                                    {{
-                                        "%.2f"|format(
+                            <span class="label">
+                                Days
+                            </span>
+
+                            <span class="value">
+
+                                {{ user_plan.duration }}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="label">
+                                Total profit
+                            </span>
+
+                            <span class="value">
+
+                                GHS
+                                {{
+                                    "%.2f"|format(
+                                        (
                                             user_plan.daily_income|float
                                         )
-                                    }}
-
-                                </span>
-
-                            </div>
-
-
-                            <div class="info-row">
-
-                                <span class="label">
-
-                                    Days
-
-                                </span>
-
-
-                                <span class="value">
-
-                                    {{ user_plan.duration }}
-
-                                </span>
-
-                            </div>
-
-
-                            <div class="info-row">
-
-                                <span class="label">
-
-                                    Total profit
-
-                                </span>
-
-
-                                <span class="value">
-
-                                    GHS
-                                    {{
-                                        "%.2f"|format(
-                                            user_plan.daily_income|float
-                                            *
+                                        *
+                                        (
                                             user_plan.duration|int
                                         )
-                                    }}
+                                    )
+                                }}
 
-                                </span>
-
-                            </div>
-
+                            </span>
 
                         </div>
-
-
-                        <!-- =================================
-                             JOMA GRAPHIC
-                        ================================== -->
-
-                        <div class="product-graphic">
-
-
-                            <div
-                                class="status-ribbon-stop"
-                            >
-
-                                Stop
-
-                            </div>
-
-
-                            <div
-                                class="status-ribbon-free"
-                            >
-
-                                Free
-
-                            </div>
-
-
-                            <div
-                                class="brand-logo-placeholder"
-                            >
-
-                                JOMA
-
-                            </div>
-
-
-                            <div class="vip-badge">
-
-                                {{ user_plan.plan_name }}
-
-                            </div>
-
-
-                        </div>
-
 
                     </div>
 
 
-                    <!-- =================================
-                         COUNTDOWN
-                    ================================== -->
+                    <!-- PRODUCT -->
 
-                    <div class="countdown-bar">
+                    <div class="product-graphic">
 
-
-                        <span
-                            class="countdown-label"
-                        >
-
-                            Settlement countdown
-
-                        </span>
+                        <div class="status-ribbon-stop">
+                            Stop
+                        </div>
 
 
-                        <span
-                            id="countdown-{{ user_plan.id }}"
-                            class="countdown-timer
-                            {% if user_plan.can_claim %}
-                                ready
-                            {% endif %}"
-                        >
+                        <div class="status-ribbon-free">
+                            Free
+                        </div>
 
-                            {% if user_plan.can_claim %}
 
-                                00:00:00
+                        <div class="brand-logo-placeholder">
+                            JOMA
+                        </div>
 
-                            {% else %}
 
-                                --:--:--
+                        <div class="vip-badge">
 
-                            {% endif %}
+                            {{ user_plan.plan_name }}
 
-                        </span>
-
+                        </div>
 
                     </div>
 
+                </div>
 
-                    <!-- =================================
-                         CLAIM BUTTON
-                    ================================== -->
 
-                    <form
-                        method="POST"
-                        action="{{ url_for('my_plan') }}"
-                        class="claim-form"
+                <!-- ===============================
+                     COUNTDOWN
+                =============================== -->
+
+                <div class="countdown-bar">
+
+                    <span class="countdown-label">
+                        Settlement countdown
+                    </span>
+
+
+                    <span
+                        id="countdown-{{ user_plan.id }}"
+                        class="countdown-timer
+                        {% if user_plan.can_claim %}
+                            ready
+                        {% endif %}"
                     >
 
-                        <input
-                            type="hidden"
-                            name="user_plan_id"
-                            value="{{ user_plan.id }}"
-                        >
+                        {% if user_plan.can_claim %}
+
+                            00:00:00
+
+                        {% else %}
+
+                            --:--:--
+
+                        {% endif %}
+
+                    </span>
+
+                </div>
+
+            </div>
 
 
-                        <button
-                            type="submit"
-                            id="claimButton-{{ user_plan.id }}"
-                            class="claim-button
-                            {% if not user_plan.can_claim %}
-                                disabled
-                            {% endif %}"
-                            {% if not user_plan.can_claim %}
-                                disabled
-                            {% endif %}
-                        >
+            <!-- ===============================
+                 COUNTDOWN SCRIPT
+            =============================== -->
 
-                            {% if user_plan.can_claim %}
+            <script>
 
-                                Claim Income
+            (function () {
 
-                            {% else %}
+                const countdown =
+                    document.getElementById(
+                        "countdown-{{ user_plan.id }}"
+                    );
 
-                                Income Not Ready
-
-                            {% endif %}
-
-                        </button>
-
-                    </form>
+                const canClaim =
+                    {{ 'true' if user_plan.can_claim else 'false' }};
 
 
-                </section>
+                {% if user_plan.next_income_at %}
+
+                const nextIncome =
+                    new Date(
+                        "{{ user_plan.next_income_at.isoformat() }}"
+                    ).getTime();
+
+                {% else %}
+
+                const nextIncome = null;
+
+                {% endif %}
 
 
-                <!-- =========================================
-                     COUNTDOWN JAVASCRIPT
-                ========================================== -->
+                function pad(number) {
 
-                <script>
+                    return String(number)
+                        .padStart(2, "0");
 
-                (function () {
-
-                    const countdown =
-                        document.getElementById(
-                            "countdown-{{ user_plan.id }}"
-                        );
+                }
 
 
-                    const button =
-                        document.getElementById(
-                            "claimButton-{{ user_plan.id }}"
-                        );
+                function formatTime(milliseconds) {
 
-
-                    const canClaim =
-                        {{ 'true'
-                           if user_plan.can_claim
-                           else 'false' }};
-
-
-                    {% if user_plan.next_income_at %}
-
-                    const nextIncome =
-                        new Date(
-                            "{{ user_plan.next_income_at.isoformat() }}"
-                        ).getTime();
-
-                    {% else %}
-
-                    const nextIncome = null;
-
-                    {% endif %}
-
-
-                    function pad(number) {
-
-                        return String(number)
-                            .padStart(2, "0");
-
+                    if (milliseconds <= 0) {
+                        return "00:00:00";
                     }
 
 
-                    function formatTime(milliseconds) {
-
-                        if (
-                            milliseconds <= 0
-                        ) {
-
-                            return "00:00:00";
-
-                        }
-
-
-                        const totalSeconds =
-                            Math.floor(
-                                milliseconds / 1000
-                            );
-
-
-                        const hours =
-                            Math.floor(
-                                totalSeconds / 3600
-                            );
-
-
-                        const minutes =
-                            Math.floor(
-                                (totalSeconds % 3600) / 60
-                            );
-
-
-                        const seconds =
-                            totalSeconds % 60;
-
-
-                        return (
-                            pad(hours) +
-                            ":" +
-                            pad(minutes) +
-                            ":" +
-                            pad(seconds)
+                    const totalSeconds =
+                        Math.floor(
+                            milliseconds / 1000
                         );
 
+
+                    const hours =
+                        Math.floor(
+                            totalSeconds / 3600
+                        );
+
+
+                    const minutes =
+                        Math.floor(
+                            (totalSeconds % 3600) / 60
+                        );
+
+
+                    const seconds =
+                        totalSeconds % 60;
+
+
+                    return (
+                        pad(hours) +
+                        ":" +
+                        pad(minutes) +
+                        ":" +
+                        pad(seconds)
+                    );
+
+                }
+
+
+                function updateCountdown() {
+
+                    if (!countdown) {
+                        return;
                     }
 
 
-                    function setReady() {
-
-                        if (!countdown) {
-
-                            return;
-
-                        }
-
+                    if (canClaim) {
 
                         countdown.textContent =
                             "00:00:00";
-
 
                         countdown.classList.add(
                             "ready"
                         );
 
-
-                        if (button) {
-
-                            button.disabled =
-                                false;
-
-
-                            button.classList.remove(
-                                "disabled"
-                            );
-
-
-                            button.textContent =
-                                "Claim Income";
-
-                        }
-
+                        return;
                     }
 
 
-                    function setWaiting(
-                        milliseconds
+                    if (
+                        nextIncome === null ||
+                        isNaN(nextIncome)
                     ) {
 
-                        if (!countdown) {
+                        countdown.textContent =
+                            "--:--:--";
 
-                            return;
+                        return;
+                    }
 
-                        }
 
+                    const remaining =
+                        nextIncome - Date.now();
+
+
+                    if (remaining <= 0) {
+
+                        countdown.textContent =
+                            "00:00:00";
+
+                        countdown.classList.add(
+                            "ready"
+                        );
+
+                    } else {
 
                         countdown.textContent =
                             formatTime(
-                                milliseconds
+                                remaining
                             );
-
 
                         countdown.classList.remove(
                             "ready"
                         );
 
-
-                        if (button) {
-
-                            button.disabled =
-                                true;
-
-
-                            button.classList.add(
-                                "disabled"
-                            );
-
-
-                            button.textContent =
-                                "Income Not Ready";
-
-                        }
-
                     }
 
-
-                    function updateCountdown() {
-
-                        if (canClaim) {
-
-                            setReady();
-
-                            return;
-
-                        }
+                }
 
 
-                        if (
-                            nextIncome === null ||
-                            Number.isNaN(nextIncome)
-                        ) {
-
-                            if (countdown) {
-
-                                countdown.textContent =
-                                    "--:--:--";
-
-                            }
-
-                            return;
-
-                        }
+                updateCountdown();
 
 
-                        const remaining =
-                            nextIncome -
-                            Date.now();
+                setInterval(
+                    updateCountdown,
+                    1000
+                );
 
+            })();
 
-                        if (
-                            remaining <= 0
-                        ) {
-
-                            setReady();
-
-                        } else {
-
-                            setWaiting(
-                                remaining
-                            );
-
-                        }
-
-                    }
-
-
-                    updateCountdown();
-
-
-                    setInterval(
-                        updateCountdown,
-                        1000
-                    );
-
-                })();
-
-                </script>
+            </script>
 
 
             {% endfor %}
@@ -1348,73 +916,34 @@
 
         {% else %}
 
+            <!-- ===============================
+                 EMPTY
+            =============================== -->
 
-            <!-- =================================================
-                 NO PLANS
-            ================================================== -->
-
-            <section class="empty-card">
-
+            <div class="empty-card">
 
                 <div class="empty-icon">
-
-                    +
-
+                    ★
                 </div>
 
+                <h3>
+                    No Income Plans
+                </h3>
 
-                <h2 class="empty-title">
-
-                    No Income
-
-                </h2>
-
-
-                <p class="empty-text">
-
-                    You currently have no active income plans.
-
+                <p>
+                    You currently have no active plans.
                 </p>
-
-
-            </section>
-
-
-        {% endif %}
-
-
-        <!-- =================================================
-             INFORMATION
-        ================================================== -->
-
-        <section class="info-card">
-
-
-            <div class="info-title">
-
-                Income Information
 
             </div>
 
+        {% endif %}
 
-            <p class="info-text">
-
-                Your JOMA income plans and their
-                current income information are
-                displayed above.
-
-            </p>
+    </div>
 
 
-        </section>
-
-
-    </main>
-
-
-    <!-- =====================================================
+    <!-- ===============================
          BOTTOM NAVIGATION
-    ===================================================== -->
+    =============================== -->
 
     <nav class="bottom-nav">
 
@@ -1422,7 +951,7 @@
         <!-- HOME -->
 
         <a
-            href="/dashboard"
+            href="{{ url_for('dashboard') }}"
             class="nav-item"
         >
 
@@ -1430,17 +959,13 @@
                 class="nav-icon"
                 viewBox="0 0 24 24"
             >
-
                 <path
                     d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
                 />
-
             </svg>
 
             <span>
-
                 Home
-
             </span>
 
         </a>
@@ -1449,7 +974,7 @@
         <!-- INCOME -->
 
         <a
-            href="/my-plan"
+            href="{{ url_for('income') }}"
             class="nav-item active"
         >
 
@@ -1457,17 +982,13 @@
                 class="nav-icon"
                 viewBox="0 0 24 24"
             >
-
                 <path
                     d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
                 />
-
             </svg>
 
             <span>
-
                 Income
-
             </span>
 
         </a>
@@ -1476,7 +997,7 @@
         <!-- TEAM -->
 
         <a
-            href="#"
+            href="{{ url_for('team') }}"
             class="nav-item"
         >
 
@@ -1484,17 +1005,13 @@
                 class="nav-icon"
                 viewBox="0 0 24 24"
             >
-
                 <path
                     d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
                 />
-
             </svg>
 
             <span>
-
                 Team
-
             </span>
 
         </a>
@@ -1503,7 +1020,7 @@
         <!-- SHARE -->
 
         <a
-            href="#"
+            href="{{ url_for('share') }}"
             class="nav-item"
         >
 
@@ -1511,17 +1028,13 @@
                 class="nav-icon"
                 viewBox="0 0 24 24"
             >
-
                 <path
                     d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
                 />
-
             </svg>
 
             <span>
-
                 Share
-
             </span>
 
         </a>
@@ -1530,7 +1043,7 @@
         <!-- MY -->
 
         <a
-            href="#"
+            href="{{ url_for('profile') }}"
             class="nav-item"
         >
 
@@ -1538,28 +1051,20 @@
                 class="nav-icon"
                 viewBox="0 0 24 24"
             >
-
                 <path
                     d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
                 />
-
             </svg>
 
             <span>
-
                 My
-
             </span>
 
         </a>
 
-
     </nav>
-
 
 </div>
 
-
 </body>
-
 </html>

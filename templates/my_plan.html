@@ -7,16 +7,20 @@
 
 :root {
     --primary-blue: #0b1a99;
-    --primary-blue-light: #eef1ff;
     --bg-light: #f3f5fa;
-    --card-white: #ffffff;
     --text-main: #1e266d;
     --text-muted: #5e669e;
     --border-color: #e0e4f5;
-    --green: #2ecc71;
-    --red: #e53935;
+    --success: #2ecc71;
+    --danger: #e53935;
+}
 
-    --font:
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
@@ -24,14 +28,7 @@
         Helvetica,
         Arial,
         sans-serif;
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--font);
-    -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -39,33 +36,40 @@ html,
 body {
     width: 100%;
     min-height: 100%;
-    background: var(--bg-light);
 }
 
 body {
+    background-color: var(--bg-light);
+
     display: flex;
+
     justify-content: center;
+
+    align-items: flex-start;
+
     color: var(--text-main);
 }
 
 
 /* =====================================================
-   APP CONTAINER
+   MOBILE APP CONTAINER
 ===================================================== */
 
 .app-container {
     width: 100%;
     max-width: 420px;
+
     min-height: 100vh;
 
-    background: var(--bg-light);
+    background-color: var(--bg-light);
 
     display: flex;
+
     flex-direction: column;
 
     position: relative;
 
-    padding-bottom: 72px;
+    padding-bottom: 70px;
 }
 
 
@@ -76,38 +80,69 @@ body {
 .app-header {
     position: relative;
 
-    width: 100%;
-
-    background: var(--primary-blue);
+    background-color: var(--primary-blue);
 
     color: #ffffff;
 
-    padding: 16px 50px;
-
     text-align: center;
 
-    font-size: 1.05rem;
-    font-weight: 700;
+    padding: 16px 45px;
 
-    letter-spacing: .4px;
+    font-size: 1.15rem;
 
-    box-shadow:
-        0 3px 10px rgba(11, 26, 153, .18);
+    font-weight: 600;
+
+    letter-spacing: .5px;
+}
+
+.header-title {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+}
+
+.header-logo {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #ffffff;
+
+    color: var(--primary-blue);
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    font-weight: 900;
 }
 
 .header-back {
     position: absolute;
 
     left: 14px;
+
     top: 50%;
 
     transform: translateY(-50%);
 
     width: 34px;
+
     height: 34px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     color: #ffffff;
@@ -115,64 +150,19 @@ body {
     text-decoration: none;
 
     border-radius: 50%;
-
-    transition: .2s ease;
 }
 
 .header-back:active {
     background: rgba(255,255,255,.15);
-    transform:
-        translateY(-50%)
-        scale(.94);
-}
-
-.header-brand {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 8px;
-}
-
-.header-logo {
-    width: 29px;
-    height: 29px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: var(--primary-blue);
-
-    background: #ffffff;
-
-    border-radius: 8px;
-
-    font-size: 13px;
-
-    font-weight: 900;
-}
-
-.header-brand-name {
-    font-size: 15px;
-    font-weight: 900;
-
-    letter-spacing: 1px;
 }
 
 
 /* =====================================================
-   MAIN CONTENT
+   CONTENT
 ===================================================== */
 
 .content {
-    width: 100%;
-
     padding: 14px;
-
-    flex: 1;
 }
 
 
@@ -181,7 +171,7 @@ body {
 ===================================================== */
 
 .page-title {
-    margin-bottom: 13px;
+    margin-bottom: 14px;
 }
 
 .page-title h2 {
@@ -202,208 +192,209 @@ body {
 
 
 /* =====================================================
-   JOMA PRODUCT BANNER
+   JOMA PRODUCT GRAPHIC
 ===================================================== */
 
-.product-banner {
+.product-graphic-large {
     position: relative;
 
     width: 100%;
-    height: 175px;
+
+    height: 185px;
+
+    margin-bottom: 14px;
 
     overflow: hidden;
 
-    margin-bottom: 13px;
-
     background:
         linear-gradient(
-            135deg,
+            180deg,
             #ffffff 0%,
-            #edf0ff 55%,
-            #d7ddff 100%
+            #d4daf2 100%
         );
 
     border: 1px solid var(--border-color);
 
-    border-radius: 12px;
+    border-radius: 10px;
 
     box-shadow:
-        0 3px 10px rgba(30, 38, 109, .07);
+        0 2px 8px rgba(0, 0, 0, .04);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
 }
 
-.banner-glow {
+.graphic-glow {
     position: absolute;
 
-    width: 190px;
-    height: 190px;
+    width: 220px;
+    height: 220px;
 
-    right: -45px;
-    top: -45px;
+    right: -70px;
+    top: -80px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(11,26,153,.16) 0%,
+            rgba(11,26,153,.15) 0%,
             rgba(11,26,153,0) 70%
         );
 }
 
-.banner-device {
-    position: absolute;
+.graphic-phone {
+    position: relative;
 
-    width: 95px;
-    height: 150px;
-
-    right: 48px;
-    top: 12px;
-
-    border-radius: 17px;
+    width: 92px;
+    height: 145px;
 
     background:
         linear-gradient(
             145deg,
-            #394275,
-            #111936
+            #505a86,
+            #141b3b
         );
 
-    border: 2px solid #6872a9;
+    border: 2px solid #737ca3;
 
-    transform: rotate(8deg);
+    border-radius: 17px;
+
+    transform: rotate(7deg);
 
     box-shadow:
-        12px 12px 25px rgba(11,26,153,.20);
+        10px 12px 25px rgba(11,26,153,.18);
 }
 
-.banner-device::before {
+.graphic-screen {
+    position: absolute;
+
+    left: 6px;
+    right: 6px;
+
+    top: 7px;
+    bottom: 7px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #eef1ff
+        );
+
+    border-radius: 12px;
+}
+
+.graphic-camera {
+    position: absolute;
+
+    left: 12px;
+    top: 15px;
+
+    width: 29px;
+    height: 35px;
+
+    background: #d6dbef;
+
+    border: 1px solid #9ca6c7;
+
+    border-radius: 7px;
+
+    z-index: 2;
+}
+
+.graphic-camera::before,
+.graphic-camera::after {
     content: "";
 
     position: absolute;
 
-    left: 7px;
-    right: 7px;
-    top: 7px;
-    bottom: 7px;
+    width: 8px;
+    height: 8px;
 
-    border-radius: 12px;
+    border-radius: 50%;
 
-    background:
-        linear-gradient(
-            145deg,
-            #eef1ff,
-            #ffffff
-        );
+    background: #252c4b;
+
+    border: 1px solid #707997;
 }
 
-.banner-device::after {
-    content: "JOMA";
+.graphic-camera::before {
+    left: 5px;
+    top: 5px;
+}
 
+.graphic-camera::after {
+    right: 5px;
+    bottom: 5px;
+}
+
+.graphic-brand {
     position: absolute;
 
     left: 0;
     right: 0;
+
     bottom: 25px;
 
     text-align: center;
 
     color: var(--primary-blue);
 
-    font-size: 9px;
+    font-size: 10px;
 
     font-weight: 900;
 
     letter-spacing: 1px;
 
-    transform: rotate(0deg);
+    z-index: 2;
 }
 
-.camera-box {
-    position: absolute;
-
-    top: 17px;
-    left: 15px;
-
-    width: 31px;
-    height: 38px;
-
-    background: #d9def2;
-
-    border: 1px solid #aab2d2;
-
-    border-radius: 8px;
-
-    z-index: 3;
-}
-
-.camera-box::before,
-.camera-box::after {
-    content: "";
-
-    position: absolute;
-
-    width: 9px;
-    height: 9px;
-
-    border-radius: 50%;
-
-    background: #222a4a;
-
-    border: 2px solid #858eae;
-}
-
-.camera-box::before {
-    top: 6px;
-    left: 5px;
-}
-
-.camera-box::after {
-    bottom: 6px;
-    right: 5px;
-}
-
-.banner-content {
+.graphic-content {
     position: absolute;
 
     left: 15px;
-    bottom: 16px;
+    bottom: 14px;
 
     z-index: 5;
 }
 
-.banner-brand {
+.graphic-title {
     color: var(--primary-blue);
 
-    font-size: 19px;
+    font-size: 18px;
 
     font-weight: 900;
 
-    letter-spacing: 1.3px;
+    letter-spacing: 1px;
 }
 
-.banner-subtitle {
-    margin-top: 4px;
+.graphic-subtitle {
+    margin-top: 3px;
 
     color: var(--text-muted);
 
-    font-size: 9px;
+    font-size: 8px;
 }
 
-.banner-status {
+.graphic-status {
     position: absolute;
 
     right: 13px;
     bottom: 13px;
 
-    padding: 6px 10px;
+    padding: 6px 9px;
+
+    background: var(--success);
 
     color: #ffffff;
 
-    background: var(--green);
-
     border-radius: 20px;
 
-    font-size: 8px;
+    font-size: 7px;
 
     font-weight: 800;
 
@@ -415,29 +406,29 @@ body {
    METRICS
 ===================================================== */
 
-.metrics-row {
+.dashboard-metrics-row {
     display: grid;
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 9px;
+    gap: 8px;
 
     margin-bottom: 15px;
 }
 
-.metric-card {
-    min-height: 65px;
+.metric-panel {
+    min-height: 62px;
 
-    padding: 11px;
+    padding: 9px 10px;
 
     background: #ffffff;
 
     border: 1px solid var(--border-color);
 
-    border-radius: 9px;
+    border-radius: 8px;
 
     box-shadow:
-        0 2px 7px rgba(30,38,109,.04);
+        0 2px 6px rgba(0,0,0,.04);
 
     display: flex;
 
@@ -449,15 +440,15 @@ body {
 .metric-label {
     color: var(--text-muted);
 
-    font-size: 9px;
+    font-size: 10px;
 
     font-weight: 500;
 }
 
-.metric-value {
-    color: var(--primary-blue);
+.metric-counter-value {
+    color: var(--text-main);
 
-    font-size: 17px;
+    font-size: 16px;
 
     font-weight: 800;
 }
@@ -471,9 +462,10 @@ body {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
-    margin: 2px 2px 8px;
+    margin: 3px 2px 7px;
 }
 
 .section-title {
@@ -495,44 +487,45 @@ body {
    DEVICE CARD
 ===================================================== */
 
-.device-card {
+.portfolio-ledger-card {
     width: 100%;
 
-    padding: 11px;
+    margin-bottom: 8px;
 
-    margin-bottom: 9px;
+    padding: 10px;
 
     background: #ffffff;
 
     border: 1px solid var(--border-color);
 
-    border-radius: 9px;
+    border-radius: 8px;
 
     box-shadow:
-        0 2px 8px rgba(30,38,109,.04);
+        0 2px 8px rgba(0,0,0,.03);
 
     transition: .2s ease;
 }
 
-.device-card:active {
+.portfolio-ledger-card:active {
     transform: scale(.99);
 }
 
 
 /* =====================================================
-   CARD TOP
+   DEVICE CARD TOP
 ===================================================== */
 
-.device-top {
+.ledger-top-flex-row {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
-    margin-bottom: 9px;
+    margin-bottom: 7px;
 }
 
-.plan-name {
+.vip-tier-indicator {
     color: var(--primary-blue);
 
     font-size: 10px;
@@ -540,7 +533,7 @@ body {
     font-weight: 800;
 }
 
-.investment-value {
+.asset-valuation-tag {
     color: var(--text-main);
 
     font-size: 10px;
@@ -553,77 +546,79 @@ body {
    DEVICE BODY
 ===================================================== */
 
-.device-body {
+.ledger-inner-body {
     display: flex;
 
     align-items: center;
 
-    gap: 10px;
+    gap: 9px;
 }
 
 
-/* PHONE THUMBNAIL */
+/* =====================================================
+   PHONE THUMBNAIL
+===================================================== */
 
-.device-thumbnail {
-    width: 48px;
-    height: 56px;
+.hardware-thumbnail-wrapper {
+    width: 42px;
+    height: 50px;
 
     flex-shrink: 0;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    background: var(--primary-blue-light);
+    background: #f0f2ff;
 
     border: 1px solid var(--border-color);
 
-    border-radius: 7px;
+    border-radius: 6px;
 }
 
-.phone {
+.joma-device {
     position: relative;
 
-    width: 23px;
-    height: 40px;
+    width: 21px;
+    height: 36px;
 
     background:
         linear-gradient(
             145deg,
-            #59638e,
-            #182044
+            #525c88,
+            #18203f
         );
 
-    border: 1px solid #7881a6;
+    border: 1px solid #71799e;
 
-    border-radius: 5px;
+    border-radius: 4px;
 
     box-shadow:
-        0 2px 6px rgba(11,26,153,.18);
+        0 2px 5px rgba(11,26,153,.15);
 }
 
-.phone::before {
+.joma-device::before {
     content: "";
 
     position: absolute;
 
     top: 3px;
+
     left: 50%;
+
+    transform: translateX(-50%);
 
     width: 7px;
     height: 2px;
 
-    transform: translateX(-50%);
-
     background: #ffffff;
 
-    border-radius: 3px;
-
-    opacity: .8;
+    border-radius: 4px;
 }
 
-.phone::after {
+.joma-device::after {
     content: "J";
 
     position: absolute;
@@ -631,13 +626,13 @@ body {
     left: 0;
     right: 0;
 
-    bottom: 8px;
+    bottom: 7px;
 
     text-align: center;
 
     color: #ffffff;
 
-    font-size: 8px;
+    font-size: 7px;
 
     font-weight: 900;
 }
@@ -647,7 +642,7 @@ body {
    DEVICE DETAILS
 ===================================================== */
 
-.device-details {
+.ledger-specs-column {
     flex: 1;
 
     min-width: 0;
@@ -656,9 +651,9 @@ body {
 
     grid-template-columns: 1fr 1fr;
 
-    column-gap: 8px;
+    column-gap: 7px;
 
-    row-gap: 3px;
+    row-gap: 2px;
 }
 
 .product-name {
@@ -673,17 +668,17 @@ body {
     margin-bottom: 1px;
 }
 
-.spec {
+.spec-line-item {
     color: var(--text-muted);
 
     font-size: 8px;
 
-    line-height: 1.4;
+    line-height: 1.3;
 
     white-space: nowrap;
 }
 
-.spec-value {
+.spec-highlight-value {
     color: var(--primary-blue);
 
     margin-left: 2px;
@@ -691,7 +686,7 @@ body {
     font-weight: 700;
 }
 
-.device-number {
+.system-log-timestamp {
     grid-column: 1 / -1;
 
     color: #9299bd;
@@ -706,17 +701,18 @@ body {
    COUNTDOWN
 ===================================================== */
 
-.income-status {
+.income-status-row {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
-    margin-top: 9px;
+    margin-top: 7px;
 
-    padding-top: 7px;
+    padding-top: 6px;
 
-    border-top: 1px solid #f0f2fa;
+    border-top: 1px solid #f1f3fa;
 }
 
 .countdown-label {
@@ -730,7 +726,7 @@ body {
 }
 
 .countdown {
-    color: var(--primary-blue);
+    color: var(--text-main);
 
     font-size: 9px;
 
@@ -740,7 +736,7 @@ body {
 }
 
 .countdown.ready {
-    color: var(--green);
+    color: var(--success);
 }
 
 
@@ -749,20 +745,21 @@ body {
 ===================================================== */
 
 .claim-form {
-    margin-top: 7px;
+    margin-top: 5px;
 }
 
 .claim-button {
     width: 100%;
 
-    padding: 8px;
+    padding: 7px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    gap: 5px;
+    gap: 4px;
 
     color: #ffffff;
 
@@ -770,11 +767,11 @@ body {
 
     border: 1px solid var(--primary-blue);
 
-    border-radius: 6px;
+    border-radius: 5px;
 
-    font-size: 9px;
+    font-size: 8px;
 
-    font-weight: 700;
+    font-weight: 800;
 
     cursor: pointer;
 
@@ -790,7 +787,7 @@ body {
 
     background: #eef0f8;
 
-    border-color: #e0e3ef;
+    border-color: #e0e4f5;
 
     cursor: not-allowed;
 }
@@ -801,7 +798,7 @@ body {
 ===================================================== */
 
 .empty-card {
-    padding: 28px 12px;
+    padding: 25px 12px;
 
     text-align: center;
 
@@ -809,26 +806,27 @@ body {
 
     border: 1px solid var(--border-color);
 
-    border-radius: 9px;
+    border-radius: 8px;
 
     box-shadow:
-        0 2px 8px rgba(30,38,109,.04);
+        0 2px 8px rgba(0,0,0,.03);
 }
 
 .empty-icon {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
 
-    margin: 0 auto 9px;
+    margin: 0 auto 8px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     color: var(--primary-blue);
 
-    background: var(--primary-blue-light);
+    background: #eef1ff;
 
     border-radius: 50%;
 
@@ -840,11 +838,11 @@ body {
 
     font-size: 12px;
 
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .empty-text {
-    margin-top: 4px;
+    margin-top: 3px;
 
     color: var(--text-muted);
 
@@ -853,19 +851,19 @@ body {
 
 
 /* =====================================================
-   INFORMATION
+   INFORMATION CARD
 ===================================================== */
 
 .info-card {
-    margin-top: 10px;
+    margin-top: 9px;
 
-    padding: 11px;
+    padding: 9px;
 
     background: #ffffff;
 
     border: 1px solid var(--border-color);
 
-    border-radius: 8px;
+    border-radius: 7px;
 }
 
 .info-title {
@@ -873,15 +871,15 @@ body {
 
     align-items: center;
 
-    gap: 6px;
+    gap: 5px;
 
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 
     color: var(--text-main);
 
     font-size: 9px;
 
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .info-title i {
@@ -893,7 +891,7 @@ body {
 
     font-size: 8px;
 
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 
@@ -904,12 +902,14 @@ body {
 .bottom-nav {
     position: fixed;
 
-    left: 50%;
     bottom: 0;
+
+    left: 50%;
 
     transform: translateX(-50%);
 
     width: 100%;
+
     max-width: 420px;
 
     height: 65px;
@@ -918,53 +918,50 @@ body {
 
     border-top: 1px solid var(--border-color);
 
-    display: grid;
+    display: flex;
 
-    grid-template-columns: repeat(5, 1fr);
+    justify-content: space-around;
 
     align-items: center;
 
     z-index: 100;
 
     box-shadow:
-        0 -2px 10px rgba(30,38,109,.05);
+        0 -2px 8px rgba(0,0,0,.03);
 }
 
 .nav-item {
     position: relative;
-
-    height: 100%;
 
     display: flex;
 
     flex-direction: column;
 
     align-items: center;
-    justify-content: center;
 
-    gap: 4px;
+    justify-content: center;
 
     color: #8e94bb;
 
+    font-size: .78rem;
+
     text-decoration: none;
 
-    font-size: 8px;
+    gap: 4px;
 
-    transition: .2s ease;
-}
+    flex: 1;
 
-.nav-item:active {
-    transform: scale(.93);
-}
-
-.nav-icon {
-    font-size: 16px;
+    height: 100%;
 }
 
 .nav-item.active {
     color: var(--primary-blue);
 
-    font-weight: 700;
+    font-weight: 600;
+}
+
+.nav-icon {
+    font-size: 16px;
 }
 
 .nav-item.active::after {
@@ -974,12 +971,14 @@ body {
 
     bottom: 0;
 
-    width: 34px;
+    width: 40px;
+
     height: 3px;
 
     background: var(--primary-blue);
 
-    border-radius: 3px 3px 0 0;
+    border-radius:
+        3px 3px 0 0;
 }
 
 
@@ -995,9 +994,10 @@ body {
     display: none;
 
     align-items: center;
+
     justify-content: center;
 
-    background: rgba(11,26,153,.18);
+    background: rgba(11,26,153,.15);
 
     backdrop-filter: blur(3px);
 
@@ -1009,9 +1009,9 @@ body {
 }
 
 .loading-box {
-    width: 95px;
+    width: 90px;
 
-    padding: 15px;
+    padding: 14px;
 
     text-align: center;
 
@@ -1019,15 +1019,15 @@ body {
 
     border: 1px solid var(--border-color);
 
-    border-radius: 10px;
+    border-radius: 9px;
 
     box-shadow:
-        0 8px 25px rgba(30,38,109,.15);
+        0 5px 20px rgba(0,0,0,.12);
 }
 
 .loading-spinner {
-    width: 24px;
-    height: 24px;
+    width: 23px;
+    height: 23px;
 
     margin: 0 auto 7px;
 
@@ -1056,7 +1056,7 @@ body {
 
 
 /* =====================================================
-   SMALL SCREENS
+   SMALL SCREEN
 ===================================================== */
 
 @media (max-width: 360px) {
@@ -1065,31 +1065,24 @@ body {
         padding: 10px;
     }
 
-    .product-banner {
-        height: 155px;
+    .product-graphic-large {
+        height: 160px;
     }
 
-    .banner-device {
-        right: 28px;
-        transform: rotate(8deg) scale(.9);
+    .graphic-phone {
+        transform:
+            rotate(7deg)
+            scale(.9);
     }
 
-    .device-thumbnail {
-        width: 42px;
-        height: 51px;
+    .hardware-thumbnail-wrapper {
+        width: 36px;
+        height: 44px;
     }
 
-    .phone {
-        width: 21px;
-        height: 37px;
-    }
-
-    .spec {
-        font-size: 7px;
-    }
-
-    .bottom-nav {
-        height: 62px;
+    .joma-device {
+        width: 19px;
+        height: 33px;
     }
 
 }
@@ -1104,20 +1097,20 @@ body {
 </a>
 
 
-<div class="header-brand">
+<div class="header-title">
 
     <div class="header-logo">
         J
     </div>
 
-    <span class="header-brand-name">
+    <span>
         JOMA
     </span>
 
 </div>
 
 </header><!-- =====================================================
-     MAIN CONTENT
+     CONTENT
 ===================================================== --><main class="content"><!-- PAGE TITLE --><section class="page-title"><h2>
     My Device
 </h2>
@@ -1127,43 +1120,49 @@ body {
 </p>
 
 </section><!-- =====================================================
-     JOMA PRODUCT BANNER
-===================================================== --><section class="product-banner"><div class="banner-glow"></div>
+     JOMA PRODUCT GRAPHIC
+===================================================== --><section class="product-graphic-large"><div class="graphic-glow"></div>
 
 
-<div class="banner-device">
+<div class="graphic-phone">
 
-    <div class="camera-box"></div>
+    <div class="graphic-screen"></div>
+
+    <div class="graphic-camera"></div>
+
+    <div class="graphic-brand">
+        JOMA
+    </div>
 
 </div>
 
 
-<div class="banner-content">
+<div class="graphic-content">
 
-    <div class="banner-brand">
+    <div class="graphic-title">
         JOMA
     </div>
 
-    <div class="banner-subtitle">
+    <div class="graphic-subtitle">
         Smart device technology
     </div>
 
 </div>
 
 
-<span class="banner-status">
+<span class="graphic-status">
     ACTIVE
 </span>
 
 </section><!-- =====================================================
      METRICS
-===================================================== --><section class="metrics-row"><div class="metric-card">
+===================================================== --><section class="dashboard-metrics-row"><div class="metric-panel">
 
     <span class="metric-label">
         My Device
     </span>
 
-    <span class="metric-value">
+    <span class="metric-counter-value">
 
         {{ user_plans|length if user_plans else 0 }}
 
@@ -1172,14 +1171,25 @@ body {
 </div>
 
 
-<div class="metric-card">
+<div class="metric-panel">
 
     <span class="metric-label">
         My Income
     </span>
 
-    <span class="metric-value">
-        GHS 0
+    <span class="metric-counter-value">
+
+        GHS
+        {{
+            "%.2f"|format(
+                user_plans
+                |map(attribute='daily_income')
+                |map('float')
+                |sum
+                if user_plans else 0
+            )
+        }}
+
     </span>
 
 </div>
@@ -1210,21 +1220,22 @@ body {
 {% for user_plan in user_plans %}
 
 
-    <section class="device-card">
+    <section class="portfolio-ledger-card">
 
 
-        <!-- TOP -->
+        <!-- CARD HEADER -->
 
-        <div class="device-top">
+        <div class="ledger-top-flex-row">
 
-            <span class="plan-name">
+
+            <span class="vip-tier-indicator">
 
                 {{ user_plan.plan_name }}
 
             </span>
 
 
-            <span class="investment-value">
+            <span class="asset-valuation-tag">
 
                 GHS
                 {{
@@ -1235,26 +1246,27 @@ body {
 
             </span>
 
+
         </div>
 
 
         <!-- DEVICE BODY -->
 
-        <div class="device-body">
+        <div class="ledger-inner-body">
 
 
-            <!-- PHONE -->
+            <!-- DEVICE IMAGE -->
 
-            <div class="device-thumbnail">
+            <div class="hardware-thumbnail-wrapper">
 
-                <div class="phone"></div>
+                <div class="joma-device"></div>
 
             </div>
 
 
-            <!-- DETAILS -->
+            <!-- DEVICE INFORMATION -->
 
-            <div class="device-details">
+            <div class="ledger-specs-column">
 
 
                 <div class="product-name">
@@ -1264,11 +1276,11 @@ body {
                 </div>
 
 
-                <p class="spec">
+                <p class="spec-line-item">
 
                     Daily:
 
-                    <span class="spec-value">
+                    <span class="spec-highlight-value">
 
                         GHS
                         {{
@@ -1282,11 +1294,11 @@ body {
                 </p>
 
 
-                <p class="spec">
+                <p class="spec-line-item">
 
                     Total:
 
-                    <span class="spec-value">
+                    <span class="spec-highlight-value">
 
                         GHS
                         {{
@@ -1302,11 +1314,11 @@ body {
                 </p>
 
 
-                <p class="spec">
+                <p class="spec-line-item">
 
                     Valid:
 
-                    <span class="spec-value">
+                    <span class="spec-highlight-value">
 
                         {{ user_plan.duration }}d
 
@@ -1315,7 +1327,7 @@ body {
                 </p>
 
 
-                <p class="device-number">
+                <p class="system-log-timestamp">
 
                     Device #{{ loop.index }}
 
@@ -1324,6 +1336,7 @@ body {
 
             </div>
 
+
         </div>
 
 
@@ -1331,13 +1344,11 @@ body {
              COUNTDOWN
         ================================================= -->
 
-        <div class="income-status">
+        <div class="income-status-row">
 
 
             <span class="countdown-label">
-
                 Next income
-
             </span>
 
 
@@ -1363,7 +1374,7 @@ body {
 
 
         <!-- =================================================
-             CLAIM
+             CLAIM FORM
         ================================================= -->
 
         <form
@@ -1371,6 +1382,7 @@ body {
             action="{{ url_for('my_plan') }}"
             class="claim-form"
         >
+
 
             <input
                 type="hidden"
@@ -1404,6 +1416,7 @@ body {
 
             </button>
 
+
         </form>
 
 
@@ -1411,7 +1424,7 @@ body {
 
 
     <!-- =================================================
-         COUNTDOWN SCRIPT
+         COUNTDOWN
     ================================================= -->
 
     <script>
@@ -1458,6 +1471,7 @@ body {
 
 
         function formatTime(milliseconds) {
+
 
             if (milliseconds <= 0) {
 

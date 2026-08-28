@@ -7,11 +7,6 @@
 
 <title>Income - JOMA</title>
 
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
->
-
 <style>
 
 :root {
@@ -19,27 +14,22 @@
     --card: #0d0d0d;
     --border: #1b1b1b;
     --green: #3cdc3c;
-    --green-dark: #1e9f1e;
     --white: #ffffff;
     --muted: #777777;
     --dark: #444444;
-
-    --font:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: var(--font);
-    -webkit-font-smoothing: antialiased;
-    -webkit-tap-highlight-color: transparent;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
 }
 
 html,
@@ -59,13 +49,13 @@ body {
    APP
 ===================================================== */
 
-.app-viewport {
-    position: relative;
+.app-container {
     width: 100%;
-    max-width: 412px;
-    height: 100vh;
-    overflow: hidden;
+    max-width: 420px;
+    min-height: 100vh;
+    position: relative;
     background: #000000;
+    padding-bottom: 70px;
 }
 
 /* =====================================================
@@ -73,9 +63,8 @@ body {
 ===================================================== */
 
 .header {
+    height: 72px;
     position: relative;
-    width: 100%;
-    height: 74px;
 
     display: flex;
     align-items: center;
@@ -84,16 +73,11 @@ body {
     background:
         linear-gradient(
             180deg,
-            #080808 0%,
-            #000000 100%
+            #090909,
+            #000000
         );
 
-    border-bottom: 1px solid #1f1f1f;
-
-    z-index: 20;
-
-    box-shadow:
-        0 4px 18px rgba(0,0,0,.45);
+    border-bottom: 1px solid #202020;
 }
 
 .header::after {
@@ -101,34 +85,24 @@ body {
 
     position: absolute;
 
-    left: 18%;
-    right: 18%;
-    bottom: -1px;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
 
     height: 1px;
 
     background: var(--green);
 
-    opacity: .35;
-
-    box-shadow:
-        0 0 8px rgba(60,220,60,.35);
+    opacity: .4;
 }
 
-/* =====================================================
-   BACK BUTTON
-===================================================== */
-
-.back-btn {
+.back-button {
     position: absolute;
 
-    left: 16px;
-    top: 50%;
+    left: 15px;
 
-    transform: translateY(-50%);
-
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
 
     display: flex;
     align-items: center;
@@ -138,41 +112,16 @@ body {
 
     text-decoration: none;
 
-    background:
-        linear-gradient(
-            145deg,
-            #151515,
-            #090909
-        );
+    background: #111111;
 
     border: 1px solid #292929;
 
-    border-radius: 12px;
-
-    box-shadow:
-        0 4px 12px rgba(0,0,0,.45);
-
-    transition: .2s ease;
+    border-radius: 10px;
 }
-
-.back-btn i {
-    font-size: 14px;
-}
-
-.back-btn:active {
-    transform:
-        translateY(-50%)
-        scale(.93);
-}
-
-/* =====================================================
-   HEADER CENTER
-===================================================== */
 
 .header-center {
     display: flex;
     align-items: center;
-    justify-content: center;
 
     gap: 9px;
 }
@@ -189,19 +138,15 @@ body {
 
     background: var(--green);
 
-    border-radius: 10px;
+    border-radius: 9px;
 
-    font-size: 14px;
-
-    box-shadow:
-        0 0 8px rgba(60,220,60,.35);
+    font-size: 13px;
+    font-weight: 900;
 }
 
-.header-content {
+.header-title {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
 }
 
 .header-brand {
@@ -211,84 +156,24 @@ body {
     font-weight: 900;
 
     letter-spacing: 1px;
-
-    line-height: 1;
 }
 
 .header-page {
-    margin-top: 4px;
+    margin-top: 3px;
 
     color: #666666;
 
     font-size: 8px;
-    font-weight: 500;
-
-    letter-spacing: .3px;
 }
 
 /* =====================================================
-   STATUS
+   MAIN
 ===================================================== */
 
-.header-status {
-    position: absolute;
-
-    right: 17px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    display: flex;
-    align-items: center;
-
-    gap: 5px;
-
-    padding: 6px 8px;
-
-    color: var(--green);
-
-    background: #071207;
-
-    border: 1px solid #173817;
-
-    border-radius: 20px;
-
-    font-size: 7px;
-    font-weight: 800;
-}
-
-.header-status-dot {
-    width: 5px;
-    height: 5px;
-
-    background: var(--green);
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 0 6px rgba(60,220,60,.8);
-}
-
-/* =====================================================
-   MAIN SCROLL
-===================================================== */
-
-.main-scroll-container {
-    width: 100%;
-
-    height: calc(100% - 74px);
-
-    overflow-y: auto;
-
+.content {
     padding: 12px;
 
-    padding-bottom: 88px;
-
-    scrollbar-width: none;
-}
-
-.main-scroll-container::-webkit-scrollbar {
-    display: none;
+    padding-bottom: 85px;
 }
 
 /* =====================================================
@@ -303,7 +188,6 @@ body {
     color: #ffffff;
 
     font-size: 18px;
-
     font-weight: 800;
 }
 
@@ -320,56 +204,41 @@ body {
 ===================================================== */
 
 .tab-container {
-    width: 100%;
+    display: flex;
 
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 5px;
-
-    margin-bottom: 12px;
+    gap: 4px;
 
     padding: 4px;
 
-    background: #0b0b0b;
+    margin-bottom: 12px;
 
-    border: 1px solid #1b1b1b;
+    background: #0c0c0c;
+
+    border: 1px solid #1c1c1c;
 
     border-radius: 8px;
 }
 
 .tab {
+    flex: 1;
+
     padding: 9px 5px;
 
     text-align: center;
 
     color: #666666;
 
-    background: transparent;
-
     border-radius: 5px;
 
     font-size: 8px;
 
     font-weight: 700;
-
-    cursor: pointer;
-
-    transition: .2s ease;
 }
 
 .tab.active {
     color: #000000;
 
     background: var(--green);
-
-    box-shadow:
-        0 0 8px rgba(60,220,60,.15);
-}
-
-.tab:active {
-    transform: scale(.98);
 }
 
 /* =====================================================
@@ -377,8 +246,6 @@ body {
 ===================================================== */
 
 .income-card {
-    width: 100%;
-
     margin-bottom: 10px;
 
     padding: 10px;
@@ -388,46 +255,31 @@ body {
     border: 1px solid var(--border);
 
     border-radius: 9px;
-
-    box-shadow:
-        0 5px 18px rgba(0,0,0,.25);
 }
 
 /* =====================================================
-   CARD TOP
+   CARD HEADER
 ===================================================== */
 
-.card-top {
+.card-header {
     display: flex;
 
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 9px;
+    padding-bottom: 8px;
 
-    padding-bottom: 7px;
+    margin-bottom: 8px;
 
     border-bottom: 1px solid #181818;
 }
 
 .card-title {
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
     color: #ffffff;
 
     font-size: 10px;
 
     font-weight: 800;
-}
-
-.card-title i {
-    color: var(--green);
-
-    font-size: 10px;
 }
 
 .card-number {
@@ -437,27 +289,25 @@ body {
 }
 
 /* =====================================================
-   CARD MAIN SPLIT
+   CARD BODY
 ===================================================== */
 
-.card-main-split {
+.card-body {
     display: flex;
 
     gap: 10px;
 }
 
 /* =====================================================
-   INFO ROWS
+   INFORMATION
 ===================================================== */
 
 .info-rows {
-    flex: 1.25;
+    flex: 1;
 
     display: flex;
 
     flex-direction: column;
-
-    justify-content: space-between;
 }
 
 .info-row {
@@ -466,7 +316,7 @@ body {
     align-items: center;
     justify-content: space-between;
 
-    padding: 7px 5px;
+    padding: 8px 4px;
 
     border-bottom: 1px solid #151515;
 }
@@ -494,63 +344,52 @@ body {
 ===================================================== */
 
 .product-graphic {
-    flex: .85;
+    width: 105px;
+    height: 105px;
 
-    position: relative;
-
-    min-width: 105px;
-
-    aspect-ratio: 1 / 1;
-
-    overflow: hidden;
+    flex-shrink: 0;
 
     display: flex;
 
     flex-direction: column;
 
     align-items: center;
-
     justify-content: space-between;
+
+    overflow: hidden;
 
     background:
         linear-gradient(
             145deg,
-            #151515,
+            #191919,
             #050505
         );
 
-    border: 1px solid #252525;
+    border: 1px solid #292929;
 
     border-radius: 8px;
-
-    box-shadow:
-        inset 0 0 15px rgba(255,255,255,.025);
 }
 
-/* =====================================================
-   STATUS RIBBONS
-===================================================== */
-
-.status-ribbon-stop {
+.status-stop {
     width: 100%;
 
-    padding: 4px 0;
+    padding: 4px;
 
     text-align: center;
 
     color: #ffffff;
 
-    background: #272727;
+    background: #252525;
 
     font-size: 7px;
 
     font-weight: 700;
 }
 
-.status-ribbon-free {
+.status-free {
     width: 100%;
 
-    padding: 4px 0;
+    padding: 4px;
 
     text-align: center;
 
@@ -563,11 +402,7 @@ body {
     font-weight: 800;
 }
 
-/* =====================================================
-   BRAND
-===================================================== */
-
-.brand-logo-placeholder {
+.brand {
     color: #ffffff;
 
     font-size: 13px;
@@ -575,19 +410,12 @@ body {
     font-weight: 900;
 
     letter-spacing: 1px;
-
-    text-shadow:
-        0 0 8px rgba(255,255,255,.15);
 }
 
-/* =====================================================
-   VIP
-===================================================== */
-
-.vip-badge {
+.vip {
     width: 100%;
 
-    padding: 6px 0;
+    padding: 6px;
 
     text-align: center;
 
@@ -605,18 +433,18 @@ body {
 ===================================================== */
 
 .countdown-bar {
-    margin-top: 9px;
-
-    padding: 8px 9px;
-
     display: flex;
 
     align-items: center;
     justify-content: space-between;
 
+    margin-top: 9px;
+
+    padding: 8px 9px;
+
     background: #101010;
 
-    border: 1px solid #181818;
+    border: 1px solid #191919;
 
     border-radius: 6px;
 }
@@ -627,11 +455,9 @@ body {
     font-size: 7px;
 
     text-transform: uppercase;
-
-    letter-spacing: .3px;
 }
 
-.countdown-timer {
+.countdown {
     color: var(--green);
 
     font-size: 9px;
@@ -641,13 +467,8 @@ body {
     font-variant-numeric: tabular-nums;
 }
 
-.countdown-timer.ready {
-    text-shadow:
-        0 0 7px rgba(60,220,60,.5);
-}
-
 /* =====================================================
-   CLAIM BUTTON
+   CLAIM
 ===================================================== */
 
 .claim-form {
@@ -659,32 +480,17 @@ body {
 
     padding: 7px;
 
-    display: flex;
+    border: 1px solid var(--green);
 
-    align-items: center;
-    justify-content: center;
-
-    gap: 5px;
+    border-radius: 5px;
 
     color: #000000;
 
     background: var(--green);
 
-    border: 1px solid var(--green);
-
-    border-radius: 5px;
-
     font-size: 8px;
 
     font-weight: 800;
-
-    cursor: pointer;
-
-    transition: .2s ease;
-}
-
-.claim-button:active {
-    transform: scale(.98);
 }
 
 .claim-button.disabled {
@@ -693,8 +499,6 @@ body {
     background: #181818;
 
     border-color: #292929;
-
-    cursor: not-allowed;
 }
 
 /* =====================================================
@@ -714,31 +518,17 @@ body {
 }
 
 .empty-icon {
-    width: 42px;
-    height: 42px;
-
-    margin: 0 auto 9px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
+    margin-bottom: 9px;
 
     color: #555555;
 
-    background: #151515;
-
-    border-radius: 50%;
-
-    font-size: 15px;
+    font-size: 25px;
 }
 
 .empty-title {
     color: #777777;
 
     font-size: 12px;
-
-    font-weight: 700;
 }
 
 .empty-text {
@@ -750,66 +540,60 @@ body {
 }
 
 /* =====================================================
-   INFORMATION
+   INFO
 ===================================================== */
 
 .info-card {
     margin-top: 10px;
 
-    padding: 9px;
+    padding: 10px;
 
     background: #090909;
 
-    border: 1px solid #141414;
+    border: 1px solid #151515;
 
     border-radius: 7px;
 }
 
 .info-title {
-    display: flex;
-
-    align-items: center;
-
-    gap: 5px;
-
-    margin-bottom: 4px;
-
     color: #777777;
 
     font-size: 9px;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
-.info-title i {
-    color: var(--green);
-}
+.info-text {
+    margin-top: 5px;
 
-.info-card p {
     color: #444444;
 
     font-size: 8px;
 
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 /* =====================================================
-   BOTTOM NAVIGATION
+   BOTTOM NAV
 ===================================================== */
 
-.global-bottom-navigation {
-    position: absolute;
+.bottom-nav {
+    position: fixed;
 
-    left: 0;
     bottom: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
 
     width: 100%;
+    max-width: 420px;
+
+    height: 65px;
 
     display: grid;
 
-    grid-template-columns: repeat(5, 1fr);
-
-    padding: 7px 0 4px;
+    grid-template-columns:
+        repeat(5, 1fr);
 
     background:
         linear-gradient(
@@ -818,14 +602,12 @@ body {
             #151517
         );
 
-    border-top: 1px solid #1c1c1f;
+    border-top: 1px solid #202020;
 
-    z-index: 50;
+    z-index: 100;
 }
 
-.nav-tab-node {
-    min-height: 35px;
-
+.nav-item {
     display: flex;
 
     flex-direction: column;
@@ -833,179 +615,21 @@ body {
     align-items: center;
     justify-content: center;
 
-    gap: 2px;
+    gap: 4px;
 
     color: #555555;
 
     text-decoration: none;
 
-    transition: .2s ease;
-}
-
-.nav-tab-node:active {
-    transform: scale(.92);
-}
-
-.nav-icon-glyph {
-    font-size: 15px;
-
-    line-height: 1;
-}
-
-.nav-text-label {
-    font-size: 7px;
-
-    font-weight: 500;
-}
-
-.nav-tab-node.active-focus-state {
-    color: var(--green);
-
-    text-shadow:
-        0 0 7px rgba(60,220,60,.35);
-}
-
-/* =====================================================
-   BADGE
-===================================================== */
-
-.nav-badge {
-    position: absolute;
-
-    top: 0;
-
-    margin-left: 18px;
-
-    min-width: 14px;
-    height: 14px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: #ffffff;
-
-    background: #e53935;
-
-    border-radius: 50%;
-
-    font-size: 7px;
-
-    font-weight: 800;
-}
-
-/* =====================================================
-   LOADING
-===================================================== */
-
-.loading-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(0,0,0,.78);
-
-    backdrop-filter: blur(3px);
-
-    z-index: 9999;
-}
-
-.loading-overlay.active {
-    display: flex;
-}
-
-.loading-box {
-    width: 90px;
-
-    padding: 14px;
-
-    text-align: center;
-
-    background: #101010;
-
-    border: 1px solid #222222;
-
-    border-radius: 9px;
-}
-
-.loading-spinner {
-    width: 23px;
-    height: 23px;
-
-    margin: 0 auto 7px;
-
-    border: 3px solid #333333;
-
-    border-top-color: var(--green);
-
-    border-radius: 50%;
-
-    animation: spin .8s linear infinite;
-}
-
-.loading-text {
-    color: #888888;
-
     font-size: 8px;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+.nav-item.active {
+    color: var(--green);
 }
 
-/* =====================================================
-   SMALL SCREEN
-===================================================== */
-
-@media (max-width: 360px) {
-
-    .main-scroll-container {
-        padding: 10px;
-
-        padding-bottom: 78px;
-    }
-
-    .header {
-        height: 70px;
-    }
-
-    .card-main-split {
-        gap: 7px;
-    }
-
-    .product-graphic {
-        min-width: 95px;
-    }
-
-    .info-row {
-        padding: 6px 4px;
-    }
-
-    .label {
-        font-size: 7px;
-    }
-
-    .value {
-        font-size: 8px;
-    }
-
-    .header-status {
-        right: 10px;
-
-        padding: 5px 6px;
-    }
-
-    .header-page {
-        font-size: 7px;
-    }
+.nav-icon {
+    font-size: 16px;
 }
 
 </style>
@@ -1014,7 +638,7 @@ body {
 
 <body>
 
-<div class="app-viewport">
+<div class="app-container">
 
 <!-- =====================================================
      HEADER
@@ -1024,20 +648,19 @@ body {
 
     <a
         href="{{ url_for('dashboard') }}"
-        class="back-btn"
+        class="back-button"
     >
-        <i class="fa-solid fa-chevron-left"></i>
+        ‹
     </a>
 
 
     <div class="header-center">
 
         <div class="header-logo">
-            <i class="fa-solid fa-chart-line"></i>
+            J
         </div>
 
-
-        <div class="header-content">
+        <div class="header-title">
 
             <div class="header-brand">
                 JOMA
@@ -1051,26 +674,15 @@ body {
 
     </div>
 
-
-    <div class="header-status">
-
-        <span class="header-status-dot"></span>
-
-        ACTIVE
-
-    </div>
-
 </header>
 
 
 <!-- =====================================================
-     MAIN
+     MAIN CONTENT
 ===================================================== -->
 
-<main class="main-scroll-container">
+<main class="content">
 
-
-<!-- PAGE TITLE -->
 
 <section class="page-title">
 
@@ -1079,7 +691,7 @@ body {
     </h2>
 
     <p>
-        View your active income plans and earnings
+        Your active income plans
     </p>
 
 </section>
@@ -1092,12 +704,10 @@ body {
 <div class="tab-container">
 
     <div class="tab active">
-        <i class="fa-solid fa-calendar-day"></i>
         Day income
     </div>
 
     <div class="tab">
-        <i class="fa-solid fa-gift"></i>
         Reward Products
     </div>
 
@@ -1105,7 +715,7 @@ body {
 
 
 <!-- =====================================================
-     INCOME LIST
+     PLANS
 ===================================================== -->
 
 {% if user_plans %}
@@ -1117,36 +727,25 @@ body {
 
         <!-- CARD HEADER -->
 
-        <div class="card-top">
+        <div class="card-header">
 
-            <div class="card-title">
-
-                <i class="fa-solid fa-chart-column"></i>
-
-                <span>
-                    Income Details
-                </span>
-
-            </div>
-
+            <span class="card-title">
+                Income Details
+            </span>
 
             <span class="card-number">
-
-                Plan #{{ loop.index }}
-
+                #{{ loop.index }}
             </span>
 
         </div>
 
 
-        <!-- =================================================
-             MAIN INFORMATION
-        ================================================== -->
+        <!-- CARD BODY -->
 
-        <div class="card-main-split">
+        <div class="card-body">
 
 
-            <!-- LEFT INFORMATION -->
+            <!-- INFORMATION -->
 
             <div class="info-rows">
 
@@ -1217,13 +816,9 @@ body {
                         GHS
                         {{
                             "%.2f"|format(
-                                (
-                                    user_plan.daily_income|float
-                                )
+                                user_plan.daily_income|float
                                 *
-                                (
-                                    user_plan.duration|int
-                                )
+                                user_plan.duration|int
                             )
                         }}
 
@@ -1235,14 +830,11 @@ body {
             </div>
 
 
-            <!-- =================================================
-                 PRODUCT GRAPHIC
-            ================================================== -->
+            <!-- PRODUCT -->
 
             <div class="product-graphic">
 
-
-                <div class="status-ribbon-stop">
+                <div class="status-stop">
 
                     {% if user_plan.can_claim %}
                         READY
@@ -1253,26 +845,21 @@ body {
                 </div>
 
 
-                <div class="status-ribbon-free">
-
+                <div class="status-free">
                     ACTIVE
-
                 </div>
 
 
-                <div class="brand-logo-placeholder">
-
+                <div class="brand">
                     JOMA
-
                 </div>
 
 
-                <div class="vip-badge">
+                <div class="vip">
 
                     {{ user_plan.plan_name }}
 
                 </div>
-
 
             </div>
 
@@ -1280,22 +867,18 @@ body {
         </div>
 
 
-        <!-- =================================================
-             COUNTDOWN
-        ================================================== -->
+        <!-- COUNTDOWN -->
 
         <div class="countdown-bar">
 
             <span class="countdown-label">
-
                 Settlement countdown
-
             </span>
 
 
             <span
+                class="countdown"
                 id="countdown-{{ user_plan.id }}"
-                class="countdown-timer {% if user_plan.can_claim %}ready{% endif %}"
             >
 
                 {% if user_plan.can_claim %}
@@ -1313,9 +896,7 @@ body {
         </div>
 
 
-        <!-- =================================================
-             CLAIM BUTTON
-        ================================================== -->
+        <!-- CLAIM -->
 
         <form
             method="POST"
@@ -1332,20 +913,17 @@ body {
 
             <button
                 type="submit"
-                id="claimButton-{{ user_plan.id }}"
                 class="claim-button {% if not user_plan.can_claim %}disabled{% endif %}"
-                {% if not user_plan.can_claim %}disabled{% endif %}
+                {% if not user_plan.can_claim %}
+                    disabled
+                {% endif %}
             >
 
                 {% if user_plan.can_claim %}
 
-                    <i class="fa-solid fa-coins"></i>
-
                     Claim Income
 
                 {% else %}
-
-                    <i class="fa-solid fa-clock"></i>
 
                     Income Not Ready
 
@@ -1360,61 +938,92 @@ body {
 
 
     <!-- =================================================
-         COUNTDOWN SCRIPT
+         COUNTDOWN
     ================================================== -->
 
     <script>
 
     (function () {
 
-        const countdownEl =
+        const countdown =
             document.getElementById(
                 "countdown-{{ user_plan.id }}"
             );
 
 
-        const claimButton =
-            document.getElementById(
-                "claimButton-{{ user_plan.id }}"
-            );
-
-
-        const canClaim =
-            {{ 'true' if user_plan.can_claim else 'false' }};
-
-
         {% if user_plan.next_income_at %}
 
-        const nextIncome =
+        const target =
             new Date(
                 "{{ user_plan.next_income_at.isoformat() }}"
             ).getTime();
 
         {% else %}
 
-        const nextIncome = null;
+        const target = null;
 
         {% endif %}
 
 
-        function pad(value) {
+        const canClaim =
+            {{ 'true' if user_plan.can_claim else 'false' }};
 
-            return String(value)
+
+        function pad(number) {
+
+            return String(number)
                 .padStart(2, "0");
 
         }
 
 
-        function formatTime(milliseconds) {
+        function update() {
 
-            if (milliseconds <= 0) {
-                return "00:00:00";
+            if (!countdown) {
+                return;
+            }
+
+
+            if (canClaim) {
+
+                countdown.textContent =
+                    "00:00:00";
+
+                return;
+
+            }
+
+
+            if (
+                target === null ||
+                isNaN(target)
+            ) {
+
+                countdown.textContent =
+                    "--:--:--";
+
+                return;
+
+            }
+
+
+            const remaining =
+                target - Date.now();
+
+
+            if (remaining <= 0) {
+
+                countdown.textContent =
+                    "00:00:00";
+
+                return;
+
             }
 
 
             const totalSeconds =
                 Math.floor(
-                    milliseconds / 1000
+                    remaining / 1000
                 );
 
 
@@ -1434,135 +1043,20 @@ body {
                 totalSeconds % 60;
 
 
-            return (
+            countdown.textContent =
                 pad(hours) +
                 ":" +
                 pad(minutes) +
                 ":" +
-                pad(seconds)
-            );
+                pad(seconds);
 
         }
 
 
-        function setReady() {
-
-            if (!countdownEl) {
-                return;
-            }
-
-
-            countdownEl.textContent =
-                "00:00:00";
-
-
-            countdownEl.classList.add(
-                "ready"
-            );
-
-
-            if (claimButton) {
-
-                claimButton.disabled = false;
-
-
-                claimButton.classList.remove(
-                    "disabled"
-                );
-
-
-                claimButton.innerHTML =
-                    '<i class="fa-solid fa-coins"></i> Claim Income';
-
-            }
-
-        }
-
-
-        function setWaiting(milliseconds) {
-
-            if (!countdownEl) {
-                return;
-            }
-
-
-            countdownEl.textContent =
-                formatTime(
-                    milliseconds
-                );
-
-
-            countdownEl.classList.remove(
-                "ready"
-            );
-
-
-            if (claimButton) {
-
-                claimButton.disabled = true;
-
-
-                claimButton.classList.add(
-                    "disabled"
-                );
-
-
-                claimButton.innerHTML =
-                    '<i class="fa-solid fa-clock"></i> Income Not Ready';
-
-            }
-
-        }
-
-
-        function updateCountdown() {
-
-            if (canClaim) {
-
-                setReady();
-
-                return;
-
-            }
-
-
-            if (
-                nextIncome === null ||
-                isNaN(nextIncome)
-            ) {
-
-                countdownEl.textContent =
-                    "--:--:--";
-
-                return;
-
-            }
-
-
-            const remaining =
-                nextIncome - Date.now();
-
-
-            if (remaining <= 0) {
-
-                setReady();
-
-            } else {
-
-                setWaiting(
-                    remaining
-                );
-
-            }
-
-        }
-
-
-        updateCountdown();
-
+        update();
 
         setInterval(
-            updateCountdown,
+            update,
             1000
         );
 
@@ -1578,29 +1072,23 @@ body {
 
 
 <!-- =====================================================
-     EMPTY STATE
+     EMPTY
 ===================================================== -->
 
 <section class="empty-card">
 
     <div class="empty-icon">
-
-        <i class="fa-solid fa-chart-line"></i>
-
+        ◉
     </div>
 
 
     <h2 class="empty-title">
-
         No Income Plans
-
     </h2>
 
 
     <p class="empty-text">
-
-        You currently have no active income plan.
-
+        You currently have no active income plans.
     </p>
 
 </section>
@@ -1616,23 +1104,15 @@ body {
 <section class="info-card">
 
     <div class="info-title">
-
-        <i class="fa-solid fa-circle-info"></i>
-
-        <span>
-            Income Information
-        </span>
-
+        Income Information
     </div>
 
 
-    <p>
+    <p class="info-text">
 
-        Your active JOMA plans are displayed above.
-        Each plan shows its investment amount,
-        daily income, duration and total projected
-        income based on the values supplied by your
-        account.
+        Your active JOMA income plans are displayed
+        above. Plan information is loaded dynamically
+        from your account.
 
     </p>
 
@@ -1646,83 +1126,83 @@ body {
      BOTTOM NAVIGATION
 ===================================================== -->
 
-<nav class="global-bottom-navigation">
+<nav class="bottom-nav">
 
-
-    <!-- HOME -->
 
     <a
         href="{{ url_for('dashboard') }}"
-        class="nav-tab-node"
+        class="nav-item"
     >
 
-        <i class="fa-solid fa-house nav-icon-glyph"></i>
+        <span class="nav-icon">
+            ⌂
+        </span>
 
-        <span class="nav-text-label">
+        <span>
             Home
         </span>
 
     </a>
 
 
-    <!-- INCOME -->
-
     <a
         href="{{ url_for('my_plan') }}"
-        class="nav-tab-node active-focus-state"
+        class="nav-item active"
     >
 
-        <i class="fa-solid fa-chart-line nav-icon-glyph"></i>
+        <span class="nav-icon">
+            ◈
+        </span>
 
-        <span class="nav-text-label">
+        <span>
             Income
         </span>
 
     </a>
 
 
-    <!-- TEAM -->
-
     <a
-        href="{{ url_for('team') }}"
-        class="nav-tab-node"
+        href="#"
+        class="nav-item"
     >
 
-        <i class="fa-solid fa-users nav-icon-glyph"></i>
+        <span class="nav-icon">
+            ♙
+        </span>
 
-        <span class="nav-text-label">
+        <span>
             Team
         </span>
 
     </a>
 
 
-    <!-- SHARE -->
-
     <a
-        href="{{ url_for('share') }}"
-        class="nav-tab-node"
+        href="#"
+        class="nav-item"
     >
 
-        <i class="fa-solid fa-share-nodes nav-icon-glyph"></i>
+        <span class="nav-icon">
+            ↗
+        </span>
 
-        <span class="nav-text-label">
+        <span>
             Share
         </span>
 
     </a>
 
 
-    <!-- MY -->
-
     <a
-        href="{{ url_for('profile') }}"
-        class="nav-tab-node"
+        href="#"
+        class="nav-item"
     >
 
-        <i class="fa-solid fa-user nav-icon-glyph"></i>
+        <span class="nav-icon">
+            ◎
+        </span>
 
-        <span class="nav-text-label">
+        <span>
             My
         </span>
 
@@ -1731,103 +1211,7 @@ body {
 
 </nav>
 
-
-<!-- =====================================================
-     LOADING
-===================================================== -->
-
-<div
-    id="loadingOverlay"
-    class="loading-overlay"
->
-
-    <div class="loading-box">
-
-        <div class="loading-spinner"></div>
-
-        <div class="loading-text">
-            Loading...
-        </div>
-
-    </div>
-
 </div>
-
-
-</div>
-
-
-<!-- =====================================================
-     GLOBAL LOADING SCRIPT
-===================================================== -->
-
-<script>
-
-document.addEventListener(
-    "click",
-    function (event) {
-
-        const link =
-            event.target.closest("a");
-
-
-        const button =
-            event.target.closest("button");
-
-
-        if (!link && !button) {
-            return;
-        }
-
-
-        if (
-            button &&
-            button.disabled
-        ) {
-            return;
-        }
-
-
-        const overlay =
-            document.getElementById(
-                "loadingOverlay"
-            );
-
-
-        if (overlay) {
-
-            overlay.classList.add(
-                "active"
-            );
-
-        }
-
-    }
-);
-
-
-document.addEventListener(
-    "submit",
-    function () {
-
-        const overlay =
-            document.getElementById(
-                "loadingOverlay"
-            );
-
-
-        if (overlay) {
-
-            overlay.classList.add(
-                "active"
-            );
-
-        }
-
-    }
-);
-
-</script>
 
 </body>
-    </html>
+</html>

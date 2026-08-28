@@ -4,6 +4,7 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
@@ -11,28 +12,33 @@
 
     <title>Income Dashboard</title>
 
+
     <style>
 
         :root {
+
             --primary-blue: #0b1a99;
-            --primary-blue-dark: #071477;
 
             --bg-light: #f3f5fa;
-            --card-white: #ffffff;
 
             --text-main: #1e266d;
+
             --text-muted: #5e669e;
 
             --border-color: #e0e4f5;
-            --soft-blue: #f5f7ff;
 
-            --success: #2ecc71;
-            --danger: #e53935;
+        }
 
-            --shadow:
-                0 2px 8px rgba(0, 0, 0, 0.04);
 
-            --font:
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family:
                 -apple-system,
                 BlinkMacSystemFont,
                 "Segoe UI",
@@ -40,52 +46,52 @@
                 Helvetica,
                 Arial,
                 sans-serif;
-        }
 
+            -webkit-tap-highlight-color:
+                transparent;
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-
-            font-family: var(--font);
-
-            -webkit-tap-highlight-color: transparent;
         }
 
 
         body {
-            min-height: 100vh;
 
-            background-color: var(--bg-light);
+            background-color:
+                var(--bg-light);
 
             display: flex;
+
             justify-content: center;
+
             align-items: flex-start;
 
-            color: var(--text-main);
+            min-height: 100vh;
+
         }
 
 
         /* =====================================================
-           APP CONTAINER
+           MOBILE APP CONTAINER
         ===================================================== */
 
         .app-container {
 
             width: 100%;
+
             max-width: 420px;
 
             min-height: 100vh;
 
-            background-color: var(--bg-light);
+            background-color:
+                var(--bg-light);
 
             display: flex;
+
             flex-direction: column;
 
             position: relative;
 
-            padding-bottom: 72px;
+            padding-bottom: 70px;
+
         }
 
 
@@ -95,9 +101,8 @@
 
         .app-header {
 
-            width: 100%;
-
-            background-color: var(--primary-blue);
+            background-color:
+                var(--primary-blue);
 
             color: #ffffff;
 
@@ -109,7 +114,8 @@
 
             font-weight: 600;
 
-            letter-spacing: 0.5px;
+            letter-spacing: .5px;
+
         }
 
 
@@ -120,6 +126,7 @@
         .content {
 
             padding: 14px;
+
         }
 
 
@@ -138,11 +145,15 @@
             padding: 4px;
 
             box-shadow:
-                0 2px 6px rgba(0, 0, 0, 0.04);
+                0 2px 6px
+                rgba(0, 0, 0, .04);
 
             margin-bottom: 16px;
 
-            border: 1px solid var(--border-color);
+            border:
+                1px solid
+                var(--border-color);
+
         }
 
 
@@ -152,29 +163,30 @@
 
             text-align: center;
 
-            padding: 12px;
+            padding: 12px 6px;
 
-            font-size: 0.95rem;
+            font-size: .95rem;
 
             font-weight: 500;
 
             color: var(--text-main);
 
-            cursor: pointer;
-
             border-radius: 6px;
 
-            transition: all 0.2s ease;
-
             text-decoration: none;
+
+            cursor: pointer;
+
         }
 
 
         .tab.active {
 
-            background-color: var(--primary-blue);
+            background-color:
+                var(--primary-blue);
 
             color: #ffffff;
+
         }
 
 
@@ -184,13 +196,15 @@
 
         .investment-card {
 
-            background-color: var(--card-white);
+            background-color: #ffffff;
 
             border-radius: 10px;
 
             padding: 16px;
 
-            box-shadow: var(--shadow);
+            box-shadow:
+                0 2px 8px
+                rgba(0, 0, 0, .03);
 
             display: flex;
 
@@ -198,7 +212,8 @@
 
             gap: 12px;
 
-            margin-bottom: 12px;
+            margin-bottom: 14px;
+
         }
 
 
@@ -211,6 +226,7 @@
             display: flex;
 
             gap: 16px;
+
         }
 
 
@@ -223,6 +239,7 @@
             flex-direction: column;
 
             justify-content: space-between;
+
         }
 
 
@@ -236,15 +253,18 @@
 
             padding: 10px 8px;
 
-            border-bottom: 1px solid #f1f3fa;
+            border-bottom:
+                1px solid #f1f3fa;
 
             gap: 8px;
+
         }
 
 
         .info-row:last-child {
 
             border-bottom: none;
+
         }
 
 
@@ -252,7 +272,8 @@
 
             color: var(--text-muted);
 
-            font-size: 0.88rem;
+            font-size: .88rem;
+
         }
 
 
@@ -262,14 +283,15 @@
 
             font-weight: 700;
 
-            font-size: 0.92rem;
+            font-size: .92rem;
 
             text-align: right;
+
         }
 
 
         /* =====================================================
-           PRODUCT GRAPHIC
+           JOMA PRODUCT GRAPHIC
         ===================================================== */
 
         .product-graphic {
@@ -299,7 +321,10 @@
 
             align-items: center;
 
-            border: 1px solid var(--border-color);
+            border:
+                1px solid
+                var(--border-color);
+
         }
 
 
@@ -307,17 +332,19 @@
 
             width: 100%;
 
-            background-color: var(--danger);
+            background-color:
+                #e53935;
 
             color: #ffffff;
 
             text-align: center;
 
-            font-size: 0.75rem;
+            font-size: .75rem;
 
             padding: 2px 0;
 
             font-weight: 500;
+
         }
 
 
@@ -325,23 +352,25 @@
 
             width: 100%;
 
-            background-color: var(--success);
+            background-color:
+                #2ecc71;
 
             color: #ffffff;
 
             text-align: center;
 
-            font-size: 0.75rem;
+            font-size: .75rem;
 
             padding: 2px 0;
 
             font-weight: 500;
+
         }
 
 
         .brand-logo-placeholder {
 
-            font-size: 1.15rem;
+            font-size: 1.35rem;
 
             font-weight: 900;
 
@@ -353,7 +382,6 @@
 
             text-align: center;
 
-            word-break: break-word;
         }
 
 
@@ -372,11 +400,12 @@
 
             text-align: center;
 
-            font-size: 0.9rem;
+            font-size: .9rem;
 
             font-weight: 600;
 
             padding: 6px 0;
+
         }
 
 
@@ -386,7 +415,8 @@
 
         .countdown-bar {
 
-            background-color: var(--soft-blue);
+            background-color:
+                #f5f7ff;
 
             border-radius: 6px;
 
@@ -400,7 +430,6 @@
 
             margin-top: 4px;
 
-            gap: 10px;
         }
 
 
@@ -408,7 +437,8 @@
 
             color: var(--text-muted);
 
-            font-size: 0.85rem;
+            font-size: .85rem;
+
         }
 
 
@@ -418,17 +448,20 @@
 
             font-weight: 700;
 
-            font-size: 0.9rem;
+            font-size: .9rem;
 
-            letter-spacing: 0.5px;
+            letter-spacing: .5px;
 
-            font-variant-numeric: tabular-nums;
+            font-variant-numeric:
+                tabular-nums;
+
         }
 
 
         .countdown-timer.ready {
 
-            color: var(--success);
+            color: #2ecc71;
+
         }
 
 
@@ -441,6 +474,7 @@
             width: 100%;
 
             margin-top: 2px;
+
         }
 
 
@@ -450,37 +484,42 @@
 
             border: none;
 
-            background-color: var(--primary-blue);
-
-            color: #ffffff;
-
             padding: 10px;
 
             border-radius: 7px;
 
-            font-size: 0.85rem;
+            background-color:
+                var(--primary-blue);
+
+            color: #ffffff;
+
+            font-size: .85rem;
 
             font-weight: 600;
 
             cursor: pointer;
 
-            transition: 0.2s ease;
+            transition: .2s ease;
+
         }
 
 
         .claim-button:active {
 
-            transform: scale(0.98);
+            transform: scale(.98);
+
         }
 
 
         .claim-button.disabled {
 
-            background-color: #dfe3f3;
+            background-color:
+                #dfe3f3;
 
             color: #7d84a6;
 
             cursor: not-allowed;
+
         }
 
 
@@ -492,7 +531,9 @@
 
             background-color: #ffffff;
 
-            border: 1px solid var(--border-color);
+            border:
+                1px solid
+                var(--border-color);
 
             border-radius: 10px;
 
@@ -500,13 +541,17 @@
 
             text-align: center;
 
-            box-shadow: var(--shadow);
+            box-shadow:
+                0 2px 8px
+                rgba(0, 0, 0, .03);
+
         }
 
 
         .empty-icon {
 
             width: 48px;
+
             height: 48px;
 
             margin: 0 auto 10px;
@@ -514,15 +559,18 @@
             display: flex;
 
             align-items: center;
+
             justify-content: center;
 
             border-radius: 50%;
 
-            background-color: var(--soft-blue);
+            background-color:
+                #f5f7ff;
 
             color: var(--text-muted);
 
-            font-size: 20px;
+            font-size: 22px;
+
         }
 
 
@@ -533,6 +581,7 @@
             font-size: 1rem;
 
             font-weight: 700;
+
         }
 
 
@@ -542,7 +591,8 @@
 
             color: var(--text-muted);
 
-            font-size: 0.82rem;
+            font-size: .82rem;
+
         }
 
 
@@ -554,7 +604,9 @@
 
             background-color: #ffffff;
 
-            border: 1px solid var(--border-color);
+            border:
+                1px solid
+                var(--border-color);
 
             border-radius: 8px;
 
@@ -562,7 +614,6 @@
 
             margin-top: 12px;
 
-            box-shadow: var(--shadow);
         }
 
 
@@ -570,11 +621,12 @@
 
             color: var(--text-main);
 
-            font-size: 0.88rem;
+            font-size: .88rem;
 
             font-weight: 700;
 
             margin-bottom: 5px;
+
         }
 
 
@@ -582,9 +634,10 @@
 
             color: var(--text-muted);
 
-            font-size: 0.78rem;
+            font-size: .78rem;
 
             line-height: 1.45;
+
         }
 
 
@@ -600,7 +653,8 @@
 
             left: 50%;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             width: 100%;
 
@@ -608,17 +662,21 @@
 
             background-color: #ffffff;
 
-            border-top: 1px solid var(--border-color);
+            border-top:
+                1px solid
+                var(--border-color);
 
             display: flex;
 
-            justify-content: space-around;
+            justify-content:
+                space-around;
 
             align-items: center;
 
             padding: 8px 0;
 
             z-index: 100;
+
         }
 
 
@@ -634,7 +692,7 @@
 
             color: #8e94bb;
 
-            font-size: 0.78rem;
+            font-size: .78rem;
 
             text-decoration: none;
 
@@ -644,15 +702,16 @@
 
             flex: 1;
 
-            min-height: 40px;
         }
 
 
         .nav-item.active {
 
-            color: var(--primary-blue);
+            color:
+                var(--primary-blue);
 
             font-weight: 600;
+
         }
 
 
@@ -663,6 +722,7 @@
             height: 22px;
 
             fill: currentColor;
+
         }
 
 
@@ -678,51 +738,17 @@
 
             height: 3px;
 
-            background-color: var(--primary-blue);
+            background-color:
+                var(--primary-blue);
 
             border-radius:
                 2px 2px 0 0;
+
         }
 
 
         /* =====================================================
-           BADGE
-        ===================================================== */
-
-        .badge {
-
-            position: absolute;
-
-            top: -4px;
-
-            right: 22%;
-
-            background-color: var(--danger);
-
-            color: #ffffff;
-
-            font-size: 0.68rem;
-
-            font-weight: bold;
-
-            border-radius: 10px;
-
-            min-width: 16px;
-
-            height: 16px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 0 4px;
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
+           MOBILE
         ===================================================== */
 
         @media (max-width: 360px) {
@@ -730,48 +756,56 @@
             .content {
 
                 padding: 10px;
+
             }
 
 
             .investment-card {
 
                 padding: 12px;
+
             }
 
 
             .card-main-split {
 
                 gap: 10px;
+
             }
 
 
             .info-row {
 
                 padding: 8px 5px;
+
             }
 
 
             .label {
 
-                font-size: 0.78rem;
+                font-size: .78rem;
+
             }
 
 
             .value {
 
-                font-size: 0.8rem;
+                font-size: .8rem;
+
             }
 
 
             .brand-logo-placeholder {
 
-                font-size: 0.95rem;
+                font-size: 1rem;
+
             }
 
 
             .vip-badge {
 
-                font-size: 0.78rem;
+                font-size: .78rem;
+
             }
 
         }
@@ -799,7 +833,7 @@
 
 
     <!-- =====================================================
-         MAIN CONTENT
+         CONTENT
     ===================================================== -->
 
     <main class="content">
@@ -811,26 +845,24 @@
 
         <div class="tab-container">
 
-            <a
-                href="{{ url_for('my_plan') }}"
-                class="tab active"
-            >
+            <div class="tab active">
+
                 Day income
-            </a>
+
+            </div>
 
 
-            <a
-                href="{{ url_for('dashboard') }}"
-                class="tab"
-            >
+            <div class="tab">
+
                 Reward Products
-            </a>
+
+            </div>
 
         </div>
 
 
         <!-- =================================================
-             USER PLANS
+             DYNAMIC PLANS
         ================================================== -->
 
         {% if user_plans %}
@@ -839,15 +871,15 @@
             {% for user_plan in user_plans %}
 
 
-                <div class="investment-card">
+                <section class="investment-card">
 
 
                     <div class="card-main-split">
 
 
-                        <!-- =====================================
+                        <!-- =================================
                              PLAN INFORMATION
-                        ====================================== -->
+                        ================================== -->
 
                         <div class="info-rows">
 
@@ -855,8 +887,11 @@
                             <div class="info-row">
 
                                 <span class="label">
+
                                     Price
+
                                 </span>
+
 
                                 <span class="value">
 
@@ -875,8 +910,11 @@
                             <div class="info-row">
 
                                 <span class="label">
+
                                     Daily profit
+
                                 </span>
+
 
                                 <span class="value">
 
@@ -895,8 +933,11 @@
                             <div class="info-row">
 
                                 <span class="label">
+
                                     Days
+
                                 </span>
+
 
                                 <span class="value">
 
@@ -910,21 +951,20 @@
                             <div class="info-row">
 
                                 <span class="label">
+
                                     Total profit
+
                                 </span>
+
 
                                 <span class="value">
 
                                     GHS
                                     {{
                                         "%.2f"|format(
-                                            (
-                                                user_plan.daily_income|float
-                                            )
+                                            user_plan.daily_income|float
                                             *
-                                            (
-                                                user_plan.duration|int
-                                            )
+                                            user_plan.duration|int
                                         )
                                     }}
 
@@ -936,28 +976,34 @@
                         </div>
 
 
-                        <!-- =====================================
-                             PRODUCT GRAPHIC
-                        ====================================== -->
+                        <!-- =================================
+                             JOMA GRAPHIC
+                        ================================== -->
 
                         <div class="product-graphic">
 
 
-                            <div class="status-ribbon-stop">
+                            <div
+                                class="status-ribbon-stop"
+                            >
 
                                 Stop
 
                             </div>
 
 
-                            <div class="status-ribbon-free">
+                            <div
+                                class="status-ribbon-free"
+                            >
 
                                 Free
 
                             </div>
 
 
-                            <div class="brand-logo-placeholder">
+                            <div
+                                class="brand-logo-placeholder"
+                            >
 
                                 JOMA
 
@@ -977,14 +1023,16 @@
                     </div>
 
 
-                    <!-- =====================================
+                    <!-- =================================
                          COUNTDOWN
-                    ====================================== -->
+                    ================================== -->
 
                     <div class="countdown-bar">
 
 
-                        <span class="countdown-label">
+                        <span
+                            class="countdown-label"
+                        >
 
                             Settlement countdown
 
@@ -1015,9 +1063,9 @@
                     </div>
 
 
-                    <!-- =====================================
-                         CLAIM
-                    ====================================== -->
+                    <!-- =================================
+                         CLAIM BUTTON
+                    ================================== -->
 
                     <form
                         method="POST"
@@ -1059,31 +1107,33 @@
                     </form>
 
 
-                </div>
+                </section>
 
 
-                <!-- =================================================
-                     COUNTDOWN SCRIPT
-                ================================================== -->
+                <!-- =========================================
+                     COUNTDOWN JAVASCRIPT
+                ========================================== -->
 
                 <script>
 
                 (function () {
 
-                    const countdownElement =
+                    const countdown =
                         document.getElementById(
                             "countdown-{{ user_plan.id }}"
                         );
 
 
-                    const claimButton =
+                    const button =
                         document.getElementById(
                             "claimButton-{{ user_plan.id }}"
                         );
 
 
                     const canClaim =
-                        {{ 'true' if user_plan.can_claim else 'false' }};
+                        {{ 'true'
+                           if user_plan.can_claim
+                           else 'false' }};
 
 
                     {% if user_plan.next_income_at %}
@@ -1100,9 +1150,9 @@
                     {% endif %}
 
 
-                    function pad(value) {
+                    function pad(number) {
 
-                        return String(value)
+                        return String(number)
                             .padStart(2, "0");
 
                     }
@@ -1110,7 +1160,9 @@
 
                     function formatTime(milliseconds) {
 
-                        if (milliseconds <= 0) {
+                        if (
+                            milliseconds <= 0
+                        ) {
 
                             return "00:00:00";
 
@@ -1152,34 +1204,34 @@
 
                     function setReady() {
 
-                        if (!countdownElement) {
+                        if (!countdown) {
 
                             return;
 
                         }
 
 
-                        countdownElement.textContent =
+                        countdown.textContent =
                             "00:00:00";
 
 
-                        countdownElement.classList.add(
+                        countdown.classList.add(
                             "ready"
                         );
 
 
-                        if (claimButton) {
+                        if (button) {
 
-                            claimButton.disabled =
+                            button.disabled =
                                 false;
 
 
-                            claimButton.classList.remove(
+                            button.classList.remove(
                                 "disabled"
                             );
 
 
-                            claimButton.textContent =
+                            button.textContent =
                                 "Claim Income";
 
                         }
@@ -1187,38 +1239,40 @@
                     }
 
 
-                    function setWaiting(milliseconds) {
+                    function setWaiting(
+                        milliseconds
+                    ) {
 
-                        if (!countdownElement) {
+                        if (!countdown) {
 
                             return;
 
                         }
 
 
-                        countdownElement.textContent =
+                        countdown.textContent =
                             formatTime(
                                 milliseconds
                             );
 
 
-                        countdownElement.classList.remove(
+                        countdown.classList.remove(
                             "ready"
                         );
 
 
-                        if (claimButton) {
+                        if (button) {
 
-                            claimButton.disabled =
+                            button.disabled =
                                 true;
 
 
-                            claimButton.classList.add(
+                            button.classList.add(
                                 "disabled"
                             );
 
 
-                            claimButton.textContent =
+                            button.textContent =
                                 "Income Not Ready";
 
                         }
@@ -1242,9 +1296,9 @@
                             Number.isNaN(nextIncome)
                         ) {
 
-                            if (countdownElement) {
+                            if (countdown) {
 
-                                countdownElement.textContent =
+                                countdown.textContent =
                                     "--:--:--";
 
                             }
@@ -1259,7 +1313,9 @@
                             Date.now();
 
 
-                        if (remaining <= 0) {
+                        if (
+                            remaining <= 0
+                        ) {
 
                             setReady();
 
@@ -1282,7 +1338,6 @@
                         1000
                     );
 
-
                 })();
 
                 </script>
@@ -1295,7 +1350,7 @@
 
 
             <!-- =================================================
-                 EMPTY STATE
+                 NO PLANS
             ================================================== -->
 
             <section class="empty-card">
@@ -1303,7 +1358,7 @@
 
                 <div class="empty-icon">
 
-                    <span>+</span>
+                    +
 
                 </div>
 
@@ -1344,8 +1399,8 @@
 
             <p class="info-text">
 
-                Your active JOMA plans, daily income,
-                plan duration and total income are
+                Your JOMA income plans and their
+                current income information are
                 displayed above.
 
             </p>
@@ -1364,8 +1419,10 @@
     <nav class="bottom-nav">
 
 
+        <!-- HOME -->
+
         <a
-            href="{{ url_for('dashboard') }}"
+            href="/dashboard"
             class="nav-item"
         >
 
@@ -1381,14 +1438,18 @@
             </svg>
 
             <span>
+
                 Home
+
             </span>
 
         </a>
 
 
+        <!-- INCOME -->
+
         <a
-            href="{{ url_for('my_plan') }}"
+            href="/my-plan"
             class="nav-item active"
         >
 
@@ -1404,14 +1465,18 @@
             </svg>
 
             <span>
+
                 Income
+
             </span>
 
         </a>
 
 
+        <!-- TEAM -->
+
         <a
-            href="{{ url_for('team') }}"
+            href="#"
             class="nav-item"
         >
 
@@ -1421,20 +1486,24 @@
             >
 
                 <path
-                    d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zM8 11c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+                    d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
                 />
 
             </svg>
 
             <span>
+
                 Team
+
             </span>
 
         </a>
 
 
+        <!-- SHARE -->
+
         <a
-            href="{{ url_for('share') }}"
+            href="#"
             class="nav-item"
         >
 
@@ -1450,14 +1519,18 @@
             </svg>
 
             <span>
+
                 Share
+
             </span>
 
         </a>
 
 
+        <!-- MY -->
+
         <a
-            href="{{ url_for('profile') }}"
+            href="#"
             class="nav-item"
         >
 
@@ -1473,7 +1546,9 @@
             </svg>
 
             <span>
+
                 My
+
             </span>
 
         </a>

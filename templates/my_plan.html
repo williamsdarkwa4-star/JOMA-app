@@ -1,1215 +1,1342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Income - JIIJII</title>
+
+    <style>
+        :root {
+            --primary: #10169b;
+            --primary-dark: #090d78;
+            --bg: #f3f3fb;
+            --white: #ffffff;
+            --text: #252525;
+            --muted: #77798a;
+            --soft: #f7f7fc;
+            --border: #d8d8e8;
+            --green: #36d68b;
+            --red: #dc4b4b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+        }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Income - JOMA</title>
-
-<style>
-
-:root {
-    --bg: #000000;
-    --card: #0d0d0d;
-    --border: #1b1b1b;
-    --green: #3cdc3c;
-    --white: #ffffff;
-    --muted: #777777;
-    --dark: #444444;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-}
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
 
-html,
-body {
-    width: 100%;
-    min-height: 100%;
-    background: #000000;
-}
+        body {
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+        }
 
-body {
-    display: flex;
-    justify-content: center;
-    color: #ffffff;
-}
+        /* =========================================
+           APP
+        ========================================= */
 
-/* =====================================================
-   APP
-===================================================== */
+        .app-container {
+            width: 100%;
+            max-width: 420px;
+            min-height: 100vh;
+            background: var(--bg);
+            position: relative;
+            padding-bottom: 86px;
+        }
 
-.app-container {
-    width: 100%;
-    max-width: 420px;
-    min-height: 100vh;
-    position: relative;
-    background: #000000;
-    padding-bottom: 70px;
-}
+        /* =========================================
+           HEADER
+        ========================================= */
 
-/* =====================================================
-   HEADER
-===================================================== */
+        .app-header {
+            width: 100%;
+            height: 84px;
 
-.header {
-    height: 72px;
-    position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+            background: var(--primary);
 
-    background:
-        linear-gradient(
-            180deg,
-            #090909,
-            #000000
-        );
+            color: #ffffff;
 
-    border-bottom: 1px solid #202020;
-}
+            font-size: 28px;
+            font-weight: 700;
 
-.header::after {
-    content: "";
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, .12);
+        }
 
-    position: absolute;
+        /* =========================================
+           CONTENT
+        ========================================= */
 
-    bottom: 0;
-    left: 20%;
-    right: 20%;
+        .content {
+            padding: 30px 16px 20px;
+        }
 
-    height: 1px;
+        /* =========================================
+           TABS
+        ========================================= */
 
-    background: var(--green);
+        .tab-container {
+            width: 100%;
 
-    opacity: .4;
-}
+            display: flex;
 
-.back-button {
-    position: absolute;
+            padding: 5px;
 
-    left: 15px;
+            background: #ffffff;
 
-    width: 38px;
-    height: 38px;
+            border: 1px solid #8585a4;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+            border-radius: 18px;
 
-    color: #ffffff;
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, .06);
 
-    text-decoration: none;
+            margin-bottom: 38px;
+        }
 
-    background: #111111;
+        .tab {
+            flex: 1;
 
-    border: 1px solid #292929;
+            padding: 17px 8px;
 
-    border-radius: 10px;
-}
+            text-align: center;
 
-.header-center {
-    display: flex;
-    align-items: center;
+            border-radius: 13px;
 
-    gap: 9px;
-}
+            color: var(--primary);
 
-.header-logo {
-    width: 34px;
-    height: 34px;
+            font-size: 18px;
+            font-weight: 500;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+            cursor: pointer;
 
-    color: #000000;
+            transition: .2s ease;
+        }
 
-    background: var(--green);
+        .tab.active {
+            background: var(--primary);
 
-    border-radius: 9px;
+            color: #ffffff;
 
-    font-size: 13px;
-    font-weight: 900;
-}
+            box-shadow:
+                0 3px 8px rgba(16, 22, 155, .22);
+        }
 
-.header-title {
-    display: flex;
-    flex-direction: column;
-}
+        /* =========================================
+           INCOME CARD
+        ========================================= */
 
-.header-brand {
-    color: #ffffff;
+        .income-card {
+            width: 100%;
 
-    font-size: 14px;
-    font-weight: 900;
+            background: #ffffff;
 
-    letter-spacing: 1px;
-}
+            border-radius: 22px;
 
-.header-page {
-    margin-top: 3px;
+            padding: 20px;
 
-    color: #666666;
+            margin-bottom: 18px;
 
-    font-size: 8px;
-}
+            box-shadow:
+                0 4px 16px rgba(0, 0, 0, .04);
+        }
 
-/* =====================================================
-   MAIN
-===================================================== */
+        /* =========================================
+           PLAN CONTENT
+        ========================================= */
 
-.content {
-    padding: 12px;
+        .plan-layout {
+            display: flex;
 
-    padding-bottom: 85px;
-}
+            gap: 20px;
 
-/* =====================================================
-   PAGE TITLE
-===================================================== */
+            align-items: stretch;
+        }
 
-.page-title {
-    padding: 5px 2px 12px;
-}
+        .plan-details {
+            flex: 1;
 
-.page-title h2 {
-    color: #ffffff;
+            display: flex;
 
-    font-size: 18px;
-    font-weight: 800;
-}
+            flex-direction: column;
 
-.page-title p {
-    margin-top: 3px;
+            gap: 9px;
+        }
 
-    color: #555555;
+        .detail-row {
+            min-height: 55px;
 
-    font-size: 9px;
-}
+            padding: 12px 16px;
 
-/* =====================================================
-   TABS
-===================================================== */
+            display: flex;
 
-.tab-container {
-    display: flex;
+            align-items: center;
 
-    gap: 4px;
+            justify-content: space-between;
 
-    padding: 4px;
+            background: var(--soft);
 
-    margin-bottom: 12px;
+            border-radius: 10px;
+        }
 
-    background: #0c0c0c;
+        .detail-label {
+            color: #343434;
 
-    border: 1px solid #1c1c1c;
+            font-size: 16px;
+            font-weight: 400;
+        }
 
-    border-radius: 8px;
-}
+        .detail-value {
+            color: var(--primary);
 
-.tab {
-    flex: 1;
+            font-size: 17px;
+            font-weight: 700;
 
-    padding: 9px 5px;
+            text-align: right;
+        }
 
-    text-align: center;
+        /* =========================================
+           PRODUCT IMAGE / GRAPHIC
+        ========================================= */
 
-    color: #666666;
+        .product-box {
+            width: 43%;
 
-    border-radius: 5px;
+            min-height: 285px;
 
-    font-size: 8px;
+            position: relative;
 
-    font-weight: 700;
-}
+            overflow: hidden;
 
-.tab.active {
-    color: #000000;
+            display: flex;
 
-    background: var(--green);
-}
+            flex-direction: column;
 
-/* =====================================================
-   INCOME CARD
-===================================================== */
+            justify-content: space-between;
 
-.income-card {
-    margin-bottom: 10px;
+            background:
+                linear-gradient(
+                    180deg,
+                    #e8e8ff 0%,
+                    #ffffff 45%,
+                    #dddddd 100%
+                );
 
-    padding: 10px;
+            border-radius: 12px;
 
-    background: var(--card);
+            border: 1px solid #eeeeee;
+        }
 
-    border: 1px solid var(--border);
+        .product-image {
+            position: absolute;
 
-    border-radius: 9px;
-}
+            inset: 0;
 
-/* =====================================================
-   CARD HEADER
-===================================================== */
+            width: 100%;
+            height: 100%;
 
-.card-header {
-    display: flex;
+            object-fit: cover;
+        }
 
-    align-items: center;
-    justify-content: space-between;
+        .product-placeholder {
+            position: absolute;
 
-    padding-bottom: 8px;
+            inset: 0;
 
-    margin-bottom: 8px;
+            display: flex;
 
-    border-bottom: 1px solid #181818;
-}
+            align-items: center;
+            justify-content: center;
 
-.card-title {
-    color: #ffffff;
+            color: var(--primary);
 
-    font-size: 10px;
+            font-size: 24px;
+            font-weight: 800;
 
-    font-weight: 800;
-}
+            background:
+                linear-gradient(
+                    180deg,
+                    #eeeeff,
+                    #ffffff
+                );
+        }
 
-.card-number {
-    color: #555555;
+        .product-overlay {
+            position: absolute;
 
-    font-size: 7px;
-}
+            inset: 0;
 
-/* =====================================================
-   CARD BODY
-===================================================== */
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,.05),
+                    rgba(0,0,0,.05) 45%,
+                    rgba(0,0,0,.65)
+                );
 
-.card-body {
-    display: flex;
+            pointer-events: none;
+        }
 
-    gap: 10px;
-}
+        /* =========================================
+           STATUS
+        ========================================= */
 
-/* =====================================================
-   INFORMATION
-===================================================== */
+        .status-stop,
+        .status-free {
+            position: relative;
 
-.info-rows {
-    flex: 1;
+            z-index: 4;
 
-    display: flex;
+            width: 100%;
 
-    flex-direction: column;
-}
+            padding: 10px 4px;
 
-.info-row {
-    display: flex;
+            text-align: center;
 
-    align-items: center;
-    justify-content: space-between;
+            color: #ffffff;
 
-    padding: 8px 4px;
+            font-size: 16px;
+            font-weight: 500;
+        }
 
-    border-bottom: 1px solid #151515;
-}
+        .status-stop {
+            background: rgba(220, 75, 75, .94);
+        }
 
-.info-row:last-child {
-    border-bottom: none;
-}
+        .status-free {
+            background: rgba(54, 214, 139, .92);
+        }
 
-.label {
-    color: #666666;
+        .product-bottom {
+            position: relative;
 
-    font-size: 8px;
-}
+            z-index: 4;
 
-.value {
-    color: var(--green);
+            margin-top: auto;
 
-    font-size: 9px;
+            padding: 12px 8px;
 
-    font-weight: 800;
-}
+            text-align: center;
 
-/* =====================================================
-   PRODUCT GRAPHIC
-===================================================== */
+            color: #ffffff;
 
-.product-graphic {
-    width: 105px;
-    height: 105px;
+            font-size: 20px;
+            font-weight: 500;
 
-    flex-shrink: 0;
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,.85),
+                    rgba(0,0,0,.10)
+                );
+        }
 
-    display: flex;
+        /* =========================================
+           COUNTDOWN
+        ========================================= */
 
-    flex-direction: column;
+        .countdown-bar {
+            width: 100%;
 
-    align-items: center;
-    justify-content: space-between;
+            margin-top: 20px;
 
-    overflow: hidden;
+            padding: 15px 17px;
 
-    background:
-        linear-gradient(
-            145deg,
-            #191919,
-            #050505
-        );
+            display: flex;
 
-    border: 1px solid #292929;
+            align-items: center;
 
-    border-radius: 8px;
-}
+            justify-content: space-between;
 
-.status-stop {
-    width: 100%;
+            background: var(--soft);
 
-    padding: 4px;
+            border-radius: 10px;
+        }
 
-    text-align: center;
+        .countdown-label {
+            color: #3d3d3d;
 
-    color: #ffffff;
+            font-size: 16px;
+        }
 
-    background: #252525;
+        .countdown-timer {
+            color: var(--primary);
 
-    font-size: 7px;
+            font-size: 17px;
+            font-weight: 700;
 
-    font-weight: 700;
-}
+            font-variant-numeric: tabular-nums;
+        }
 
-.status-free {
-    width: 100%;
+        .countdown-timer.ready {
+            color: var(--green);
+        }
 
-    padding: 4px;
+        /* =========================================
+           CLAIM BUTTON
+        ========================================= */
 
-    text-align: center;
+        .claim-form {
+            margin-top: 12px;
+        }
 
-    color: #000000;
+        .claim-button {
+            width: 100%;
 
-    background: var(--green);
+            padding: 12px;
 
-    font-size: 7px;
+            border: none;
 
-    font-weight: 800;
-}
+            border-radius: 9px;
 
-.brand {
-    color: #ffffff;
+            background: var(--primary);
 
-    font-size: 13px;
+            color: #ffffff;
 
-    font-weight: 900;
+            font-size: 15px;
+            font-weight: 700;
 
-    letter-spacing: 1px;
-}
+            cursor: pointer;
+        }
 
-.vip {
-    width: 100%;
+        .claim-button:active {
+            transform: scale(.98);
+        }
 
-    padding: 6px;
+        .claim-button.disabled {
+            background: #dddddf;
 
-    text-align: center;
+            color: #858585;
 
-    color: #000000;
+            cursor: not-allowed;
+        }
 
-    background: var(--green);
+        /* =========================================
+           EMPTY STATE
+        ========================================= */
 
-    font-size: 8px;
+        .empty-card {
+            background: #ffffff;
 
-    font-weight: 900;
-}
+            border-radius: 20px;
 
-/* =====================================================
-   COUNTDOWN
-===================================================== */
+            padding: 45px 20px;
 
-.countdown-bar {
-    display: flex;
+            text-align: center;
 
-    align-items: center;
-    justify-content: space-between;
+            box-shadow:
+                0 4px 15px rgba(0,0,0,.04);
+        }
 
-    margin-top: 9px;
+        .empty-icon {
+            width: 60px;
+            height: 60px;
 
-    padding: 8px 9px;
+            margin: 0 auto 14px;
 
-    background: #101010;
+            display: flex;
 
-    border: 1px solid #191919;
+            align-items: center;
+            justify-content: center;
 
-    border-radius: 6px;
-}
+            background: #eeeeff;
 
-.countdown-label {
-    color: #555555;
+            color: var(--primary);
 
-    font-size: 7px;
+            border-radius: 50%;
 
-    text-transform: uppercase;
-}
+            font-size: 25px;
+        }
 
-.countdown {
-    color: var(--green);
+        .empty-title {
+            color: #333333;
 
-    font-size: 9px;
+            font-size: 18px;
+            font-weight: 700;
+        }
 
-    font-weight: 800;
+        .empty-text {
+            margin-top: 6px;
 
-    font-variant-numeric: tabular-nums;
-}
+            color: var(--muted);
 
-/* =====================================================
-   CLAIM
-===================================================== */
+            font-size: 13px;
+        }
 
-.claim-form {
-    margin-top: 6px;
-}
+        /* =========================================
+           BOTTOM NAVIGATION
+        ========================================= */
 
-.claim-button {
-    width: 100%;
+        .bottom-nav {
+            position: fixed;
 
-    padding: 7px;
+            left: 50%;
+            bottom: 0;
 
-    border: 1px solid var(--green);
+            transform: translateX(-50%);
 
-    border-radius: 5px;
+            width: 100%;
+            max-width: 420px;
 
-    color: #000000;
+            height: 88px;
 
-    background: var(--green);
+            display: grid;
 
-    font-size: 8px;
+            grid-template-columns:
+                repeat(5, 1fr);
 
-    font-weight: 800;
-}
+            align-items: center;
 
-.claim-button.disabled {
-    color: #555555;
+            background: #ffffff;
 
-    background: #181818;
+            border-top:
+                1px solid #e5e5ed;
 
-    border-color: #292929;
-}
+            box-shadow:
+                0 -3px 15px rgba(0,0,0,.06);
 
-/* =====================================================
-   EMPTY
-===================================================== */
+            z-index: 100;
+        }
 
-.empty-card {
-    padding: 30px 12px;
+        .nav-item {
+            height: 100%;
 
-    text-align: center;
+            position: relative;
 
-    background: var(--card);
+            display: flex;
 
-    border: 1px solid var(--border);
+            flex-direction: column;
 
-    border-radius: 8px;
-}
+            align-items: center;
 
-.empty-icon {
-    margin-bottom: 9px;
+            justify-content: center;
 
-    color: #555555;
+            gap: 6px;
 
-    font-size: 25px;
-}
+            color: #929292;
 
-.empty-title {
-    color: #777777;
+            text-decoration: none;
 
-    font-size: 12px;
-}
+            font-size: 14px;
 
-.empty-text {
-    margin-top: 4px;
+            transition: .2s ease;
+        }
 
-    color: #444444;
+        .nav-item.active {
+            color: var(--primary);
 
-    font-size: 8px;
-}
+            font-weight: 700;
+        }
 
-/* =====================================================
-   INFO
-===================================================== */
+        .nav-icon {
+            width: 26px;
+            height: 26px;
 
-.info-card {
-    margin-top: 10px;
+            fill: currentColor;
+        }
 
-    padding: 10px;
+        .nav-item.active::before {
+            content: "";
 
-    background: #090909;
+            position: absolute;
 
-    border: 1px solid #151515;
+            top: 4px;
 
-    border-radius: 7px;
-}
+            width: 92px;
+            height: 55px;
 
-.info-title {
-    color: #777777;
+            border-radius: 30px;
 
-    font-size: 9px;
+            background:
+                rgba(16, 22, 155, .10);
 
-    font-weight: 700;
-}
+            z-index: -1;
+        }
 
-.info-text {
-    margin-top: 5px;
+        .nav-item.active::after {
+            content: "";
 
-    color: #444444;
+            position: absolute;
 
-    font-size: 8px;
+            bottom: 0;
 
-    line-height: 1.5;
-}
+            width: 78px;
 
-/* =====================================================
-   BOTTOM NAV
-===================================================== */
+            height: 4px;
 
-.bottom-nav {
-    position: fixed;
+            border-radius:
+                5px 5px 0 0;
 
-    bottom: 0;
-    left: 50%;
+            background: var(--primary);
+        }
 
-    transform: translateX(-50%);
+        /* =========================================
+           BADGE
+        ========================================= */
 
-    width: 100%;
-    max-width: 420px;
+        .badge {
+            position: absolute;
 
-    height: 65px;
+            top: 12px;
+            right: 22%;
 
-    display: grid;
+            min-width: 28px;
+            height: 28px;
 
-    grid-template-columns:
-        repeat(5, 1fr);
+            padding: 0 7px;
 
-    background:
-        linear-gradient(
-            to top,
-            #0f0f11,
-            #151517
-        );
+            display: flex;
 
-    border-top: 1px solid #202020;
+            align-items: center;
+            justify-content: center;
 
-    z-index: 100;
-}
+            border-radius: 50%;
 
-.nav-item {
-    display: flex;
+            background: #d9274f;
 
-    flex-direction: column;
+            color: #ffffff;
 
-    align-items: center;
-    justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
 
-    gap: 4px;
+        /* =========================================
+           MOBILE
+        ========================================= */
 
-    color: #555555;
+        @media (max-width: 380px) {
 
-    text-decoration: none;
+            .content {
+                padding:
+                    22px 10px 20px;
+            }
 
-    font-size: 8px;
-}
+            .tab {
+                font-size: 15px;
+                padding: 14px 5px;
+            }
 
-.nav-item.active {
-    color: var(--green);
-}
+            .income-card {
+                padding: 12px;
+            }
 
-.nav-icon {
-    font-size: 16px;
-}
+            .plan-layout {
+                gap: 10px;
+            }
 
-</style>
+            .detail-row {
+                padding: 10px;
+            }
 
+            .detail-label {
+                font-size: 13px;
+            }
+
+            .detail-value {
+                font-size: 14px;
+            }
+
+            .product-box {
+                min-height: 235px;
+            }
+
+            .countdown-label {
+                font-size: 13px;
+            }
+
+            .countdown-timer {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="app-container">
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
-<header class="header">
-
-    <a
-        href="{{ url_for('dashboard') }}"
-        class="back-button"
-    >
-        ‹
-    </a>
-
-
-    <div class="header-center">
-
-        <div class="header-logo">
-            J
-        </div>
-
-        <div class="header-title">
-
-            <div class="header-brand">
-                JOMA
-            </div>
-
-            <div class="header-page">
-                INCOME DASHBOARD
-            </div>
-
-        </div>
-
-    </div>
-
-</header>
-
-
-<!-- =====================================================
-     MAIN CONTENT
-===================================================== -->
-
-<main class="content">
-
-
-<section class="page-title">
-
-    <h2>
+    <header class="app-header">
         Income
-    </h2>
-
-    <p>
-        Your active income plans
-    </p>
-
-</section>
+    </header>
 
 
-<!-- =====================================================
-     TABS
-===================================================== -->
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
 
-<div class="tab-container">
+    <main class="content">
 
-    <div class="tab active">
-        Day income
-    </div>
+        <!-- TABS -->
 
-    <div class="tab">
-        Reward Products
-    </div>
+        <div class="tab-container">
 
-</div>
+            <div class="tab active">
+                Day income
+            </div>
 
-
-<!-- =====================================================
-     PLANS
-===================================================== -->
-
-{% if user_plans %}
-
-    {% for user_plan in user_plans %}
-
-    <section class="income-card">
-
-
-        <!-- CARD HEADER -->
-
-        <div class="card-header">
-
-            <span class="card-title">
-                Income Details
-            </span>
-
-            <span class="card-number">
-                #{{ loop.index }}
-            </span>
+            <div class="tab">
+                Reward Products
+            </div>
 
         </div>
 
 
-        <!-- CARD BODY -->
+        <!-- =====================================
+             USER PLANS
+        ====================================== -->
 
-        <div class="card-body">
+        {% if user_plans %}
 
+            {% for user_plan in user_plans %}
 
-            <!-- INFORMATION -->
+                <section class="income-card">
 
-            <div class="info-rows">
-
-
-                <div class="info-row">
-
-                    <span class="label">
-                        Price
-                    </span>
-
-                    <span class="value">
-
-                        GHS
-                        {{
-                            "%.2f"|format(
-                                user_plan.investment_amount|float
-                            )
-                        }}
-
-                    </span>
-
-                </div>
+                    <div class="plan-layout">
 
 
-                <div class="info-row">
+                        <!-- =========================
+                             PLAN DETAILS
+                        ========================== -->
 
-                    <span class="label">
-                        Daily profit
-                    </span>
-
-                    <span class="value">
-
-                        GHS
-                        {{
-                            "%.2f"|format(
-                                user_plan.daily_income|float
-                            )
-                        }}
-
-                    </span>
-
-                </div>
+                        <div class="plan-details">
 
 
-                <div class="info-row">
+                            <div class="detail-row">
 
-                    <span class="label">
-                        Days
-                    </span>
+                                <span class="detail-label">
+                                    Price
+                                </span>
 
-                    <span class="value">
+                                <span class="detail-value">
 
-                        {{ user_plan.duration }}
+                                    GHS {{
+                                        "%.2f"|format(
+                                            user_plan.investment_amount|float
+                                        )
+                                    }}
 
-                    </span>
+                                </span>
 
-                </div>
-
-
-                <div class="info-row">
-
-                    <span class="label">
-                        Total profit
-                    </span>
-
-                    <span class="value">
-
-                        GHS
-                        {{
-                            "%.2f"|format(
-                                user_plan.daily_income|float
-                                *
-                                user_plan.duration|int
-                            )
-                        }}
-
-                    </span>
-
-                </div>
+                            </div>
 
 
-            </div>
+                            <div class="detail-row">
+
+                                <span class="detail-label">
+                                    Daily profit
+                                </span>
+
+                                <span class="detail-value">
+
+                                    GHS {{
+                                        "%.2f"|format(
+                                            user_plan.daily_income|float
+                                        )
+                                    }}
+
+                                </span>
+
+                            </div>
 
 
-            <!-- PRODUCT -->
+                            <div class="detail-row">
 
-            <div class="product-graphic">
+                                <span class="detail-label">
+                                    Days
+                                </span>
 
-                <div class="status-stop">
+                                <span class="detail-value">
 
-                    {% if user_plan.can_claim %}
-                        READY
+                                    {{ user_plan.duration }}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <span class="detail-label">
+                                    Total profit
+                                </span>
+
+                                <span class="detail-value">
+
+                                    GHS {{
+                                        "%.2f"|format(
+                                            (
+                                                user_plan.daily_income|float
+                                                *
+                                                user_plan.duration|int
+                                            )
+                                        )
+                                    }}
+
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- =========================
+                             PRODUCT
+                        ========================== -->
+
+                        <div class="product-box">
+
+                            {% if user_plan.product_image %}
+
+                                <img
+                                    src="{{ user_plan.product_image }}"
+                                    class="product-image"
+                                    alt="{{ user_plan.plan_name }}"
+                                >
+
+                            {% else %}
+
+                                <div class="product-placeholder">
+
+                                    JIIJII
+
+                                </div>
+
+                            {% endif %}
+
+
+                            <div class="product-overlay"></div>
+
+
+                            <div class="status-stop">
+                                Stop
+                            </div>
+
+
+                            <div class="status-free">
+                                Free
+                            </div>
+
+
+                            <div class="product-bottom">
+
+                                {{ user_plan.plan_name }}
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- =========================
+                         COUNTDOWN
+                    ========================== -->
+
+                    <div class="countdown-bar">
+
+                        <span class="countdown-label">
+                            Settlement countdown
+                        </span>
+
+
+                        <span
+                            class="countdown-timer
+                            {% if user_plan.can_claim %}
+                                ready
+                            {% endif %}"
+                            id="countdown-{{ user_plan.id }}"
+                        >
+
+                            {% if user_plan.can_claim %}
+
+                                00:00:00
+
+                            {% else %}
+
+                                --:--:--
+
+                            {% endif %}
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- =========================
+                         CLAIM
+                    ========================== -->
+
+                    <form
+                        method="POST"
+                        action="{{ url_for('my_plan') }}"
+                        class="claim-form"
+                    >
+
+                        <input
+                            type="hidden"
+                            name="user_plan_id"
+                            value="{{ user_plan.id }}"
+                        >
+
+
+                        <button
+                            type="submit"
+                            id="claimButton-{{ user_plan.id }}"
+                            class="claim-button
+                            {% if not user_plan.can_claim %}
+                                disabled
+                            {% endif %}"
+
+                            {% if not user_plan.can_claim %}
+                                disabled
+                            {% endif %}
+                        >
+
+                            {% if user_plan.can_claim %}
+
+                                Claim Income
+
+                            {% else %}
+
+                                Income Not Ready
+
+                            {% endif %}
+
+                        </button>
+
+                    </form>
+
+
+                </section>
+
+
+                <!-- =================================
+                     COUNTDOWN JAVASCRIPT
+                ================================== -->
+
+                <script>
+
+                (function () {
+
+                    const countdown =
+                        document.getElementById(
+                            "countdown-{{ user_plan.id }}"
+                        );
+
+                    const button =
+                        document.getElementById(
+                            "claimButton-{{ user_plan.id }}"
+                        );
+
+
+                    const canClaim =
+                        {{ 'true' if user_plan.can_claim else 'false' }};
+
+
+                    {% if user_plan.next_income_at %}
+
+                    const nextIncome =
+                        new Date(
+                            "{{ user_plan.next_income_at.isoformat() }}"
+                        ).getTime();
+
                     {% else %}
-                        WAITING
+
+                    const nextIncome = null;
+
                     {% endif %}
 
-                </div>
+
+                    function pad(number) {
+
+                        return String(number)
+                            .padStart(2, "0");
+
+                    }
 
 
-                <div class="status-free">
-                    ACTIVE
-                </div>
+                    function formatTime(milliseconds) {
+
+                        if (milliseconds <= 0) {
+                            return "00:00:00";
+                        }
 
 
-                <div class="brand">
-                    JOMA
-                </div>
+                        const seconds =
+                            Math.floor(
+                                milliseconds / 1000
+                            );
 
 
-                <div class="vip">
-
-                    {{ user_plan.plan_name }}
-
-                </div>
-
-            </div>
+                        const hours =
+                            Math.floor(
+                                seconds / 3600
+                            );
 
 
-        </div>
+                        const minutes =
+                            Math.floor(
+                                (seconds % 3600) / 60
+                            );
 
 
-        <!-- COUNTDOWN -->
-
-        <div class="countdown-bar">
-
-            <span class="countdown-label">
-                Settlement countdown
-            </span>
+                        const remainingSeconds =
+                            seconds % 60;
 
 
-            <span
-                class="countdown"
-                id="countdown-{{ user_plan.id }}"
-            >
+                        return (
+                            pad(hours) +
+                            ":" +
+                            pad(minutes) +
+                            ":" +
+                            pad(remainingSeconds)
+                        );
 
-                {% if user_plan.can_claim %}
-
-                    00:00:00
-
-                {% else %}
-
-                    --:--:--
-
-                {% endif %}
-
-            </span>
-
-        </div>
+                    }
 
 
-        <!-- CLAIM -->
+                    function setReady() {
 
-        <form
-            method="POST"
-            action="{{ url_for('my_plan') }}"
-            class="claim-form"
-        >
-
-            <input
-                type="hidden"
-                name="user_plan_id"
-                value="{{ user_plan.id }}"
-            >
+                        if (!countdown) {
+                            return;
+                        }
 
 
-            <button
-                type="submit"
-                class="claim-button {% if not user_plan.can_claim %}disabled{% endif %}"
-                {% if not user_plan.can_claim %}
-                    disabled
-                {% endif %}
-            >
-
-                {% if user_plan.can_claim %}
-
-                    Claim Income
-
-                {% else %}
-
-                    Income Not Ready
-
-                {% endif %}
-
-            </button>
-
-        </form>
+                        countdown.textContent =
+                            "00:00:00";
 
 
-    </section>
+                        countdown.classList.add(
+                            "ready"
+                        );
 
 
-    <!-- =================================================
-         COUNTDOWN
-    ================================================== -->
+                        if (button) {
 
-    <script>
+                            button.disabled =
+                                false;
 
-    (function () {
+                            button.classList.remove(
+                                "disabled"
+                            );
 
-        const countdown =
-            document.getElementById(
-                "countdown-{{ user_plan.id }}"
-            );
+                            button.textContent =
+                                "Claim Income";
+
+                        }
+
+                    }
 
 
-        {% if user_plan.next_income_at %}
+                    function setWaiting(
+                        milliseconds
+                    ) {
 
-        const target =
-            new Date(
-                "{{ user_plan.next_income_at.isoformat() }}"
-            ).getTime();
+                        if (!countdown) {
+                            return;
+                        }
+
+
+                        countdown.textContent =
+                            formatTime(
+                                milliseconds
+                            );
+
+
+                        countdown.classList.remove(
+                            "ready"
+                        );
+
+
+                        if (button) {
+
+                            button.disabled =
+                                true;
+
+                            button.classList.add(
+                                "disabled"
+                            );
+
+                            button.textContent =
+                                "Income Not Ready";
+
+                        }
+
+                    }
+
+
+                    function updateCountdown() {
+
+                        if (canClaim) {
+
+                            setReady();
+
+                            return;
+
+                        }
+
+
+                        if (
+                            nextIncome === null ||
+                            isNaN(nextIncome)
+                        ) {
+
+                            countdown.textContent =
+                                "--:--:--";
+
+                            return;
+
+                        }
+
+
+                        const remaining =
+                            nextIncome -
+                            Date.now();
+
+
+                        if (remaining <= 0) {
+
+                            setReady();
+
+                        } else {
+
+                            setWaiting(
+                                remaining
+                            );
+
+                        }
+
+                    }
+
+
+                    updateCountdown();
+
+
+                    setInterval(
+                        updateCountdown,
+                        1000
+                    );
+
+                })();
+
+                </script>
+
+
+            {% endfor %}
+
 
         {% else %}
 
-        const target = null;
+            <!-- =================================
+                 EMPTY
+            ================================== -->
+
+            <section class="empty-card">
+
+                <div class="empty-icon">
+                    $
+                </div>
+
+                <h2 class="empty-title">
+                    No Income
+                </h2>
+
+                <p class="empty-text">
+                    You currently have no active plans.
+                </p>
+
+            </section>
 
         {% endif %}
 
-
-        const canClaim =
-            {{ 'true' if user_plan.can_claim else 'false' }};
-
-
-        function pad(number) {
-
-            return String(number)
-                .padStart(2, "0");
-
-        }
-
-
-        function update() {
-
-            if (!countdown) {
-                return;
-            }
-
-
-            if (canClaim) {
-
-                countdown.textContent =
-                    "00:00:00";
-
-                return;
-
-            }
-
-
-            if (
-                target === null ||
-                isNaN(target)
-            ) {
-
-                countdown.textContent =
-                    "--:--:--";
-
-                return;
-
-            }
-
-
-            const remaining =
-                target - Date.now();
-
-
-            if (remaining <= 0) {
-
-                countdown.textContent =
-                    "00:00:00";
-
-                return;
-
-            }
-
-
-            const totalSeconds =
-                Math.floor(
-                    remaining / 1000
-                );
-
-
-            const hours =
-                Math.floor(
-                    totalSeconds / 3600
-                );
-
-
-            const minutes =
-                Math.floor(
-                    (totalSeconds % 3600) / 60
-                );
-
-
-            const seconds =
-                totalSeconds % 60;
-
-
-            countdown.textContent =
-                pad(hours) +
-                ":" +
-                pad(minutes) +
-                ":" +
-                pad(seconds);
-
-        }
-
-
-        update();
-
-        setInterval(
-            update,
-            1000
-        );
-
-    })();
-
-    </script>
-
-
-    {% endfor %}
-
-
-{% else %}
-
-
-<!-- =====================================================
-     EMPTY
-===================================================== -->
-
-<section class="empty-card">
-
-    <div class="empty-icon">
-        ◉
-    </div>
-
-
-    <h2 class="empty-title">
-        No Income Plans
-    </h2>
-
-
-    <p class="empty-text">
-        You currently have no active income plans.
-    </p>
-
-</section>
-
-
-{% endif %}
-
-
-<!-- =====================================================
-     INFORMATION
-===================================================== -->
-
-<section class="info-card">
-
-    <div class="info-title">
-        Income Information
-    </div>
-
-
-    <p class="info-text">
-
-        Your active JOMA income plans are displayed
-        above. Plan information is loaded dynamically
-        from your account.
-
-    </p>
-
-</section>
-
-
-</main>
-
-
-<!-- =====================================================
-     BOTTOM NAVIGATION
-===================================================== -->
-
-<nav class="bottom-nav">
-
-
-    <a
-        href="{{ url_for('dashboard') }}"
-        class="nav-item"
-    >
-
-        <span class="nav-icon">
-            ⌂
-        </span>
-
-        <span>
-            Home
-        </span>
-
-    </a>
-
-
-    <a
-        href="{{ url_for('my_plan') }}"
-        class="nav-item active"
-    >
-
-        <span class="nav-icon">
-            ◈
-        </span>
-
-        <span>
-            Income
-        </span>
-
-    </a>
-
-
-    <a
-        href="#"
-        class="nav-item"
-    >
-
-        <span class="nav-icon">
-            ♙
-        </span>
-
-        <span>
-            Team
-        </span>
-
-    </a>
-
-
-    <a
-        href="#"
-        class="nav-item"
-    >
-
-        <span class="nav-icon">
-            ↗
-        </span>
-
-        <span>
-            Share
-        </span>
-
-    </a>
-
-
-    <a
-        href="#"
-        class="nav-item"
-    >
-
-        <span class="nav-icon">
-            ◎
-        </span>
-
-        <span>
-            My
-        </span>
-
-    </a>
-
-
-</nav>
+    </main>
+
+
+    <!-- =========================================
+         BOTTOM NAVIGATION
+    ========================================== -->
+
+    <nav class="bottom-nav">
+
+
+        <!-- HOME -->
+
+        <a
+            href="{{ url_for('dashboard') }}"
+            class="nav-item"
+        >
+
+            <svg
+                class="nav-icon"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+                />
+            </svg>
+
+            <span>
+                Home
+            </span>
+
+        </a>
+
+
+        <!-- INCOME -->
+
+        <a
+            href="{{ url_for('my_plan') }}"
+            class="nav-item active"
+        >
+
+            <svg
+                class="nav-icon"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+                />
+            </svg>
+
+            <span>
+                Income
+            </span>
+
+        </a>
+
+
+        <!-- TEAM -->
+
+        <a
+            href="{{ url_for('team') }}"
+            class="nav-item"
+        >
+
+            <svg
+                class="nav-icon"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M16 11c1.66 0 2.99-1.34
+                    2.99-3S17.66 5 16 5c-1.66
+                    0-3 1.34-3 3s1.34 3 3 3z
+                    M8 11c1.66 0 2.99-1.34
+                    2.99-3S9.66 5 8 5C6.34
+                    5 5 6.34 5 8s1.34 3 3 3z
+                    M8 13c-2.33 0-7 1.17-7
+                    3.5V19h14v-2.5C15 14.17
+                    10.33 13 8 13z
+                    M16 13c-.29 0-.62.02-.97.05
+                    1.16.84 1.97 1.97 1.97
+                    3.45V19h6v-2.5c0-2.66-4.67-3.5-7-3.5z"
+                />
+            </svg>
+
+            <span>
+                Team
+            </span>
+
+        </a>
+
+
+        <!-- SHARE -->
+
+        <a
+            href="{{ url_for('share') }}"
+            class="nav-item"
+        >
+
+            <svg
+                class="nav-icon"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M18 16.08c-.76 0-1.44.3-1.96
+                    .77L8.91 12.7c.05-.23.09-.46.09-.7
+                    s-.04-.47-.09-.7l7.05-4.11C16.5
+                    7.69 17.21 8 18 8c1.66 0 3-1.34
+                    3-3s-1.34-3-3-3-3 1.34-3 3c0
+                    .24.04.47.09.7L8.04 9.81C7.5
+                    9.31 6.79 9 6 9c-1.66 0-3
+                    1.34-3 3s1.34 3 3 3c.79 0
+                    1.5-.31 2.04-.81l7.12 4.16c-.05
+                    .21-.08.43-.08.65 0 1.61 1.31
+                    2.92 2.92 2.92 1.61 0 2.92-1.31
+                    2.92-2.92s-1.31-2.92-2.92-2.92z"
+                />
+            </svg>
+
+            <span>
+                Share
+            </span>
+
+        </a>
+
+
+        <!-- MY -->
+
+        <a
+            href="{{ url_for('profile') }}"
+            class="nav-item"
+        >
+
+            {% if unread_count|default(0) > 0 %}
+
+                <div class="badge">
+                    {{ unread_count }}
+                </div>
+
+            {% endif %}
+
+
+            <svg
+                class="nav-icon"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M12 12c2.21 0 4-1.79
+                    4-4s-1.79-4-4-4-4 1.79-4
+                    4 1.79 4 4 4zm0 2c-2.67
+                    0-8 1.34-8 4v2h16v-2c0-2.66
+                    -5.33-4-8-4z"
+                />
+            </svg>
+
+            <span>
+                My
+            </span>
+
+        </a>
+
+    </nav>
 
 </div>
 

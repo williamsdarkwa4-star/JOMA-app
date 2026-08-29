@@ -1,30 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Income - JIIJII</title>
 
+
     <style>
+
+        /* =====================================================
+           ROOT
+        ===================================================== */
 
         :root {
             --primary: #1116a8;
-            --primary-dark: #0c1080;
-            --background: #f1f1f9;
+            --primary-dark: #0d118b;
+
+            --background: #f2f2fa;
+
             --white: #ffffff;
-            --text: #202020;
-            --muted: #777a91;
-            --light: #f7f7fc;
-            --border: #d8d8e7;
-            --green: #45d59a;
-            --red: #d94a4a;
+
+            --text: #292929;
+            --muted: #77798b;
+
+            --soft: #f7f7fc;
+
+            --border: #d9d9e8;
+
+            --green: #45d49a;
+            --red: #d84b4b;
         }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
@@ -32,101 +54,130 @@
                 Roboto,
                 Arial,
                 sans-serif;
+
+            -webkit-tap-highlight-color: transparent;
         }
+
 
         html,
         body {
             width: 100%;
             min-height: 100%;
+
             background: var(--background);
         }
+
 
         body {
             display: flex;
             justify-content: center;
+
             color: var(--text);
         }
 
-        /* =========================================
-           APP
-        ========================================= */
+
+        /* =====================================================
+           APP CONTAINER
+        ===================================================== */
 
         .app-container {
+
             width: 100%;
             max-width: 420px;
+
             min-height: 100vh;
-            background: var(--background);
+
             position: relative;
-            padding-bottom: 78px;
+
+            background: var(--background);
+
+            padding-bottom: 82px;
         }
 
 
-        /* =========================================
+        /* =====================================================
            HEADER
-        ========================================= */
+        ===================================================== */
 
         .app-header {
+
+            width: 100%;
             height: 84px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
+            color: var(--white);
+
             background:
                 linear-gradient(
                     180deg,
-                    var(--primary) 0%,
-                    #1519ad 100%
+                    #1519b1 0%,
+                    var(--primary) 100%
                 );
-
-            color: white;
 
             font-size: 30px;
             font-weight: 700;
 
             box-shadow:
-                0 2px 8px rgba(17, 22, 168, .25);
+                0 2px 8px
+                rgba(17, 22, 168, .25);
         }
 
 
-        /* =========================================
+        /* =====================================================
            CONTENT
-        ========================================= */
+        ===================================================== */
 
         .content {
-            padding: 28px 16px 100px;
+
+            width: 100%;
+
+            padding:
+                28px
+                16px
+                100px;
         }
 
 
-        /* =========================================
+        /* =====================================================
            TABS
-        ========================================= */
+        ===================================================== */
 
         .tab-container {
+
             width: 100%;
 
             display: flex;
 
             padding: 4px;
 
-            background: white;
+            background: var(--white);
 
-            border: 1px solid #6d6d96;
+            border:
+                1px solid
+                #77779a;
 
             border-radius: 18px;
 
             box-shadow:
-                0 4px 14px rgba(30, 30, 90, .08);
+                0 4px 14px
+                rgba(30, 30, 90, .08);
 
             margin-bottom: 38px;
         }
 
+
         .tab {
+
             flex: 1;
 
             padding: 17px 8px;
 
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             color: var(--primary);
 
@@ -135,51 +186,59 @@
 
             border-radius: 13px;
 
-            text-decoration: none;
-
             cursor: pointer;
+
+            user-select: none;
         }
 
+
         .tab.active {
-            color: white;
+
+            color: var(--white);
 
             background:
                 linear-gradient(
                     180deg,
-                    #171bb5,
-                    #10149b
+                    #191db9,
+                    #10149c
                 );
 
             box-shadow:
-                0 3px 7px rgba(17, 22, 168, .25);
+                0 3px 8px
+                rgba(17, 22, 168, .25);
         }
 
 
-        /* =========================================
-           PRODUCT CARD
-        ========================================= */
+        /* =====================================================
+           INCOME CARD
+        ===================================================== */
 
         .investment-card {
+
             width: 100%;
 
             padding: 20px;
 
-            background: white;
+            background: var(--white);
 
             border-radius: 22px;
 
             box-shadow:
-                0 5px 18px rgba(35, 35, 80, .07);
+                0 5px 18px
+                rgba(35, 35, 80, .07);
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
 
-        /* =========================================
-           CARD SPLIT
-        ========================================= */
+        /* =====================================================
+           MAIN CARD LAYOUT
+        ===================================================== */
 
         .card-main-split {
+
+            width: 100%;
+
             display: flex;
 
             align-items: stretch;
@@ -188,12 +247,13 @@
         }
 
 
-        /* =========================================
-           INFORMATION
-        ========================================= */
+        /* =====================================================
+           INFORMATION COLUMN
+        ===================================================== */
 
         .info-rows {
-            flex: 1.1;
+
+            flex: 1.12;
 
             display: flex;
 
@@ -202,10 +262,14 @@
             gap: 16px;
         }
 
+
         .info-row {
+
             min-height: 55px;
 
-            padding: 0 18px;
+            padding:
+                0
+                18px;
 
             display: flex;
 
@@ -213,22 +277,26 @@
 
             justify-content: space-between;
 
-            background: var(--light);
+            gap: 10px;
+
+            background: var(--soft);
 
             border-radius: 11px;
-
-            gap: 10px;
         }
 
+
         .label {
-            color: #292929;
+
+            color: var(--text);
 
             font-size: 16px;
 
             white-space: nowrap;
         }
 
+
         .value {
+
             color: var(--primary);
 
             font-size: 17px;
@@ -241,11 +309,12 @@
         }
 
 
-        /* =========================================
-           JIIJII PRODUCT GRAPHIC
-        ========================================= */
+        /* =====================================================
+           JIIJII PRODUCT
+        ===================================================== */
 
         .product-graphic {
+
             flex: .82;
 
             min-width: 125px;
@@ -253,8 +322,6 @@
             position: relative;
 
             overflow: hidden;
-
-            aspect-ratio: .82 / 1;
 
             display: flex;
 
@@ -264,79 +331,91 @@
 
             align-items: center;
 
+            aspect-ratio: .82 / 1;
+
             background:
                 linear-gradient(
                     180deg,
                     #fafafa 0%,
-                    #e7e9f7 45%,
-                    #d0d2dc 100%
+                    #e9eaf7 48%,
+                    #d1d3dc 100%
                 );
 
-            border-radius: 11px;
+            border:
+                1px solid
+                #d4d4dd;
 
-            border: 1px solid #d7d7df;
+            border-radius: 11px;
         }
 
 
-        /* =========================================
-           PRODUCT BACKGROUND
-        ========================================= */
+        /* =====================================================
+           PRODUCT LIGHT
+        ===================================================== */
 
         .product-glow {
+
             position: absolute;
 
-            width: 140px;
-            height: 140px;
+            width: 150px;
+            height: 150px;
 
             top: 45px;
             left: 50%;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             background:
                 radial-gradient(
                     circle,
-                    rgba(35, 91, 255, .55) 0%,
-                    rgba(65, 120, 255, .22) 40%,
+                    rgba(40, 95, 255, .55),
+                    rgba(40, 95, 255, .18) 40%,
                     transparent 72%
                 );
 
             filter: blur(8px);
 
-            z-index: 0;
+            z-index: 1;
         }
 
 
-        /* =========================================
-           PRODUCT SYMBOL
-        ========================================= */
+        /* =====================================================
+           JIIJII DEVICE
+        ===================================================== */
 
-        .jiijii-product {
+        .jiijii-device {
+
             position: absolute;
 
-            top: 48px;
+            top: 55px;
 
             width: 78px;
-            height: 118px;
+            height: 116px;
 
             border-radius: 16px;
 
             background:
                 linear-gradient(
                     145deg,
-                    #1c1c1c,
+                    #343434,
                     #090909
                 );
 
-            border: 2px solid #555;
+            border:
+                2px solid
+                #666666;
 
             box-shadow:
-                0 7px 15px rgba(0, 0, 0, .35);
+                0 8px 16px
+                rgba(0, 0, 0, .35);
 
             z-index: 2;
         }
 
-        .jiijii-product::before {
+
+        .jiijii-device::before {
+
             content: "";
 
             position: absolute;
@@ -345,16 +424,19 @@
             left: 50%;
 
             width: 22px;
-            height: 7px;
+            height: 6px;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
-            background: #151515;
+            background: #111111;
 
             border-radius: 10px;
         }
 
-        .jiijii-product::after {
+
+        .jiijii-device::after {
+
             content: "JIIJII";
 
             position: absolute;
@@ -362,7 +444,7 @@
             left: 0;
             right: 0;
 
-            bottom: 24px;
+            bottom: 23px;
 
             text-align: center;
 
@@ -376,55 +458,67 @@
         }
 
 
-        /* =========================================
-           STATUS RIBBONS
-        ========================================= */
+        /* =====================================================
+           STOP
+        ===================================================== */
 
         .status-ribbon-stop {
-            position: relative;
 
             width: 100%;
 
-            padding: 10px 0;
+            padding: 9px 0;
+
+            position: relative;
+
+            z-index: 5;
 
             text-align: center;
 
             color: white;
 
-            background: rgba(214, 61, 61, .92);
+            background:
+                rgba(216, 75, 75, .94);
 
             font-size: 16px;
-
-            z-index: 5;
         }
+
+
+        /* =====================================================
+           FREE
+        ===================================================== */
 
         .status-ribbon-free {
-            position: relative;
 
             width: 100%;
 
-            padding: 10px 0;
+            padding: 9px 0;
+
+            position: relative;
+
+            z-index: 5;
 
             text-align: center;
 
             color: white;
 
-            background: rgba(50, 205, 135, .90);
+            background:
+                rgba(65, 207, 148, .91);
 
             font-size: 16px;
-
-            z-index: 5;
         }
 
 
-        /* =========================================
+        /* =====================================================
            PLAN BADGE
-        ========================================= */
+        ===================================================== */
 
         .vip-badge {
-            position: relative;
 
             width: 100%;
+
+            position: relative;
+
+            z-index: 6;
 
             padding: 9px 0;
 
@@ -435,26 +529,31 @@
             background:
                 linear-gradient(
                     180deg,
-                    #242424,
-                    #101010
+                    #292929,
+                    #111111
                 );
 
             font-size: 16px;
 
-            z-index: 5;
+            font-weight: 500;
         }
 
 
-        /* =========================================
+        /* =====================================================
            COUNTDOWN
-        ========================================= */
+        ===================================================== */
 
         .countdown-bar {
-            margin-top: 20px;
+
+            width: 100%;
 
             min-height: 57px;
 
-            padding: 0 18px;
+            margin-top: 20px;
+
+            padding:
+                0
+                18px;
 
             display: flex;
 
@@ -462,48 +561,62 @@
 
             justify-content: space-between;
 
-            background: var(--light);
+            gap: 10px;
+
+            background: var(--soft);
 
             border-radius: 11px;
-
-            gap: 10px;
         }
 
+
         .countdown-label {
-            color: #292929;
+
+            color: var(--text);
 
             font-size: 16px;
         }
 
+
         .countdown-timer {
+
             color: var(--primary);
 
             font-size: 17px;
 
             font-weight: 700;
 
-            font-variant-numeric: tabular-nums;
+            font-variant-numeric:
+                tabular-nums;
+
+            white-space: nowrap;
         }
+
 
         .countdown-timer.ready {
-            color: #15955e;
+
+            color: #16955f;
         }
 
 
-        /* =========================================
+        /* =====================================================
            CLAIM BUTTON
-        ========================================= */
+        ===================================================== */
 
         .claim-form {
+
+            width: 100%;
+
             margin-top: 12px;
         }
 
+
         .claim-button {
+
             width: 100%;
 
-            border: none;
-
             padding: 12px;
+
+            border: none;
 
             border-radius: 10px;
 
@@ -518,20 +631,25 @@
             cursor: pointer;
         }
 
-        .claim-button.disabled {
-            color: #999;
 
-            background: #e5e5ec;
+        .claim-button.disabled {
+
+            color: #999999;
+
+            background: #e4e4eb;
 
             cursor: not-allowed;
         }
 
 
-        /* =========================================
+        /* =====================================================
            EMPTY STATE
-        ========================================= */
+        ===================================================== */
 
         .empty-card {
+
+            width: 100%;
+
             padding: 45px 20px;
 
             text-align: center;
@@ -541,14 +659,20 @@
             border-radius: 20px;
 
             box-shadow:
-                0 4px 15px rgba(0, 0, 0, .05);
+                0 4px 15px
+                rgba(0, 0, 0, .05);
         }
 
+
         .empty-icon {
+
             width: 55px;
             height: 55px;
 
-            margin: auto auto 12px;
+            margin:
+                0
+                auto
+                12px;
 
             display: flex;
 
@@ -564,39 +688,50 @@
             font-size: 25px;
         }
 
+
         .empty-title {
-            color: #333;
+
+            color: #333333;
 
             font-size: 18px;
         }
 
-        .empty-text {
-            margin-top: 5px;
 
-            color: #888;
+        .empty-text {
+
+            margin-top: 6px;
+
+            color: #888888;
 
             font-size: 13px;
+
+            line-height: 1.5;
         }
 
 
-        /* =========================================
-           BOTTOM NAV
-        ========================================= */
+        /* =====================================================
+           BOTTOM NAVIGATION
+        ===================================================== */
 
         .bottom-nav {
+
             position: fixed;
 
-            bottom: 0;
             left: 50%;
+            bottom: 0;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             width: 100%;
             max-width: 420px;
 
             min-height: 78px;
 
-            padding: 7px 5px 4px;
+            padding:
+                6px
+                4px
+                3px;
 
             display: grid;
 
@@ -605,19 +740,23 @@
 
             align-items: center;
 
-            background: rgba(255,255,255,.97);
+            background:
+                rgba(255, 255, 255, .98);
 
             border-top:
-                1px solid #ddddE8;
+                1px solid
+                #ddddE8;
 
             box-shadow:
-                0 -5px 18px rgba(0,0,0,.06);
+                0 -5px 18px
+                rgba(0, 0, 0, .06);
 
             z-index: 100;
         }
 
 
         .nav-item {
+
             position: relative;
 
             min-height: 68px;
@@ -627,10 +766,9 @@
             flex-direction: column;
 
             align-items: center;
-
             justify-content: center;
 
-            gap: 6px;
+            gap: 5px;
 
             color: #85858e;
 
@@ -639,7 +777,9 @@
             font-size: 13px;
         }
 
+
         .nav-item.active {
+
             color: var(--primary);
 
             font-weight: 700;
@@ -647,6 +787,7 @@
 
 
         .nav-icon {
+
             width: 25px;
             height: 25px;
 
@@ -655,16 +796,17 @@
 
 
         .nav-item.active .nav-icon {
+
             width: 30px;
             height: 30px;
 
             padding: 5px;
 
-            border-radius: 50%;
-
             color: white;
 
             background: var(--primary);
+
+            border-radius: 50%;
 
             box-shadow:
                 0 4px 10px
@@ -673,40 +815,50 @@
 
 
         .nav-item.active::after {
+
             content: "";
 
             position: absolute;
 
-            bottom: -5px;
+            left: 50%;
+            bottom: -4px;
 
-            width: 75px;
+            transform:
+                translateX(-50%);
+
+            width: 74px;
             height: 4px;
 
             background: var(--primary);
 
-            border-radius: 5px 5px 0 0;
+            border-radius:
+                5px
+                5px
+                0
+                0;
         }
 
 
-        /* =========================================
+        /* =====================================================
            BADGE
-        ========================================= */
+        ===================================================== */
 
         .badge {
+
             position: absolute;
 
-            top: 1px;
-            right: 18%;
+            top: 0;
+            right: 17%;
 
             min-width: 27px;
             height: 27px;
-
-            padding: 0 6px;
 
             display: flex;
 
             align-items: center;
             justify-content: center;
+
+            padding: 0 6px;
 
             color: white;
 
@@ -718,79 +870,115 @@
 
             font-weight: 700;
 
-            z-index: 5;
+            z-index: 10;
         }
 
 
-        /* =========================================
-           SMALL SCREENS
-        ========================================= */
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
         @media (max-width: 360px) {
 
-            .content {
-                padding: 22px 10px 95px;
+            .app-header {
+
+                height: 72px;
+
+                font-size: 25px;
             }
 
-            .card-main-split {
-                gap: 10px;
+
+            .content {
+
+                padding:
+                    22px
+                    10px
+                    95px;
             }
+
 
             .investment-card {
+
                 padding: 14px;
             }
 
-            .info-row {
-                padding: 0 12px;
+
+            .card-main-split {
+
+                gap: 10px;
             }
+
+
+            .info-rows {
+
+                gap: 12px;
+            }
+
+
+            .info-row {
+
+                min-height: 50px;
+
+                padding:
+                    0
+                    12px;
+            }
+
 
             .label,
             .value {
+
                 font-size: 13px;
             }
 
+
             .product-graphic {
+
                 min-width: 105px;
             }
 
+
             .countdown-label,
             .countdown-timer {
+
                 font-size: 13px;
             }
 
-            .app-header {
-                height: 72px;
-                font-size: 25px;
-            }
         }
 
     </style>
+
 </head>
 
+
 <body>
+
 
 <div class="app-container">
 
 
-    <!-- =========================================
+    <!-- =====================================================
          HEADER
-    ========================================== -->
+    ====================================================== -->
 
     <header class="app-header">
+
         Income
+
     </header>
 
 
-    <!-- =========================================
+
+    <!-- =====================================================
          MAIN CONTENT
-    ========================================== -->
+    ====================================================== -->
 
     <main class="content">
 
 
-        <!-- =====================================
+        <!-- =================================================
              TABS
-        ====================================== -->
+        ================================================== -->
 
         <div class="tab-container">
 
@@ -805,105 +993,163 @@
         </div>
 
 
-        <!-- =====================================
-             USER PLANS
-        ====================================== -->
+
+        <!-- =================================================
+             INCOME PRODUCTS
+        ================================================== -->
 
         {% if user_plans %}
 
 
             {% for user_plan in user_plans %}
 
-            <section class="investment-card">
+
+                <section class="investment-card">
 
 
-                <div class="card-main-split">
+                    <!-- =====================================
+                         PRODUCT INFORMATION + JIIJII
+                    ====================================== -->
+
+                    <div class="card-main-split">
 
 
-                    <!-- =========================
-                         PLAN INFORMATION
-                    ========================== -->
+                        <!-- =================================
+                             LEFT INFORMATION
+                        ================================== -->
 
-                    <div class="info-rows">
-
-
-                        <div class="info-row">
-
-                            <span class="label">
-                                Price
-                            </span>
-
-                            <span class="value">
-
-                                GHS
-                                {{
-                                    "%.2f"|format(
-                                        user_plan.investment_amount|float
-                                    )
-                                }}
-
-                            </span>
-
-                        </div>
+                        <div class="info-rows">
 
 
-                        <div class="info-row">
+                            <!-- PRICE -->
 
-                            <span class="label">
-                                Daily profit
-                            </span>
+                            <div class="info-row">
 
-                            <span class="value">
+                                <span class="label">
+                                    Price
+                                </span>
 
-                                GHS
-                                {{
-                                    "%.2f"|format(
-                                        user_plan.daily_income|float
-                                    )
-                                }}
+                                <span class="value">
 
-                            </span>
+                                    GHS
+                                    {{
+                                        "%.2f"|format(
+                                            user_plan.investment_amount|float
+                                        )
+                                    }}
 
-                        </div>
+                                </span>
 
-
-                        <div class="info-row">
-
-                            <span class="label">
-                                Days
-                            </span>
-
-                            <span class="value">
-
-                                {{ user_plan.duration }}
-
-                            </span>
-
-                        </div>
+                            </div>
 
 
-                        <div class="info-row">
 
-                            <span class="label">
-                                Total profit
-                            </span>
+                            <!-- DAILY PROFIT -->
 
-                            <span class="value">
+                            <div class="info-row">
 
-                                GHS
-                                {{
-                                    "%.2f"|format(
-                                        (
+                                <span class="label">
+                                    Daily profit
+                                </span>
+
+                                <span class="value">
+
+                                    GHS
+                                    {{
+                                        "%.2f"|format(
                                             user_plan.daily_income|float
                                         )
-                                        *
-                                        (
-                                            user_plan.duration|int
+                                    }}
+
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- DAYS -->
+
+                            <div class="info-row">
+
+                                <span class="label">
+                                    Days
+                                </span>
+
+                                <span class="value">
+
+                                    {{ user_plan.duration }}
+
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- TOTAL PROFIT -->
+
+                            <div class="info-row">
+
+                                <span class="label">
+                                    Total profit
+                                </span>
+
+                                <span class="value">
+
+                                    GHS
+                                    {{
+                                        "%.2f"|format(
+                                            (
+                                                user_plan.daily_income|float
+                                            )
+                                            *
+                                            (
+                                                user_plan.duration|int
+                                            )
                                         )
-                                    )
-                                }}
+                                    }}
 
-                            </span>
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- =================================
+                             RIGHT JIIJII PRODUCT
+                        ================================== -->
+
+                        <div class="product-graphic">
+
+
+                            <div class="product-glow"></div>
+
+
+                            <div class="status-ribbon-stop">
+
+                                Stop
+
+                            </div>
+
+
+                            <div class="status-ribbon-free">
+
+                                Free
+
+                            </div>
+
+
+                            <div class="jiijii-device"></div>
+
+
+                            <div class="vip-badge">
+
+                                {{ user_plan.plan_name }}
+
+                            </div>
+
 
                         </div>
 
@@ -911,314 +1157,304 @@
                     </div>
 
 
-                    <!-- =========================
-                         JIIJII PRODUCT
-                    ========================== -->
 
-                    <div class="product-graphic">
+                    <!-- =====================================
+                         COUNTDOWN
+                    ====================================== -->
 
-
-                        <div class="product-glow"></div>
+                    <div class="countdown-bar">
 
 
-                        <div class="status-ribbon-stop">
-                            Stop
-                        </div>
+                        <span class="countdown-label">
+
+                            Settlement countdown
+
+                        </span>
 
 
-                        <div class="status-ribbon-free">
-                            Free
-                        </div>
+                        <span
+                            id="countdown-{{ user_plan.id }}"
+                            class="countdown-timer {% if user_plan.can_claim %}ready{% endif %}"
+                        >
 
+                            {% if user_plan.can_claim %}
 
-                        <div class="jiijii-product"></div>
+                                00:00:00
 
+                            {% else %}
 
-                        <div class="vip-badge">
+                                --:--:--
 
-                            {{ user_plan.plan_name }}
+                            {% endif %}
 
-                        </div>
+                        </span>
 
 
                     </div>
 
 
-                </div>
 
+                    <!-- =====================================
+                         CLAIM INCOME
+                    ====================================== -->
 
-                <!-- =========================
-                     COUNTDOWN
-                ========================== -->
-
-                <div class="countdown-bar">
-
-                    <span class="countdown-label">
-                        Settlement countdown
-                    </span>
-
-
-                    <span
-                        class="countdown-timer {% if user_plan.can_claim %}ready{% endif %}"
-                        id="countdown-{{ user_plan.id }}"
-                    >
-
-                        {% if user_plan.can_claim %}
-                            00:00:00
-                        {% else %}
-                            --:--:--
-                        {% endif %}
-
-                    </span>
-
-                </div>
-
-
-                <!-- =========================
-                     CLAIM BUTTON
-                ========================== -->
-
-                <form
-                    method="POST"
-                    action="{{ url_for('my_plan') }}"
-                    class="claim-form"
-                >
-
-                    <input
-                        type="hidden"
-                        name="user_plan_id"
-                        value="{{ user_plan.id }}"
+                    <form
+                        method="POST"
+                        action="{{ url_for('my_plan') }}"
+                        class="claim-form"
                     >
 
 
-                    <button
-                        type="submit"
-                        class="claim-button {% if not user_plan.can_claim %}disabled{% endif %}"
-                        id="claim-{{ user_plan.id }}"
-                        {% if not user_plan.can_claim %}disabled{% endif %}
-                    >
-
-                        {% if user_plan.can_claim %}
-
-                            Claim Income
-
-                        {% else %}
-
-                            Income Not Ready
-
-                        {% endif %}
-
-                    </button>
-
-                </form>
+                        <input
+                            type="hidden"
+                            name="user_plan_id"
+                            value="{{ user_plan.id }}"
+                        >
 
 
-            </section>
+                        <button
+                            type="submit"
+                            id="claim-{{ user_plan.id }}"
+                            class="claim-button {% if not user_plan.can_claim %}disabled{% endif %}"
+                            {% if not user_plan.can_claim %}disabled{% endif %}
+                        >
+
+                            {% if user_plan.can_claim %}
+
+                                Claim Income
+
+                            {% else %}
+
+                                Income Not Ready
+
+                            {% endif %}
+
+                        </button>
 
 
-            <!-- =================================
-                 COUNTDOWN SCRIPT
-            ================================== -->
-
-            <script>
-
-            (function () {
-
-                const countdown =
-                    document.getElementById(
-                        "countdown-{{ user_plan.id }}"
-                    );
-
-                const button =
-                    document.getElementById(
-                        "claim-{{ user_plan.id }}"
-                    );
+                    </form>
 
 
-                const canClaim =
-                    {{ "true" if user_plan.can_claim else "false" }};
+                </section>
 
 
-                {% if user_plan.next_income_at %}
 
-                const nextIncome =
-                    new Date(
-                        "{{ user_plan.next_income_at.isoformat() }}"
-                    ).getTime();
+                <!-- =================================================
+                     COUNTDOWN JAVASCRIPT
+                ================================================== -->
 
-                {% else %}
+                <script>
 
-                const nextIncome = null;
+                (function () {
 
-                {% endif %}
-
-
-                function pad(number) {
-
-                    return String(number)
-                        .padStart(2, "0");
-
-                }
-
-
-                function formatTime(milliseconds) {
-
-                    if (milliseconds <= 0) {
-                        return "00:00:00";
-                    }
-
-
-                    const seconds =
-                        Math.floor(
-                            milliseconds / 1000
+                    const countdown =
+                        document.getElementById(
+                            "countdown-{{ user_plan.id }}"
                         );
 
 
-                    const hours =
-                        Math.floor(
-                            seconds / 3600
+                    const button =
+                        document.getElementById(
+                            "claim-{{ user_plan.id }}"
                         );
 
 
-                    const minutes =
-                        Math.floor(
-                            (seconds % 3600) / 60
-                        );
+                    const canClaim =
+                        {{ "true" if user_plan.can_claim else "false" }};
 
 
-                    const remainingSeconds =
-                        seconds % 60;
+                    {% if user_plan.next_income_at %}
+
+                    const nextIncome =
+                        new Date(
+                            "{{ user_plan.next_income_at.isoformat() }}"
+                        ).getTime();
+
+                    {% else %}
+
+                    const nextIncome = null;
+
+                    {% endif %}
 
 
-                    return (
-                        pad(hours) +
-                        ":" +
-                        pad(minutes) +
-                        ":" +
-                        pad(remainingSeconds)
-                    );
 
-                }
+                    function pad(number) {
 
-
-                function ready() {
-
-                    if (countdown) {
-
-                        countdown.textContent =
-                            "00:00:00";
-
-                        countdown.classList.add(
-                            "ready"
-                        );
+                        return String(number)
+                            .padStart(2, "0");
 
                     }
 
 
-                    if (button) {
 
-                        button.disabled = false;
+                    function formatTime(milliseconds) {
 
-                        button.classList.remove(
-                            "disabled"
-                        );
+                        if (milliseconds <= 0) {
 
-                        button.textContent =
-                            "Claim Income";
+                            return "00:00:00";
 
-                    }
-
-                }
+                        }
 
 
-                function waiting(time) {
+                        const totalSeconds =
+                            Math.floor(
+                                milliseconds / 1000
+                            );
 
-                    if (countdown) {
 
-                        countdown.textContent =
-                            formatTime(time);
+                        const hours =
+                            Math.floor(
+                                totalSeconds / 3600
+                            );
 
-                        countdown.classList.remove(
-                            "ready"
+
+                        const minutes =
+                            Math.floor(
+                                (totalSeconds % 3600) / 60
+                            );
+
+
+                        const seconds =
+                            totalSeconds % 60;
+
+
+                        return (
+                            pad(hours) +
+                            ":" +
+                            pad(minutes) +
+                            ":" +
+                            pad(seconds)
                         );
 
                     }
 
 
-                    if (button) {
 
-                        button.disabled = true;
-
-                        button.classList.add(
-                            "disabled"
-                        );
-
-                        button.textContent =
-                            "Income Not Ready";
-
-                    }
-
-                }
-
-
-                function update() {
-
-                    if (canClaim) {
-
-                        ready();
-
-                        return;
-
-                    }
-
-
-                    if (
-                        nextIncome === null ||
-                        Number.isNaN(nextIncome)
-                    ) {
+                    function setReady() {
 
                         if (countdown) {
 
                             countdown.textContent =
-                                "--:--:--";
+                                "00:00:00";
+
+                            countdown.classList.add(
+                                "ready"
+                            );
 
                         }
 
-                        return;
+
+                        if (button) {
+
+                            button.disabled =
+                                false;
+
+                            button.classList.remove(
+                                "disabled"
+                            );
+
+                            button.textContent =
+                                "Claim Income";
+
+                        }
 
                     }
 
 
-                    const remaining =
-                        nextIncome - Date.now();
+
+                    function setWaiting(milliseconds) {
+
+                        if (countdown) {
+
+                            countdown.textContent =
+                                formatTime(
+                                    milliseconds
+                                );
+
+                            countdown.classList.remove(
+                                "ready"
+                            );
+
+                        }
 
 
-                    if (remaining <= 0) {
+                        if (button) {
 
-                        ready();
+                            button.disabled =
+                                true;
 
-                    } else {
+                            button.classList.add(
+                                "disabled"
+                            );
 
-                        waiting(
-                            remaining
-                        );
+                            button.textContent =
+                                "Income Not Ready";
+
+                        }
 
                     }
 
-                }
 
 
-                update();
+                    function updateCountdown() {
+
+                        if (canClaim) {
+
+                            setReady();
+
+                            return;
+
+                        }
 
 
-                setInterval(
-                    update,
-                    1000
-                );
+                        if (
+                            nextIncome === null ||
+                            Number.isNaN(nextIncome)
+                        ) {
 
-            })();
+                            if (countdown) {
 
-            </script>
+                                countdown.textContent =
+                                    "--:--:--";
+
+                            }
+
+                            return;
+
+                        }
+
+
+                        const remaining =
+                            nextIncome - Date.now();
+
+
+                        if (remaining <= 0) {
+
+                            setReady();
+
+                        } else {
+
+                            setWaiting(
+                                remaining
+                            );
+
+                        }
+
+                    }
+
+
+
+                    updateCountdown();
+
+
+                    setInterval(
+                        updateCountdown,
+                        1000
+                    );
+
+                })();
+
+                </script>
 
 
             {% endfor %}
@@ -1227,26 +1463,34 @@
         {% else %}
 
 
-            <!-- =================================
-                 EMPTY STATE
-            ================================== -->
+            <!-- =================================================
+                 NO PRODUCTS
+            ================================================== -->
 
             <section class="empty-card">
 
+
                 <div class="empty-icon">
+
                     +
+
                 </div>
 
 
                 <h2 class="empty-title">
+
                     No Income Yet
+
                 </h2>
 
 
                 <p class="empty-text">
-                    Your JIIJII products will appear here
-                    after you purchase a plan.
+
+                    Your JIIJII products will appear
+                    here when you have an active plan.
+
                 </p>
+
 
             </section>
 
@@ -1257,9 +1501,10 @@
     </main>
 
 
-    <!-- =========================================
+
+    <!-- =====================================================
          BOTTOM NAVIGATION
-    ========================================== -->
+    ====================================================== -->
 
     <nav class="bottom-nav">
 
@@ -1275,17 +1520,21 @@
                 class="nav-icon"
                 viewBox="0 0 24 24"
             >
+
                 <path d="
-                    M10 20v-6h4v6h5v-8h3L12 3
-                    2 12h3v8z
+                    M10 20v-6h4v6h5v-8h3
+                    L12 3 2 12h3v8z
                 "/>
+
             </svg>
+
 
             <span>
                 Home
             </span>
 
         </a>
+
 
 
         <!-- INCOME -->
@@ -1299,19 +1548,23 @@
                 class="nav-icon"
                 viewBox="0 0 24 24"
             >
+
                 <path d="
                     M19 3H5c-1.1 0-2 .9-2 2v14
                     c0 1.1.9 2 2 2h14c1.1 0
                     2-.9 2-2V5c0-1.1-.9-2-2-2zm-2
                     10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z
                 "/>
+
             </svg>
+
 
             <span>
                 Income
             </span>
 
         </a>
+
 
 
         <!-- TEAM -->
@@ -1325,6 +1578,7 @@
                 class="nav-icon"
                 viewBox="0 0 24 24"
             >
+
                 <path d="
                     M16 11c1.66 0 2.99-1.34
                     2.99-3S17.66 5 16 5
@@ -1337,13 +1591,16 @@
                     1.17-7 3.5V19h14v-2.5
                     c0-2.33-4.67-3.5-7-3.5z
                 "/>
+
             </svg>
+
 
             <span>
                 Team
             </span>
 
         </a>
+
 
 
         <!-- SHARE -->
@@ -1357,6 +1614,7 @@
                 class="nav-icon"
                 viewBox="0 0 24 24"
             >
+
                 <path d="
                     M18 16.08c-.76 0-1.44.3
                     -1.96.77L8.91 12.7
@@ -1373,13 +1631,16 @@
                     1.61 0 2.92-1.31 2.92-2.92
                     s-1.31-2.92-2.92-2.92z
                 "/>
+
             </svg>
+
 
             <span>
                 Share
             </span>
 
         </a>
+
 
 
         <!-- MY -->
@@ -1389,10 +1650,16 @@
             class="nav-item"
         >
 
+            <div class="badge">
+                2
+            </div>
+
+
             <svg
                 class="nav-icon"
                 viewBox="0 0 24 24"
             >
+
                 <path d="
                     M12 12c2.21 0 4-1.79
                     4-4s-1.79-4-4-4
@@ -1401,7 +1668,9 @@
                     0-8 1.34-8 4v2h16
                     v-2c0-2.66-5.33-4-8-4z
                 "/>
+
             </svg>
+
 
             <span>
                 My
@@ -1409,9 +1678,12 @@
 
         </a>
 
+
     </nav>
 
+
 </div>
+
 
 </body>
 </html>

@@ -1,1283 +1,927 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Login - JOMA</title>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Login - Infinix</title>  <style>  
+  
+*{  
+    margin:0;  
+    padding:0;  
+    box-sizing:border-box;  
+    font-family:Arial,Helvetica,sans-serif;  
+}  
+  
+html,body{  
+    width:100%;  
+    min-height:100%;  
+}  
+  
+body{  
+    background:#050505;  
+    color:#fff;  
+    overflow-x:hidden;  
+}  
+  
+  
+/* =========================  
+   BACKGROUND  
+========================= */  
+  
+.background{  
+    position:fixed;  
+    inset:0;  
+    z-index:-5;  
+  
+    background-image:  
+        linear-gradient(  
+            rgba(0,0,0,.70),  
+            rgba(0,0,0,.88)  
+        ),  
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85");  
+  
+    background-size:cover;  
+    background-position:center;  
+}  
+  
+.background:after{  
+    content:"";  
+    position:absolute;  
+    inset:0;  
+  
+    background:  
+        radial-gradient(  
+            circle at 15% 20%,  
+            rgba(214,246,0,.12),  
+            transparent 32%  
+        ),  
+        radial-gradient(  
+            circle at 85% 75%,  
+            rgba(214,246,0,.08),  
+            transparent 35%  
+        );  
+}  
+  
+  
+/* =========================  
+   FLOATING X  
+========================= */  
+  
+.floating-x{  
+    position:fixed;  
+  
+    top:14%;  
+    right:8%;  
+  
+    width:55px;  
+    height:55px;  
+  
+    border:1px solid rgba(214,246,0,.35);  
+    border-radius:50%;  
+  
+    display:flex;  
+    align-items:center;  
+    justify-content:center;  
+  
+    color:#d6f600;  
+  
+    font-size:27px;  
+    font-weight:900;  
+  
+    opacity:.45;  
+  
+    animation:floatX 4s ease-in-out infinite;  
+  
+    z-index:-1;  
+}  
+  
+@keyframes floatX{  
+  
+    0%,100%{  
+        transform:translateY(0) rotate(0deg);  
+    }  
+  
+    50%{  
+        transform:translateY(35px) rotate(8deg);  
+    }  
+}  
+  
+  
+/* =========================  
+   PAGE  
+========================= */  
+  
+.page{  
+    width:100%;  
+    max-width:470px;  
+  
+    min-height:100vh;  
+  
+    margin:auto;  
+  
+    padding:25px 18px 40px;  
+}  
+  
+  
+/* =========================  
+   BRAND  
+========================= */  
+  
+.brand{  
+    text-align:center;  
+    padding:15px 0 28px;  
+}  
+  
+.brand-logo{  
+    width:72px;  
+    height:72px;  
+  
+    margin:0 auto 14px;  
+  
+    display:flex;  
+    align-items:center;  
+    justify-content:center;  
+  
+    border-radius:22px;  
+  
+    background:#d6f600;  
+    color:#050505;  
+  
+    font-size:31px;  
+    font-weight:900;  
+  
+    box-shadow:  
+        0 0 0 1px rgba(214,246,0,.3),  
+        0 12px 35px rgba(214,246,0,.18);  
+}  
+  
+.brand h1{  
+    font-size:27px;  
+    font-weight:900;  
+    letter-spacing:-.7px;  
+  
+    color:#fff;  
+  
+    margin-bottom:6px;  
+}  
+  
+.brand p{  
+    color:#8f8f8f;  
+    font-size:12px;  
+}  
+  
+  
+/* =========================  
+   LOGIN CARD  
+========================= */  
+  
+.card{  
+    background:rgba(15,15,15,.94);  
+  
+    border:1px solid #292929;  
+  
+    border-radius:22px;  
+  
+    padding:25px 20px 24px;  
+  
+    box-shadow:  
+        0 25px 70px rgba(0,0,0,.60);  
+  
+    backdrop-filter:blur(14px);  
+}  
+  
+  
+/* =========================  
+   HEADER  
+========================= */  
+  
+.card-header{  
+    margin-bottom:22px;  
+}  
+  
+.card-header h2{  
+    color:#fff;  
+  
+    font-size:23px;  
+    font-weight:800;  
+  
+    margin-bottom:6px;  
+}  
+  
+.card-header p{  
+    color:#858585;  
+  
+    font-size:12px;  
+    line-height:1.5;  
+}  
+  
+  
+/* =========================  
+   FLASH MESSAGES  
+========================= */  
+  
+.message{  
+    padding:12px 14px;  
+  
+    border-radius:10px;  
+  
+    margin-bottom:16px;  
+  
+    font-size:12px;  
+    line-height:1.5;  
+  
+    text-align:center;  
+}  
+  
+.success{  
+    background:#102000;  
+    color:#d6f600;  
+    border:1px solid #334500;  
+}  
+  
+.error{  
+    background:#250f0f;  
+    color:#ff8585;  
+    border:1px solid #542222;  
+}  
+  
+  
+/* =========================  
+   FORM  
+========================= */  
+  
+.form-group{  
+    margin-bottom:17px;  
+}  
+  
+label{  
+    display:block;  
+  
+    color:#d0d0d0;  
+  
+    font-size:11px;  
+    font-weight:700;  
+  
+    margin-bottom:7px;  
+  
+    letter-spacing:.2px;  
+}  
+  
+  
+/* =========================  
+   INPUT BOX  
+========================= */  
+  
+.input-box{  
+    height:53px;  
+    width:100%;  
+  
+    display:flex;  
+    align-items:center;  
+  
+    background:#191919;  
+  
+    border:1px solid #292929;  
+  
+    border-radius:10px;  
+  
+    transition:.2s ease;  
+}  
+  
+.input-box:focus-within{  
+    border-color:#d6f600;  
+  
+    box-shadow:  
+        0 0 0 2px rgba(214,246,0,.07);  
+  
+    background:#161616;  
+}  
+  
+  
+/* =========================  
+   INPUT ICON  
+========================= */  
+  
+.input-icon{  
+    width:45px;  
+  
+    display:flex;  
+    align-items:center;  
+    justify-content:center;  
+  
+    color:#777;  
+  
+    font-size:16px;  
+}  
+  
+  
+/* =========================  
+   INPUT  
+========================= */  
+  
+.input-box input{  
+    flex:1;  
+  
+    width:100%;  
+    height:100%;  
+  
+    border:none;  
+    outline:none;  
+  
+    background:transparent;  
+  
+    color:#fff;  
+  
+    font-size:13px;  
+  
+    padding-right:8px;  
+}  
+  
+.input-box input::placeholder{  
+    color:#666;  
+}  
+  
+  
+/* =========================  
+   PASSWORD TOGGLE  
+========================= */  
+  
+.password-toggle{  
+    width:45px;  
+    height:100%;  
+  
+    border:none;  
+    outline:none;  
+  
+    background:transparent;  
+  
+    color:#777;  
+  
+    cursor:pointer;  
+  
+    font-size:15px;  
+}  
+  
+.password-toggle:active{  
+    color:#d6f600;  
+}  
+  
+  
+/* =========================  
+   LOGIN BUTTON  
+========================= */  
+  
+.login-btn{  
+    width:100%;  
+    height:55px;  
+  
+    margin-top:8px;  
+  
+    border:none;  
+    border-radius:10px;  
+  
+    background:#d6f600;  
+    color:#050505;  
+  
+    font-size:14px;  
+    font-weight:900;  
+  
+    letter-spacing:.7px;  
+  
+    cursor:pointer;  
+  
+    position:relative;  
+    overflow:hidden;  
+  
+    box-shadow:  
+        0 0 0 rgba(214,246,0,0);  
+  
+    animation:  
+        buttonGrow 2.5s ease-in-out infinite;  
+  
+    transition:  
+        transform .15s ease,  
+        opacity .15s ease;  
+}  
+  
+  
+/* =========================  
+   SLOW BUTTON GROW  
+========================= */  
+  
+@keyframes buttonGrow{  
+  
+    0%,100%{  
+        transform:scale(1);  
+  
+        box-shadow:  
+            0 0 0 rgba(214,246,0,0);  
+    }  
+  
+    50%{  
+        transform:scale(1.025);  
+  
+        box-shadow:  
+            0 8px 25px rgba(214,246,0,.20);  
+    }  
+}  
+  
+.login-btn:active{  
+    transform:scale(.98);  
+  
+    animation:none;  
+}  
+  
+  
+/* =========================  
+   BUTTON LOADING  
+========================= */  
+  
+.login-btn.loading{  
+    pointer-events:none;  
+    color:transparent;  
+  
+    animation:none;  
+}  
+  
+.login-btn.loading:after{  
+    content:"";  
+  
+    position:absolute;  
+  
+    width:19px;  
+    height:19px;  
+  
+    top:50%;  
+    left:50%;  
+  
+    margin-left:-9.5px;  
+    margin-top:-9.5px;  
+  
+    border:2px solid rgba(0,0,0,.25);  
+  
+    border-top-color:#000;  
+  
+    border-radius:50%;  
+  
+    animation:spin .7s linear infinite;  
+}  
+  
+@keyframes spin{  
+    to{  
+        transform:rotate(360deg);  
+    }  
+}  
+  
+  
+/* =========================  
+   REGISTER LINK  
+========================= */  
+  
+.register-link{  
+    text-align:center;  
+  
+    margin-top:19px;  
+  
+    color:#777;  
+  
+    font-size:11px;  
+}  
+  
+.register-link a{  
+    color:#d6f600;  
+  
+    font-weight:800;  
+  
+    text-decoration:none;  
+  
+    margin-left:3px;  
+}  
+  
+  
+/* =========================  
+   SECURITY  
+========================= */  
+  
+.security{  
+    margin-top:19px;  
+  
+    padding-top:15px;  
+  
+    border-top:1px solid #252525;  
+  
+    text-align:center;  
+  
+    color:#555;  
+  
+    font-size:9px;  
+  
+    letter-spacing:.2px;  
+}  
+  
+  
+/* =========================  
+   FULL PAGE LOADER  
+========================= */  
+  
+.page-loader{  
+    position:fixed;  
+    inset:0;  
+  
+    background:rgba(0,0,0,.95);  
+  
+    display:none;  
+  
+    align-items:center;  
+    justify-content:center;  
+  
+    flex-direction:column;  
+  
+    z-index:9999;  
+}  
+  
+.page-loader.show{  
+    display:flex;  
+}  
+  
+.loader-logo{  
+    width:62px;  
+    height:62px;  
+  
+    border-radius:18px;  
+  
+    background:#d6f600;  
+    color:#000;  
+  
+    display:flex;  
+    align-items:center;  
+    justify-content:center;  
+  
+    font-size:26px;  
+    font-weight:900;  
+  
+    margin-bottom:18px;  
+  
+    animation:  
+        loaderPulse 1.3s ease-in-out infinite;  
+}  
+  
+.loader-spinner{  
+    width:28px;  
+    height:28px;  
+  
+    border:2px solid #333;  
+  
+    border-top-color:#d6f600;  
+  
+    border-radius:50%;  
+  
+    animation:spin .7s linear infinite;  
+  
+    margin-bottom:12px;  
+}  
+  
+.loader-text{  
+    color:#888;  
+  
+    font-size:11px;  
+  
+    letter-spacing:.5px;  
+}  
+  
+@keyframes loaderPulse{  
+  
+    0%,100%{  
+        transform:scale(1);  
+    }  
+  
+    50%{  
+        transform:scale(1.07);  
+    }  
+}  
+  
+  
+/* =========================  
+   MOBILE  
+========================= */  
+  
+@media(max-width:360px){  
+  
+    .page{  
+        padding:18px 12px 30px;  
+    }  
+  
+    .brand-logo{  
+        width:64px;  
+        height:64px;  
+  
+        border-radius:19px;  
+  
+        font-size:27px;  
+    }  
+  
+    .brand h1{  
+        font-size:23px;  
+    }  
+  
+    .card{  
+        padding:22px 16px;  
+    }  
+  
+    .card-header h2{  
+        font-size:21px;  
+    }  
+}  
+  
+</style>  </head>  <body>  <!-- BACKGROUND IMAGE -->  <div class="background"></div>  <!-- FLOATING X -->  <div class="floating-x">  
+    X  
+</div>  <!-- =========================  
+     FULL PAGE LOADING  
+========================= -->  <div class="page-loader" id="pageLoader">  <div class="loader-logo">  
+    X  
+</div>  
+
+<div class="loader-spinner"></div>  
+
+<div class="loader-text">  
+    Signing you in...  
+</div>
+
+</div>  <div class="page">  <!-- =========================  
+     BRAND  
+========================= -->  
+
+<div class="brand">  
+
+    <div class="brand-logo">  
+        X  
+    </div>  
+
+    <h1>  
+        Infinix  
+    </h1>  
+
+    <p>  
+        Welcome back to the Infinix platform  
+    </p>  
+
+</div>  
+
+
+<!-- =========================  
+     LOGIN CARD  
+========================= -->  
+
+<div class="card">  
+
+
+    <div class="card-header">  
+
+        <h2>  
+            Welcome Back  
+        </h2>  
+
+        <p>  
+            Enter your account details to continue.  
+        </p>  
+
+    </div>  
+
+
+    <!-- =========================  
+         FLASH MESSAGES  
+    ========================= -->  
+
+    {% with messages = get_flashed_messages(with_categories=true) %}  
+
+        {% for category, message in messages %}  
+
+            <div class="message {{ category }}">  
+                {{ message }}  
+            </div>  
+
+        {% endfor %}  
+
+    {% endwith %}  
+
+
+    <!-- =========================  
+         LOGIN FORM  
+    ========================= -->  
+
+    <form  
+        method="POST"  
+        action="{{ url_for('login') }}"  
+        id="loginForm"  
+    >  
+
+
+        <!-- PHONE -->  
+
+        <div class="form-group">  
+
+            <label for="phone">  
+                PHONE NUMBER  
+            </label>  
+
+            <div class="input-box">  
+
+                <div class="input-icon">  
+                    📱  
+                </div>  
+
+                <input  
+                    type="tel"  
+                    id="phone"  
+                    name="phone"  
+                    placeholder="Enter your phone number"  
+                    autocomplete="tel"  
+                    required  
+                >  
+
+            </div>  
+
+        </div>  
+
+
+        <!-- PASSWORD -->  
+
+        <div class="form-group">  
+
+            <label for="password">  
+                LOGIN PASSWORD  
+            </label>  
+
+            <div class="input-box">  
+
+                <div class="input-icon">  
+                    🔒  
+                </div>  
+
+                <input  
+                    type="password"  
+                    id="password"  
+                    name="password"  
+                    placeholder="Enter your login password"  
+                    autocomplete="current-password"  
+                    required  
+                >  
+
+                <button  
+                    type="button"  
+                    class="password-toggle"  
+                    id="passwordToggle"  
+                    onclick="togglePassword()"  
+                    aria-label="Show or hide password"  
+                >  
+                    👁  
+                </button>  
+
+            </div>  
+
+        </div>  
+
+
+        <!-- LOGIN BUTTON -->  
+
+        <button  
+            type="submit"  
+            class="login-btn"  
+            id="loginButton"  
+        >  
+            LOGIN  
+        </button>  
+
+
+    </form>  
+
+
+    <!-- =========================  
+         REGISTER  
+    ========================= -->  
+
+    <div class="register-link">  
+
+        Don't have an account?  
+
+        <a href="{{ url_for('register') }}">  
+            Create Account  
+        </a>  
+
+    </div>  
+
+
+    <!-- =========================  
+         SECURITY  
+    ========================= -->  
+
+    <div class="security">  
+
+        🔒 Your account information is securely handled.  
+
+    </div>  
 
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-html,body{
-    width:100%;
-    min-height:100%;
-}
-
-body{
-    background:#f4f7fb;
-    color:#172033;
-    overflow-x:hidden;
-}
-
-
-/* =========================
-   BACKGROUND
-========================= */
-
-.background{
-    position:fixed;
-    inset:0;
-    z-index:-5;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.80),
-            rgba(244,247,251,.94)
-        ),
-        url("/static/background.jpg");
-
-    background-size:cover;
-    background-position:center;
-}
-
-.background:after{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(33,97,207,.10),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 90% 75%,
-            rgba(255,145,0,.10),
-            transparent 35%
-        );
-}
-
-
-/* =========================
-   TOP TEMPORARY MESSAGE
-========================= */
-
-.top-message-container{
-    position:fixed;
-
-    top:16px;
-    left:50%;
-
-    width:calc(100% - 30px);
-    max-width:430px;
-
-    transform:
-        translate(-50%,-120px);
-
-    opacity:0;
-
-    z-index:10000;
-
-    pointer-events:none;
-
-    transition:
-        transform .45s ease,
-        opacity .45s ease;
-}
-
-.top-message-container.show{
-    transform:
-        translate(-50%,0);
-
-    opacity:1;
-}
-
-.top-message{
-    min-height:54px;
-
-    padding:12px 15px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:11px;
-
-    background:#ffffff;
-
-    border:1px solid #dce4ef;
-
-    border-left:4px solid #2161cf;
-
-    border-radius:12px;
-
-    box-shadow:
-        0 12px 35px rgba(20,40,80,.15);
-
-    color:#344054;
-
-    font-size:12px;
-
-    font-weight:600;
-}
-
-.top-message-icon{
-    width:30px;
-    height:30px;
-
-    flex-shrink:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:#eaf1ff;
-
-    color:#2161cf;
-
-    font-size:14px;
-
-    font-weight:900;
-}
-
-.top-message-text{
-    flex:1;
-
-    line-height:1.4;
-}
-
-
-/* =========================
-   FLOATING JOMA
-========================= */
-
-.floating-joma{
-    position:fixed;
-
-    top:13%;
-    right:7%;
-
-    width:58px;
-    height:58px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(33,97,207,.18);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:#2161cf;
-
-    font-size:11px;
-    font-weight:900;
-
-    letter-spacing:.5px;
-
-    opacity:.35;
-
-    animation:floatJoma 4s ease-in-out infinite;
-
-    z-index:-1;
-}
-
-@keyframes floatJoma{
-
-    0%,100%{
-        transform:translateY(0) rotate(0deg);
-    }
-
-    50%{
-        transform:translateY(30px) rotate(7deg);
-    }
-}
-
-
-/* =========================
-   PAGE
-========================= */
-
-.page{
-    width:100%;
-    max-width:470px;
-
-    min-height:100vh;
-
-    margin:auto;
-
-    padding:25px 18px 40px;
-}
-
-
-/* =========================
-   BRAND
-========================= */
-
-.brand{
-    text-align:center;
-
-    padding:15px 0 28px;
-}
-
-.brand-logo{
-    width:74px;
-    height:74px;
-
-    margin:0 auto 14px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #2161cf 0%,
-            #2161cf 58%,
-            #ff9100 58%,
-            #ff9100 100%
-        );
-
-    color:#fff;
-
-    font-size:18px;
-    font-weight:900;
-
-    letter-spacing:1px;
-
-    box-shadow:
-        0 10px 30px rgba(33,97,207,.20);
-
-    position:relative;
-    overflow:hidden;
-}
-
-.brand-logo:after{
-    content:"";
-
-    position:absolute;
-
-    width:18px;
-    height:18px;
-
-    background:rgba(255,255,255,.20);
-
-    border-radius:50%;
-
-    top:9px;
-    right:10px;
-}
-
-.brand h1{
-    font-size:29px;
-
-    font-weight:900;
-
-    letter-spacing:-.8px;
-
-    color:#172033;
-
-    margin-bottom:6px;
-}
-
-.brand p{
-    color:#7a8496;
-
-    font-size:12px;
-}
-
-
-/* =========================
-   LOGIN CARD
-========================= */
-
-.card{
-    background:rgba(255,255,255,.97);
-
-    border:1px solid #e4e9f1;
-
-    border-radius:22px;
-
-    padding:26px 20px 24px;
-
-    box-shadow:
-        0 20px 55px rgba(20,40,80,.10);
-
-    backdrop-filter:blur(14px);
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-.card-header{
-    margin-bottom:22px;
-}
-
-.card-header h2{
-    color:#172033;
-
-    font-size:23px;
-
-    font-weight:800;
-
-    margin-bottom:6px;
-}
-
-.card-header p{
-    color:#7d8798;
-
-    font-size:12px;
-
-    line-height:1.5;
-}
-
-
-/* =========================
-   FORM
-========================= */
-
-.form-group{
-    margin-bottom:17px;
-}
-
-label{
-    display:block;
-
-    color:#455064;
-
-    font-size:11px;
-
-    font-weight:800;
-
-    margin-bottom:7px;
-
-    letter-spacing:.3px;
-}
-
-
-/* =========================
-   INPUT BOX
-========================= */
-
-.input-box{
-    height:53px;
-
-    width:100%;
-
-    display:flex;
-
-    align-items:center;
-
-    background:#f8faff;
-
-    border:1px solid #dfe5ee;
-
-    border-radius:11px;
-
-    transition:
-        border-color .2s ease,
-        box-shadow .2s ease,
-        background .2s ease;
-}
-
-.input-box:focus-within{
-    border-color:#2161cf;
-
-    box-shadow:
-        0 0 0 3px rgba(33,97,207,.08);
-
-    background:#fff;
-}
-
-
-/* =========================
-   INPUT ICON
-========================= */
-
-.input-icon{
-    width:45px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    color:#8a94a6;
-
-    font-size:16px;
-}
-
-
-/* =========================
-   INPUT
-========================= */
-
-.input-box input{
-    flex:1;
-
-    width:100%;
-    height:100%;
-
-    border:none;
-    outline:none;
-
-    background:transparent;
-
-    color:#172033;
-
-    font-size:13px;
-
-    padding-right:8px;
-}
-
-.input-box input::placeholder{
-    color:#9aa3b2;
-}
-
-
-/* =========================
-   PASSWORD TOGGLE
-========================= */
-
-.password-toggle{
-    width:45px;
-    height:100%;
-
-    border:none;
-    outline:none;
-
-    background:transparent;
-
-    color:#8a94a6;
-
-    cursor:pointer;
-
-    font-size:15px;
-}
-
-.password-toggle:active{
-    color:#2161cf;
-}
-
-
-/* =========================
-   LOGIN BUTTON
-========================= */
-
-.login-btn{
-    width:100%;
-
-    height:55px;
-
-    margin-top:8px;
-
-    border:none;
-
-    border-radius:11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2161cf,
-            #174da8
-        );
-
-    color:#fff;
-
-    font-size:14px;
-
-    font-weight:900;
-
-    letter-spacing:.7px;
-
-    cursor:pointer;
-
-    position:relative;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 9px 22px rgba(33,97,207,.22);
-
-    animation:
-        buttonGrow 2.5s ease-in-out infinite;
-
-    transition:
-        transform .15s ease,
-        opacity .15s ease;
-}
-
-.login-btn:before{
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:-100%;
-
-    width:60%;
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.18),
-            transparent
-        );
-
-    transform:skewX(-20deg);
-
-    animation:buttonShine 3.5s infinite;
-}
-
-@keyframes buttonShine{
-
-    0%{
-        left:-100%;
-    }
-
-    45%,100%{
-        left:150%;
-    }
-}
-
-@keyframes buttonGrow{
-
-    0%,100%{
-        transform:scale(1);
-
-        box-shadow:
-            0 9px 22px rgba(33,97,207,.18);
-    }
-
-    50%{
-        transform:scale(1.018);
-
-        box-shadow:
-            0 12px 28px rgba(33,97,207,.25);
-    }
-}
-
-.login-btn:active{
-    transform:scale(.98);
-
-    animation:none;
-}
-
-
-/* =========================
-   BUTTON LOADING
-========================= */
-
-.login-btn.loading{
-    pointer-events:none;
-
-    color:transparent;
-
-    animation:none;
-}
-
-.login-btn.loading:after{
-    content:"";
-
-    position:absolute;
-
-    width:19px;
-    height:19px;
-
-    top:50%;
-    left:50%;
-
-    margin-left:-9.5px;
-    margin-top:-9.5px;
-
-    border:2px solid rgba(255,255,255,.35);
-
-    border-top-color:#fff;
-
-    border-radius:50%;
-
-    animation:spin .7s linear infinite;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-
-/* =========================
-   REGISTER LINK
-========================= */
-
-.register-link{
-    text-align:center;
-
-    margin-top:19px;
-
-    color:#7d8798;
-
-    font-size:11px;
-}
-
-.register-link a{
-    color:#2161cf;
-
-    font-weight:800;
-
-    text-decoration:none;
-
-    margin-left:3px;
-}
-
-.register-link a:hover{
-    color:#ff9100;
-}
-
-
-/* =========================
-   SECURITY
-========================= */
-
-.security{
-    margin-top:19px;
-
-    padding-top:15px;
-
-    border-top:1px solid #edf0f4;
-
-    text-align:center;
-
-    color:#9aa3b2;
-
-    font-size:9px;
-
-    letter-spacing:.2px;
-}
-
-
-/* =========================
-   FULL PAGE LOADER
-========================= */
-
-.page-loader{
-    position:fixed;
-
-    inset:0;
-
-    background:
-        linear-gradient(
-            145deg,
-            #2161cf,
-            #174da8
-        );
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    flex-direction:column;
-
-    z-index:9999;
-}
-
-.page-loader.show{
-    display:flex;
-}
-
-.loader-logo{
-    width:64px;
-    height:64px;
-
-    border-radius:19px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fff 0%,
-            #fff 60%,
-            #ff9100 60%,
-            #ff9100 100%
-        );
-
-    color:#2161cf;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:17px;
-    font-weight:900;
-
-    letter-spacing:.8px;
-
-    margin-bottom:18px;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.16);
-
-    animation:
-        loaderPulse 1.3s ease-in-out infinite;
-}
-
-.loader-spinner{
-    width:29px;
-    height:29px;
-
-    border:2px solid rgba(255,255,255,.30);
-
-    border-top-color:#fff;
-
-    border-radius:50%;
-
-    animation:
-        spin .7s linear infinite;
-
-    margin-bottom:12px;
-}
-
-.loader-text{
-    color:rgba(255,255,255,.85);
-
-    font-size:11px;
-
-    letter-spacing:.5px;
-}
-
-@keyframes loaderPulse{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.07);
-    }
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:360px){
-
-    .page{
-        padding:18px 12px 30px;
-    }
-
-    .brand-logo{
-        width:64px;
-        height:64px;
-
-        border-radius:19px;
-
-        font-size:15px;
-    }
-
-    .brand h1{
-        font-size:24px;
-    }
-
-    .card{
-        padding:22px 16px;
-    }
-
-    .card-header h2{
-        font-size:21px;
-    }
-
-    .top-message-container{
-        top:10px;
-
-        width:calc(100% - 20px);
-    }
-}
-
-</style>
-</head>
-
-<body>
-
-
-<!-- =========================
-     TOP TEMPORARY MESSAGE
-========================= -->
-
-<div
-    class="top-message-container"
-    id="topMessageContainer"
->
-
-    <div class="top-message">
-
-        <div class="top-message-icon">
-            !
-        </div>
-
-        <div
-            class="top-message-text"
-            id="topMessageText"
-        >
-            Please fill in all required fields.
-        </div>
-
-    </div>
 
 </div>
 
-
-<!-- BACKGROUND -->
-
-<div class="background"></div>
-
-
-<!-- FLOATING JOMA -->
-
-<div class="floating-joma">
-    JOMA
-</div>
-
-
-<!-- =========================
-     FULL PAGE LOADER
-========================= -->
-
-<div
-    class="page-loader"
-    id="pageLoader"
->
-
-    <div class="loader-logo">
-        JOMA
-    </div>
-
-    <div class="loader-spinner"></div>
-
-    <div class="loader-text">
-        Signing you in...
-    </div>
-
-</div>
-
-
-<div class="page">
-
-
-    <!-- =========================
-         BRAND
-    ========================= -->
-
-    <div class="brand">
-
-        <div class="brand-logo">
-            JOMA
-        </div>
-
-        <h1>
-            JOMA
-        </h1>
-
-        <p>
-            Welcome back to the JOMA platform
-        </p>
-
-    </div>
-
-
-    <!-- =========================
-         LOGIN CARD
-    ========================= -->
-
-    <div class="card">
-
-        <div class="card-header">
-
-            <h2>
-                Welcome Back
-            </h2>
-
-            <p>
-                Enter your account details to continue.
-            </p>
-
-        </div>
-
-
-        <!-- =========================
-             FLASK FLASH MESSAGES
-        ========================= -->
-
-        {% with messages = get_flashed_messages(with_categories=true) %}
-
-            {% for category, message in messages %}
-
-                <div
-                    class="message {{ category }}"
-                    data-flash-message="{{ message }}"
-                >
-                    {{ message }}
-                </div>
-
-            {% endfor %}
-
-        {% endwith %}
-
-
-        <!-- =========================
-             LOGIN FORM
-        ========================= -->
-
-        <form
-            method="POST"
-            action="{{ url_for('login') }}"
-            id="loginForm"
-            novalidate
-        >
-
-
-            <!-- PHONE -->
-
-            <div class="form-group">
-
-                <label for="phone">
-                    PHONE NUMBER
-                </label>
-
-                <div class="input-box">
-
-                    <div class="input-icon">
-                        📱
-                    </div>
-
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        placeholder="Enter your phone number"
-                        autocomplete="tel"
-                    >
-
-                </div>
-
-            </div>
-
-
-            <!-- PASSWORD -->
-
-            <div class="form-group">
-
-                <label for="password">
-                    LOGIN PASSWORD
-                </label>
-
-                <div class="input-box">
-
-                    <div class="input-icon">
-                        🔒
-                    </div>
-
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Enter your login password"
-                        autocomplete="current-password"
-                    >
-
-                    <button
-                        type="button"
-                        class="password-toggle"
-                        id="passwordToggle"
-                        onclick="togglePassword()"
-                        aria-label="Show or hide password"
-                    >
-                        👁
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- LOGIN BUTTON -->
-
-            <button
-                type="submit"
-                class="login-btn"
-                id="loginButton"
-            >
-                LOGIN
-            </button>
-
-        </form>
-
-
-        <!-- REGISTER -->
-
-        <div class="register-link">
-
-            Don't have an account?
-
-            <a href="{{ url_for('register') }}">
-                Create Account
-            </a>
-
-        </div>
-
-
-        <!-- SECURITY -->
-
-        <div class="security">
-
-            🔒 Your account information is securely handled.
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<script>
-
-/* =========================
-   TOP MESSAGE FUNCTION
-========================= */
-
-let messageTimer;
-
-function showTopMessage(message){
-
-    const container =
-        document.getElementById("topMessageContainer");
-
-    const text =
-        document.getElementById("topMessageText");
-
-    if(!container || !text){
-        return;
-    }
-
-    text.textContent = message;
-
-    container.classList.add("show");
-
-    clearTimeout(messageTimer);
-
-    messageTimer = setTimeout(function(){
-
-        container.classList.remove("show");
-
-    }, 3500);
-}
-
-
-/* =========================
-   PASSWORD TOGGLE
-========================= */
-
-function togglePassword(){
-
-    const password =
-        document.getElementById("password");
-
-    const button =
-        document.getElementById("passwordToggle");
-
-    if(!password || !button){
-        return;
-    }
-
-    if(password.type === "password"){
-
-        password.type = "text";
-
-        button.textContent = "🙈";
-
-    }else{
-
-        password.type = "password";
-
-        button.textContent = "👁";
-
-    }
-
-}
-
-
-/* =========================
-   LOGIN FORM
-========================= */
-
-const loginForm =
-    document.getElementById("loginForm");
-
-const loginButton =
-    document.getElementById("loginButton");
-
-const pageLoader =
-    document.getElementById("pageLoader");
-
-
-if(loginForm){
-
-    loginForm.addEventListener(
-        "submit",
-        function(event){
-
-            const phone =
-                document.getElementById("phone");
-
-            const password =
-                document.getElementById("password");
-
-
-            /* CHECK EMPTY FIELDS */
-
-            if(
-                !phone.value.trim() ||
-                !password.value.trim()
-            ){
-
-                event.preventDefault();
-
-                showTopMessage(
-                    "Please fill in all required fields."
-                );
-
-                return;
-            }
-
-
-            /* SHOW LOADING */
-
-            if(loginButton){
-
-                loginButton.classList.add(
-                    "loading"
-                );
-
-            }
-
-            if(pageLoader){
-
-                pageLoader.classList.add(
-                    "show"
-                );
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================
-   FLASK FLASH MESSAGE
-   SHOW AT TOP
-========================= */
-
-const flashMessages =
-    document.querySelectorAll(
-        "[data-flash-message]"
-    );
-
-
-flashMessages.forEach(function(message){
-
-    const text =
-        message.getAttribute(
-            "data-flash-message"
-        );
-
-    if(text){
-
-        showTopMessage(text);
-
-    }
-
-    /* Hide original message inside card */
-
-    message.style.display = "none";
-
-});
-
-
-/* =========================
-   PAGE LINK LOADING
-========================= */
-
-document.querySelectorAll("a").forEach(function(link){
-
-    link.addEventListener(
-        "click",
-        function(){
-
-            const href =
-                link.getAttribute("href");
-
-            if(
-                !href ||
-                href === "#" ||
-                href.startsWith("javascript:")
-            ){
-                return;
-            }
-
-            if(pageLoader){
-
-                pageLoader.classList.add(
-                    "show"
-                );
-
-            }
-
-        }
-    );
-
-});
-
-
-/* =========================
-   OPTIONAL WELCOME MESSAGE
-   AFTER PAGE LOAD
-========================= */
-
-setTimeout(function(){
-
-    /*
-       Remove this section if you don't
-       want an automatic message when
-       the login page opens.
-    */
-
-    // showTopMessage("Welcome to JOMA.");
-
-}, 1200);
-
-</script>
-
-</body>
+</div>  <script>  
+  
+/* =========================  
+   PASSWORD TOGGLE  
+========================= */  
+  
+function togglePassword(){  
+  
+    const password =  
+        document.getElementById("password");  
+  
+    const button =  
+        document.getElementById("passwordToggle");  
+  
+    if(!password || !button){  
+        return;  
+    }  
+  
+    if(password.type === "password"){  
+  
+        password.type = "text";  
+  
+        button.textContent = "🙈";  
+  
+    }else{  
+  
+        password.type = "password";  
+  
+        button.textContent = "👁";  
+  
+    }  
+  
+}  
+  
+  
+/* =========================  
+   LOGIN LOADING  
+========================= */  
+  
+const loginForm =  
+    document.getElementById("loginForm");  
+  
+const loginButton =  
+    document.getElementById("loginButton");  
+  
+const pageLoader =  
+    document.getElementById("pageLoader");  
+  
+  
+if(loginForm){  
+  
+    loginForm.addEventListener(  
+        "submit",  
+        function(){  
+  
+            if(loginButton){  
+  
+                loginButton.classList.add(  
+                    "loading"  
+                );  
+  
+            }  
+  
+            if(pageLoader){  
+  
+                pageLoader.classList.add(  
+                    "show"  
+                );  
+  
+            }  
+  
+        }  
+    );  
+  
+}  
+  
+  
+/* =========================  
+   PAGE LINK LOADING  
+========================= */  
+  
+document.querySelectorAll("a").forEach(function(link){  
+  
+    link.addEventListener("click",function(event){  
+  
+        const href = link.getAttribute("href");  
+  
+        if(!href || href === "#" || href.startsWith("javascript:")){  
+            return;  
+        }  
+  
+        if(pageLoader){  
+  
+            pageLoader.classList.add("show");  
+  
+        }  
+  
+    });  
+  
+});  
+  
+</script>  </body>  
 </html>

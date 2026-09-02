@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Login - Infinix</title>
+<title>Login - JOMA</title>
 
 <style>
 
@@ -21,8 +21,8 @@ html,body{
 }
 
 body{
-    background:#050505;
-    color:#fff;
+    background:#f4f7fb;
+    color:#172033;
     overflow-x:hidden;
 }
 
@@ -38,10 +38,10 @@ body{
 
     background-image:
         linear-gradient(
-            rgba(0,0,0,.70),
-            rgba(0,0,0,.88)
+            rgba(255,255,255,.80),
+            rgba(244,247,251,.94)
         ),
-        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85");
+        url("/static/background.jpg");
 
     background-size:cover;
     background-position:center;
@@ -54,58 +54,152 @@ body{
 
     background:
         radial-gradient(
-            circle at 15% 20%,
-            rgba(214,246,0,.12),
+            circle at 10% 20%,
+            rgba(33,97,207,.10),
             transparent 32%
         ),
         radial-gradient(
-            circle at 85% 75%,
-            rgba(214,246,0,.08),
+            circle at 90% 75%,
+            rgba(255,145,0,.10),
             transparent 35%
         );
 }
 
 
 /* =========================
-   FLOATING X
+   TOP TEMPORARY MESSAGE
 ========================= */
 
-.floating-x{
+.top-message-container{
     position:fixed;
 
-    top:14%;
-    right:8%;
+    top:16px;
+    left:50%;
 
-    width:55px;
-    height:55px;
+    width:calc(100% - 30px);
+    max-width:430px;
 
-    border:1px solid rgba(214,246,0,.35);
-    border-radius:50%;
+    transform:
+        translate(-50%,-120px);
+
+    opacity:0;
+
+    z-index:10000;
+
+    pointer-events:none;
+
+    transition:
+        transform .45s ease,
+        opacity .45s ease;
+}
+
+.top-message-container.show{
+    transform:
+        translate(-50%,0);
+
+    opacity:1;
+}
+
+.top-message{
+    min-height:54px;
+
+    padding:12px 15px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    background:#ffffff;
+
+    border:1px solid #dce4ef;
+
+    border-left:4px solid #2161cf;
+
+    border-radius:12px;
+
+    box-shadow:
+        0 12px 35px rgba(20,40,80,.15);
+
+    color:#344054;
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+.top-message-icon{
+    width:30px;
+    height:30px;
+
+    flex-shrink:0;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    color:#d6f600;
+    border-radius:50%;
 
-    font-size:27px;
+    background:#eaf1ff;
+
+    color:#2161cf;
+
+    font-size:14px;
+
+    font-weight:900;
+}
+
+.top-message-text{
+    flex:1;
+
+    line-height:1.4;
+}
+
+
+/* =========================
+   FLOATING JOMA
+========================= */
+
+.floating-joma{
+    position:fixed;
+
+    top:13%;
+    right:7%;
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(33,97,207,.18);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#2161cf;
+
+    font-size:11px;
     font-weight:900;
 
-    opacity:.45;
+    letter-spacing:.5px;
 
-    animation:floatX 4s ease-in-out infinite;
+    opacity:.35;
+
+    animation:floatJoma 4s ease-in-out infinite;
 
     z-index:-1;
 }
 
-@keyframes floatX{
+@keyframes floatJoma{
 
     0%,100%{
         transform:translateY(0) rotate(0deg);
     }
 
     50%{
-        transform:translateY(35px) rotate(8deg);
+        transform:translateY(30px) rotate(7deg);
     }
 }
 
@@ -132,12 +226,13 @@ body{
 
 .brand{
     text-align:center;
+
     padding:15px 0 28px;
 }
 
 .brand-logo{
-    width:72px;
-    height:72px;
+    width:74px;
+    height:74px;
 
     margin:0 auto 14px;
 
@@ -147,29 +242,60 @@ body{
 
     border-radius:22px;
 
-    background:#d6f600;
-    color:#050505;
+    background:
+        linear-gradient(
+            145deg,
+            #2161cf 0%,
+            #2161cf 58%,
+            #ff9100 58%,
+            #ff9100 100%
+        );
 
-    font-size:31px;
+    color:#fff;
+
+    font-size:18px;
     font-weight:900;
 
+    letter-spacing:1px;
+
     box-shadow:
-        0 0 0 1px rgba(214,246,0,.3),
-        0 12px 35px rgba(214,246,0,.18);
+        0 10px 30px rgba(33,97,207,.20);
+
+    position:relative;
+    overflow:hidden;
+}
+
+.brand-logo:after{
+    content:"";
+
+    position:absolute;
+
+    width:18px;
+    height:18px;
+
+    background:rgba(255,255,255,.20);
+
+    border-radius:50%;
+
+    top:9px;
+    right:10px;
 }
 
 .brand h1{
-    font-size:27px;
-    font-weight:900;
-    letter-spacing:-.7px;
+    font-size:29px;
 
-    color:#fff;
+    font-weight:900;
+
+    letter-spacing:-.8px;
+
+    color:#172033;
 
     margin-bottom:6px;
 }
 
 .brand p{
-    color:#8f8f8f;
+    color:#7a8496;
+
     font-size:12px;
 }
 
@@ -179,16 +305,16 @@ body{
 ========================= */
 
 .card{
-    background:rgba(15,15,15,.94);
+    background:rgba(255,255,255,.97);
 
-    border:1px solid #292929;
+    border:1px solid #e4e9f1;
 
     border-radius:22px;
 
-    padding:25px 20px 24px;
+    padding:26px 20px 24px;
 
     box-shadow:
-        0 25px 70px rgba(0,0,0,.60);
+        0 20px 55px rgba(20,40,80,.10);
 
     backdrop-filter:blur(14px);
 }
@@ -203,49 +329,21 @@ body{
 }
 
 .card-header h2{
-    color:#fff;
+    color:#172033;
 
     font-size:23px;
+
     font-weight:800;
 
     margin-bottom:6px;
 }
 
 .card-header p{
-    color:#858585;
+    color:#7d8798;
 
     font-size:12px;
+
     line-height:1.5;
-}
-
-
-/* =========================
-   FLASH MESSAGES
-========================= */
-
-.message{
-    padding:12px 14px;
-
-    border-radius:10px;
-
-    margin-bottom:16px;
-
-    font-size:12px;
-    line-height:1.5;
-
-    text-align:center;
-}
-
-.success{
-    background:#102000;
-    color:#d6f600;
-    border:1px solid #334500;
-}
-
-.error{
-    background:#250f0f;
-    color:#ff8585;
-    border:1px solid #542222;
 }
 
 
@@ -260,14 +358,15 @@ body{
 label{
     display:block;
 
-    color:#d0d0d0;
+    color:#455064;
 
     font-size:11px;
-    font-weight:700;
+
+    font-weight:800;
 
     margin-bottom:7px;
 
-    letter-spacing:.2px;
+    letter-spacing:.3px;
 }
 
 
@@ -277,27 +376,32 @@ label{
 
 .input-box{
     height:53px;
+
     width:100%;
 
     display:flex;
+
     align-items:center;
 
-    background:#191919;
+    background:#f8faff;
 
-    border:1px solid #292929;
+    border:1px solid #dfe5ee;
 
-    border-radius:10px;
+    border-radius:11px;
 
-    transition:.2s ease;
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
 }
 
 .input-box:focus-within{
-    border-color:#d6f600;
+    border-color:#2161cf;
 
     box-shadow:
-        0 0 0 2px rgba(214,246,0,.07);
+        0 0 0 3px rgba(33,97,207,.08);
 
-    background:#161616;
+    background:#fff;
 }
 
 
@@ -309,10 +413,12 @@ label{
     width:45px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
-    color:#777;
+    color:#8a94a6;
 
     font-size:16px;
 }
@@ -333,7 +439,7 @@ label{
 
     background:transparent;
 
-    color:#fff;
+    color:#172033;
 
     font-size:13px;
 
@@ -341,7 +447,7 @@ label{
 }
 
 .input-box input::placeholder{
-    color:#666;
+    color:#9aa3b2;
 }
 
 
@@ -358,7 +464,7 @@ label{
 
     background:transparent;
 
-    color:#777;
+    color:#8a94a6;
 
     cursor:pointer;
 
@@ -366,7 +472,7 @@ label{
 }
 
 .password-toggle:active{
-    color:#d6f600;
+    color:#2161cf;
 }
 
 
@@ -376,17 +482,26 @@ label{
 
 .login-btn{
     width:100%;
+
     height:55px;
 
     margin-top:8px;
 
     border:none;
-    border-radius:10px;
 
-    background:#d6f600;
-    color:#050505;
+    border-radius:11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2161cf,
+            #174da8
+        );
+
+    color:#fff;
 
     font-size:14px;
+
     font-weight:900;
 
     letter-spacing:.7px;
@@ -394,10 +509,11 @@ label{
     cursor:pointer;
 
     position:relative;
+
     overflow:hidden;
 
     box-shadow:
-        0 0 0 rgba(214,246,0,0);
+        0 9px 22px rgba(33,97,207,.22);
 
     animation:
         buttonGrow 2.5s ease-in-out infinite;
@@ -407,10 +523,40 @@ label{
         opacity .15s ease;
 }
 
+.login-btn:before{
+    content:"";
 
-/* =========================
-   SLOW BUTTON GROW
-========================= */
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:60%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.18),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:buttonShine 3.5s infinite;
+}
+
+@keyframes buttonShine{
+
+    0%{
+        left:-100%;
+    }
+
+    45%,100%{
+        left:150%;
+    }
+}
 
 @keyframes buttonGrow{
 
@@ -418,14 +564,14 @@ label{
         transform:scale(1);
 
         box-shadow:
-            0 0 0 rgba(214,246,0,0);
+            0 9px 22px rgba(33,97,207,.18);
     }
 
     50%{
-        transform:scale(1.025);
+        transform:scale(1.018);
 
         box-shadow:
-            0 8px 25px rgba(214,246,0,.20);
+            0 12px 28px rgba(33,97,207,.25);
     }
 }
 
@@ -442,6 +588,7 @@ label{
 
 .login-btn.loading{
     pointer-events:none;
+
     color:transparent;
 
     animation:none;
@@ -461,9 +608,9 @@ label{
     margin-left:-9.5px;
     margin-top:-9.5px;
 
-    border:2px solid rgba(0,0,0,.25);
+    border:2px solid rgba(255,255,255,.35);
 
-    border-top-color:#000;
+    border-top-color:#fff;
 
     border-radius:50%;
 
@@ -486,19 +633,23 @@ label{
 
     margin-top:19px;
 
-    color:#777;
+    color:#7d8798;
 
     font-size:11px;
 }
 
 .register-link a{
-    color:#d6f600;
+    color:#2161cf;
 
     font-weight:800;
 
     text-decoration:none;
 
     margin-left:3px;
+}
+
+.register-link a:hover{
+    color:#ff9100;
 }
 
 
@@ -511,11 +662,11 @@ label{
 
     padding-top:15px;
 
-    border-top:1px solid #252525;
+    border-top:1px solid #edf0f4;
 
     text-align:center;
 
-    color:#555;
+    color:#9aa3b2;
 
     font-size:9px;
 
@@ -529,13 +680,20 @@ label{
 
 .page-loader{
     position:fixed;
+
     inset:0;
 
-    background:rgba(0,0,0,.95);
+    background:
+        linear-gradient(
+            145deg,
+            #2161cf,
+            #174da8
+        );
 
     display:none;
 
     align-items:center;
+
     justify-content:center;
 
     flex-direction:column;
@@ -548,44 +706,58 @@ label{
 }
 
 .loader-logo{
-    width:62px;
-    height:62px;
+    width:64px;
+    height:64px;
 
-    border-radius:18px;
+    border-radius:19px;
 
-    background:#d6f600;
-    color:#000;
+    background:
+        linear-gradient(
+            145deg,
+            #fff 0%,
+            #fff 60%,
+            #ff9100 60%,
+            #ff9100 100%
+        );
+
+    color:#2161cf;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    font-size:26px;
+    font-size:17px;
     font-weight:900;
 
+    letter-spacing:.8px;
+
     margin-bottom:18px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.16);
 
     animation:
         loaderPulse 1.3s ease-in-out infinite;
 }
 
 .loader-spinner{
-    width:28px;
-    height:28px;
+    width:29px;
+    height:29px;
 
-    border:2px solid #333;
+    border:2px solid rgba(255,255,255,.30);
 
-    border-top-color:#d6f600;
+    border-top-color:#fff;
 
     border-radius:50%;
 
-    animation:spin .7s linear infinite;
+    animation:
+        spin .7s linear infinite;
 
     margin-bottom:12px;
 }
 
 .loader-text{
-    color:#888;
+    color:rgba(255,255,255,.85);
 
     font-size:11px;
 
@@ -620,11 +792,11 @@ label{
 
         border-radius:19px;
 
-        font-size:27px;
+        font-size:15px;
     }
 
     .brand h1{
-        font-size:23px;
+        font-size:24px;
     }
 
     .card{
@@ -634,6 +806,12 @@ label{
     .card-header h2{
         font-size:21px;
     }
+
+    .top-message-container{
+        top:10px;
+
+        width:calc(100% - 20px);
+    }
 }
 
 </style>
@@ -642,24 +820,56 @@ label{
 <body>
 
 
-<!-- BACKGROUND IMAGE -->
+<!-- =========================
+     TOP TEMPORARY MESSAGE
+========================= -->
+
+<div
+    class="top-message-container"
+    id="topMessageContainer"
+>
+
+    <div class="top-message">
+
+        <div class="top-message-icon">
+            !
+        </div>
+
+        <div
+            class="top-message-text"
+            id="topMessageText"
+        >
+            Please fill in all required fields.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BACKGROUND -->
+
 <div class="background"></div>
 
 
-<!-- FLOATING X -->
-<div class="floating-x">
-    X
+<!-- FLOATING JOMA -->
+
+<div class="floating-joma">
+    JOMA
 </div>
 
 
 <!-- =========================
-     FULL PAGE LOADING
+     FULL PAGE LOADER
 ========================= -->
 
-<div class="page-loader" id="pageLoader">
+<div
+    class="page-loader"
+    id="pageLoader"
+>
 
     <div class="loader-logo">
-        X
+        JOMA
     </div>
 
     <div class="loader-spinner"></div>
@@ -681,15 +891,15 @@ label{
     <div class="brand">
 
         <div class="brand-logo">
-            X
+            JOMA
         </div>
 
         <h1>
-            Infinix
+            JOMA
         </h1>
 
         <p>
-            Welcome back to the Infinix platform
+            Welcome back to the JOMA platform
         </p>
 
     </div>
@@ -700,7 +910,6 @@ label{
     ========================= -->
 
     <div class="card">
-
 
         <div class="card-header">
 
@@ -716,14 +925,17 @@ label{
 
 
         <!-- =========================
-             FLASH MESSAGES
+             FLASK FLASH MESSAGES
         ========================= -->
 
         {% with messages = get_flashed_messages(with_categories=true) %}
 
             {% for category, message in messages %}
 
-                <div class="message {{ category }}">
+                <div
+                    class="message {{ category }}"
+                    data-flash-message="{{ message }}"
+                >
                     {{ message }}
                 </div>
 
@@ -740,6 +952,7 @@ label{
             method="POST"
             action="{{ url_for('login') }}"
             id="loginForm"
+            novalidate
         >
 
 
@@ -763,7 +976,6 @@ label{
                         name="phone"
                         placeholder="Enter your phone number"
                         autocomplete="tel"
-                        required
                     >
 
                 </div>
@@ -791,7 +1003,6 @@ label{
                         name="password"
                         placeholder="Enter your login password"
                         autocomplete="current-password"
-                        required
                     >
 
                     <button
@@ -819,13 +1030,10 @@ label{
                 LOGIN
             </button>
 
-
         </form>
 
 
-        <!-- =========================
-             REGISTER
-        ========================= -->
+        <!-- REGISTER -->
 
         <div class="register-link">
 
@@ -838,9 +1046,7 @@ label{
         </div>
 
 
-        <!-- =========================
-             SECURITY
-        ========================= -->
+        <!-- SECURITY -->
 
         <div class="security">
 
@@ -848,13 +1054,44 @@ label{
 
         </div>
 
-
     </div>
 
 </div>
 
 
 <script>
+
+/* =========================
+   TOP MESSAGE FUNCTION
+========================= */
+
+let messageTimer;
+
+function showTopMessage(message){
+
+    const container =
+        document.getElementById("topMessageContainer");
+
+    const text =
+        document.getElementById("topMessageText");
+
+    if(!container || !text){
+        return;
+    }
+
+    text.textContent = message;
+
+    container.classList.add("show");
+
+    clearTimeout(messageTimer);
+
+    messageTimer = setTimeout(function(){
+
+        container.classList.remove("show");
+
+    }, 3500);
+}
+
 
 /* =========================
    PASSWORD TOGGLE
@@ -890,7 +1127,7 @@ function togglePassword(){
 
 
 /* =========================
-   LOGIN LOADING
+   LOGIN FORM
 ========================= */
 
 const loginForm =
@@ -907,7 +1144,33 @@ if(loginForm){
 
     loginForm.addEventListener(
         "submit",
-        function(){
+        function(event){
+
+            const phone =
+                document.getElementById("phone");
+
+            const password =
+                document.getElementById("password");
+
+
+            /* CHECK EMPTY FIELDS */
+
+            if(
+                !phone.value.trim() ||
+                !password.value.trim()
+            ){
+
+                event.preventDefault();
+
+                showTopMessage(
+                    "Please fill in all required fields."
+                );
+
+                return;
+            }
+
+
+            /* SHOW LOADING */
 
             if(loginButton){
 
@@ -932,28 +1195,87 @@ if(loginForm){
 
 
 /* =========================
+   FLASK FLASH MESSAGE
+   SHOW AT TOP
+========================= */
+
+const flashMessages =
+    document.querySelectorAll(
+        "[data-flash-message]"
+    );
+
+
+flashMessages.forEach(function(message){
+
+    const text =
+        message.getAttribute(
+            "data-flash-message"
+        );
+
+    if(text){
+
+        showTopMessage(text);
+
+    }
+
+    /* Hide original message inside card */
+
+    message.style.display = "none";
+
+});
+
+
+/* =========================
    PAGE LINK LOADING
 ========================= */
 
 document.querySelectorAll("a").forEach(function(link){
 
-    link.addEventListener("click",function(event){
+    link.addEventListener(
+        "click",
+        function(){
 
-        const href = link.getAttribute("href");
+            const href =
+                link.getAttribute("href");
 
-        if(!href || href === "#" || href.startsWith("javascript:")){
-            return;
+            if(
+                !href ||
+                href === "#" ||
+                href.startsWith("javascript:")
+            ){
+                return;
+            }
+
+            if(pageLoader){
+
+                pageLoader.classList.add(
+                    "show"
+                );
+
+            }
+
         }
-
-        if(pageLoader){
-
-            pageLoader.classList.add("show");
-
-        }
-
-    });
+    );
 
 });
+
+
+/* =========================
+   OPTIONAL WELCOME MESSAGE
+   AFTER PAGE LOAD
+========================= */
+
+setTimeout(function(){
+
+    /*
+       Remove this section if you don't
+       want an automatic message when
+       the login page opens.
+    */
+
+    // showTopMessage("Welcome to JOMA.");
+
+}, 1200);
 
 </script>
 
